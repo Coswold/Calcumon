@@ -10,6 +10,9 @@ var cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 var exphbs = require('express-handlebars')
 
+require('./data/calcumon-db');
+require('./controllers/auth.js')(app);
+
 
 app.use(cookieParser());
 
