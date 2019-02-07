@@ -10,17 +10,19 @@
         </div>
 
         <div class = "login">
-            <form name = "login">
+            <form name = "login" method="POST" action="/login">
                 <label> Username</label>
-                <input class = "info" label = "username" value="Enter Username">
+                <input class = "info" type="text" label = "username"
+                name="username" id="username" value="Enter Username">
                 <label> Password</label>
-                <input class = "info" label = "password" type="password" value="password">
+                <input class = "info" type="password" label = "password"
+                name="password" id="password" value="password">
                 <input class = "play" type="submit" value="LOGIN">
             </form>
         </div>
 
-        
+
         <canvas class = "coin1" id="coinAnimation"></canvas>
         <canvas class = "coin2" id="coinAnimation2"></canvas>
-        
+
 </div>

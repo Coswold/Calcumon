@@ -3,14 +3,15 @@ const jwt = require('jsonwebtoken');
 
 module.exports = (app) => {
     // SIGN UP FORM
-    app.get("/sign-up", (req, res) => {
-        res.render("sign-up-new");
+    app.get("/signup", (req, res) => {
+        res.render("signup");
     });
 
     // SIGN UP POST
     app.post("/sign-up", (req, res) => {
         // Create User and JWT
         const user = new User(req.body);
+        console.log(user)
         user.save()
         .then((user) => {
             var token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
@@ -30,12 +31,13 @@ module.exports = (app) => {
     })
 
     // Login FORM
-    app.get('/login', (req, res) => {
+    app.get('/', (req, res) => {
         res.render('login');
     });
 
     // LOGIN
     app.post("/login", (req, res) => {
+        console.log(req)
         const username = req.body.username;
         const password = req.body.password;
         // Find this user name
