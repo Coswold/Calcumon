@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/Coswold/Calcumon#readme",
   "dependencies": {
-    "body-parser": "^1.18.3"
+    "body-parser": "^1.18.3",
+    "express-validator": "^5.3.1",
+    "handlebars": "^4.1.0"
   }
 }
