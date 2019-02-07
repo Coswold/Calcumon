@@ -37,7 +37,7 @@ module.exports = (app) => {
 
     // LOGIN
     app.post("/login", (req, res) => {
-        console.log(req)
+        console.log(req.body)
         const username = req.body.username;
         const password = req.body.password;
         // Find this user name

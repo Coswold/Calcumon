@@ -10,10 +10,6 @@ var cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
 var exphbs = require('express-handlebars')
 
-require('./data/calcumon-db');
-require('./controllers/auth.js')(app);
-
-
 app.use(cookieParser());
 
 // Use Body Parser
@@ -21,7 +17,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static('public'))
-
 
 var checkAuth = (req, res, next) => {
     console.log("Checking authentication");
@@ -43,6 +38,9 @@ app.use(expressValidator());
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
+
+require('./data/calcumon-db');
+require('./controllers/auth.js')(app);
 
 module.exports = app;
 
