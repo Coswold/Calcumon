@@ -1,12 +1,5 @@
 /* Main Css goes here */
 
-/* body {
-    background-image: url('images/pokegrassbg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-} */
-
 body, html {
     height: 100%;
     overflow: hidden;
@@ -16,7 +9,7 @@ body, html {
   
 .bg { 
     /* The image used */
-    background-image: url("images/bg-calc.png");
+    background-image: url("./images/bg.png");
   
     /* Full height */
     height: 100%; 
