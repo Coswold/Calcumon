@@ -69,7 +69,7 @@ Add additional notes about how to deploy this on a live system
 * **Sarin** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 * **Connor** - *Initial work* - [Coswold](https://github.com/Coswold)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/Coswold/Calcumon/graphs/contributors) who participated in this project.
 
 ## Acknowledgments
 
