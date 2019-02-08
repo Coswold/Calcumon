@@ -58,9 +58,10 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [NPM](https://www.npmjs.com/) - Package Management
-* [Handlebars](https://handlebarsjs.com/) - Templateing Engine
+* [Express](https://expressjs.com/) - The web framework used
+* [NPM](https://www.npmjs.com/) - Package management
+* [Express-Handlebars](https://github.com/ericf/express-handlebars) - Templateing engine
+* [Mongoose](https://mongoosejs.com/) - Mongodb object modeling
 
 ## Authors
 
