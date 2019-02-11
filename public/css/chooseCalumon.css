@@ -1,13 +1,46 @@
+body {
+    background-color: #130094;
+    color: white;
+}
+
 .chooseCalcumon {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 h1 {
     text-align: center;
+    margin-bottom: 60px;
+    margin-top: 50px;
 }
 
 .gridContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
+    grid-template-rows: 300px 300px;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+.button {
+    color: #130094;
+    background-color: #FCD12D;
+    padding: 10px;
+    margin: 20px;
+    margin-right: 40px;
+    float: right;
+    border-radius: 15px;
+    font-size: 23px;
+    padding-right: 35px;
+    padding-left: 35px;
+    margin-left: 30px;
+    margin-top: 30px;
+    font-weight: bold;
+    border: 1px solid white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.gridItem {
+    background-color: pink;
+    border: 1px solid black;
 }
