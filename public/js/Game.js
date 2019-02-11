@@ -37,6 +37,7 @@ class Game {
     update() {
         // check if player got the solution for the problem
             // if yes, call new problem
+            // if no, clear input field and display try again above the input box
         // 
     }
 

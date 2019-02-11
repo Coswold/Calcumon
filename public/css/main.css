@@ -72,7 +72,7 @@ ul {
   }
   
   /* login form */
-  .login label, .login input {
+  .login label, .login input, .signup label, .signup input {
       display: inline-block;
       width: 100%;
       margin-bottom: 15px;
@@ -80,7 +80,7 @@ ul {
       text-align: center;
   }
 
-  .login input {
+  .login input, .signup input {
       padding-bottom: 20px;
       padding-top: 20px;
       background-color: #FCD12D;
@@ -94,7 +94,7 @@ ul {
       border: 1px solid white;
     }
 
-  .login .info {
+  .login .info, .signup .info{
       background-color: #00B2DF;
       color: white;
       border-radius: 15px;
@@ -104,7 +104,7 @@ ul {
       border: 0px;
   }
 
-  .login form {
+  .login form, .signup form {
       width: 300px;
       float: right;
       margin-top: 5%;
@@ -115,7 +115,7 @@ ul {
   }
 
 /* layering positions */
-  .login {
+  .login, .signup {
       z-index: 1000;
   }
 

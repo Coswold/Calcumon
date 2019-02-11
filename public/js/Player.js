@@ -6,6 +6,7 @@
 
 class Player {
     constructor(health=100, tokens=0, attacks=[], level=0) {
+        // game
         this.tokens = tokens
         this.health = health
         this.attacks = attacks
