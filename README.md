@@ -1,6 +1,6 @@
 # Calcumon
 
-One Paragraph of project description goes here
+Calcumon is a web-based game involving a virtual world with mini-math games/activities. The game can be played after a simple signup to setup your game user. It consists of multiple levels of calcumon battles against opponents. Attacks can be used through tokens, and players earn tokens via completing math problems within the game. 
 
 ## Getting Started
 
@@ -66,7 +66,7 @@ Add additional notes about how to deploy this on a live system
 ## Authors
 
 * **Javier** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-* **Anisha** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Anisha** - *Initial work* - [anisha7](https://github.com/Anisha7)
 * **Sarin** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 * **Connor** - *Initial work* - [Coswold](https://github.com/Coswold)
 
