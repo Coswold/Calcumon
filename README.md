@@ -2,6 +2,14 @@
 
 Calcumon is a web-based game involving a virtual world with mini-math games/activities. The game can be played after a simple signup to setup your game user. It consists of multiple levels of calcumon battles against opponents. Attacks can be used through tokens, and players earn tokens via completing math problems within the game. 
 
+## iOS Project
+* [Github](https://github.com/SarinSwift/Calcumon) 
+
+## Website Project
+* [Github](https://github.com/Coswold/Calcumon) 
+* [Landing page](https://anisha7.github.io/Calcumon-website/?) 
+
+<!---
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -55,6 +63,8 @@ Give an example
 ## Deployment
 
 Add additional notes about how to deploy this on a live system
+
+-->
 
 ## Built With
 
