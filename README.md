@@ -65,9 +65,9 @@ Add additional notes about how to deploy this on a live system
 
 ## Authors
 
-* **Javier** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Javier** - *Initial work* - [javiier_am](https://github.com/javiermms)
 * **Anisha** - *Initial work* - [anisha7](https://github.com/Anisha7)
-* **Sarin** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Sarin** - *Initial work* - [SarinSwift](https://github.com/SarinSwift)
 * **Connor** - *Initial work* - [Coswold](https://github.com/Coswold)
 
 See also the list of [contributors](https://github.com/Coswold/Calcumon/graphs/contributors) who participated in this project.
