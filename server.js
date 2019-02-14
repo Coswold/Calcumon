@@ -41,6 +41,7 @@ app.set('view engine', 'handlebars');
 
 require('./data/calcumon-db');
 require('./controllers/auth.js')(app);
+require('./controllers/choose.js')(app);
 
 module.exports = app;
 

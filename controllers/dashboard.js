@@ -1,0 +1,18 @@
+const User = require('../models/user')
+
+module.exports = function(app) {
+    // Need path to show DASHBOARD
+    app.get(`/dashboard/${user._id}`, (req, res) => {
+        if (req.user) {
+            var currentUser = req.user;
+            res.render('dashboard', { currentUser });
+        } else {
+            return res.status(401); // UNAUTHORIZED
+        }
+    });
+
+    // Need path to go to game play
+
+    // Need path to edit profile
+
+}
