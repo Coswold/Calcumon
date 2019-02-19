@@ -46,10 +46,12 @@ ul {
   }
 
   .nav img {
-      width: 60%;
+      width: 300px;
       margin: 0;
       padding:0;
       padding-top: 10px;
+      float: right;
+      margin-right: 40px;
   }
 
   .nav .button {
