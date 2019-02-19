@@ -137,3 +137,28 @@ ul {
     top: 52%;
     left: 18%;
   }
+
+  /* For iPhones, with login button going below */ 
+  /* Any height 500px or less */
+  @media only screen and (max-device-height: 550px) {
+    body {
+      overflow-y: scroll;
+    }
+
+    .nav {
+      height: 100px;
+    }
+
+    .login, .signup {
+      margin-top: 0;
+      padding-top: 0;
+      font-size: 22px;
+    }
+
+    .login input, .signup input {
+      font-size: 20px;
+      padding: 10px;
+      margin: 10px;
+    }
+    
+  }
