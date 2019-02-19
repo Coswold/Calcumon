@@ -35,10 +35,17 @@ class Game {
     // IMPLEMENT FOR THIS VERSION
     // run this function on a time loop
     update() {
-        // check if player got the solution for the problem
-            // if yes, call new problem
-            // if no, clear input field and display try again above the input box
-        // 
+        
+        // Gets the player input from the problem-solution form when solution is submitted by player
+        let submit = document.getElementById('submit')
+        let userInput = null
+        submit.onclick = function() {
+            userInput = document.getElementById('userInput').value
+            alert(userInput)
+            // check if player got the solution for the problem
+                // if yes, call new problem
+                // if no, clear input field and display try again above the input box
+        }
     }
 
     // TBD: Maybe this function, or maybe do it through html
