@@ -2,7 +2,7 @@ const User = require('../models/user')
 
 module.exports = function(app) {
     // Need path to show DASHBOARD
-    app.get(`/dashboard/${user._id}`, (req, res) => {
+    app.get(`/dashboard/:id`, (req, res) => {
         if (req.user) {
             var currentUser = req.user;
             res.render('dashboard', { currentUser });
