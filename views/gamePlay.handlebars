@@ -1,0 +1,31 @@
+<div class = "content">
+      <!-- navbar (settings, level, dashboard) -->
+      {{navbar}}
+      
+      <div class = "problem-content">
+        <!-- place to dispay question -->
+        <h1 class = "problem"> Sample Problem: What is 5 + 5? </h1>
+
+        <!-- canvas (for drawing calcumons and animating-->
+        <canvas class = "game"></canvas>
+        <!-- place for answers -->
+        <input id = "userInput" class = "solution" value="Enter solution">
+        <input id = "submit" class = "solution-submit button" type="submit" value="Submit">
+      </div>
+      <!-- attacks (buttons) -->
+      <div>
+
+      </div>
+    </div>
+
+    <script>
+      // Gets the player input from the problem-solution form when solution is submitted by player
+      let submit = document.getElementById('submit')
+      let userInput = null
+      submit.onclick = function() {
+          userInput = document.getElementById('userInput').value
+          alert(userInput)
+          // send this to player class...?
+          // do verification etc.
+      }
+    </script>

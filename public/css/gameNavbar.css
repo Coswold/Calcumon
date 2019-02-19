@@ -1,0 +1,49 @@
+/* navbar for game screen */
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    /* margin-left: 30px; */
+    margin-top: 0px;
+  }
+  
+.nav li {
+    float: left;
+  }
+
+.nav a {
+    text-decoration: none;
+  }
+.nav li {
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+.nav img {
+    width: 60%;
+    margin: 0;
+    padding:0;
+    padding-top: 10px;
+  }
+
+.nav {
+    color: #130094;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    font-size: 23px;
+    padding-right: 25px;
+    /* padding-left: 25px; */
+    /* margin-left: 30px; */
+    /* margin-top: 30px; */
+    font-weight: bold;
+    border: 1px solid white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.nav {
+    padding-top: 10px;
+}
