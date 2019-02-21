@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+const Populate = require("../utils/autopopulate");
 
 const Schema = mongoose.Schema;
 
@@ -41,5 +42,7 @@ UserSchema.methods.comparePassword = function(password, done) {
         done(err, isMatch);
     });
 };
+
+// UserSchema.pre('findOne', Populate('calcumon')).pre('find', Populate('calcumon'))
 
 module.exports = mongoose.model("User", UserSchema);
