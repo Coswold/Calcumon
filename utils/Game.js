@@ -57,26 +57,25 @@ class Game {
     // IMPLEMENT FOR THIS VERSION
     // run this function on a time loop
     update() {
-        
+        // NOTE: CHECK IF WE CAN USE document.getElementById in this file to access gamePlay.handlebars!
+        // NOTE: DO WE NEED TO IMPORT GAME.JS IN GAMEPLAY.handlebars?
+
         // Gets the player input from the problem-solution form when solution is submitted by player
-        let submit = document.getElementById('submit')
-        let userInput = null
-        submit.onclick = function() {
-            userInput = document.getElementById('userInput').value
-            alert(userInput)
-            // check if player got the solution for the problem
-            if (verifySolution(userInput) == true) {
-                // if yes, call new problem
-                this.newProblem()
-                this.player.prevResponseCorrectness = true
-            } else {
-                // if no, clear input field and display try again above the input box
-                document.getElementById('userInput').placeholder = 'try again!'
-            }
-
-            return
+        let userInput = this.player.respond()
+        
+        // check if player got the solution for the problem
+        if (verifySolution(userInput) == true) {
+            // if yes, call new problem
+            this.newProblem()
+            this.player.prevResponseCorrectness = true
+            // add to player mana based on problem's value
+        } else {
+            // if no, clear input field and display try again above the input box
+            document.getElementById('userInput').placeholder = 'try again!'
         }
+        
 
+        // allow skipping of a problem
         let skip = document.getElementById('skip')
         skip.onclick = function() {
             this.player.prevResponseCorrectness = false

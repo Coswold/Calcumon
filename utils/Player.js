@@ -17,12 +17,15 @@ class Player {
     }
 
     // IMPLEMENT THIS FOR VERSION ONE
-    respond(solution) {
-        // prompt player with input field
-        // check if response matches solution
-        // add to tokens if it does and return true
-            // game class should use true or false value to determine
-            // whether to change the question or not...etc.
+    respond() {
+        // NOTE: CHECK IF WE CAN USE document.getElementById in this file to access gamePlay.handlebars!
+        let submit = document.getElementById('submit')
+        let userInput = null
+        submit.onclick = function() {
+            userInput = document.getElementById('userInput').value
+            alert(userInput)
+        }
+        return userInput
     }
 
     attack(i) {
