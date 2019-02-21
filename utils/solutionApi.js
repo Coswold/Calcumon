@@ -20,3 +20,5 @@ async function solve(value) {
         });
     return solution
 }
+
+export default solve

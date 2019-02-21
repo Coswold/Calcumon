@@ -3,7 +3,6 @@
 // AND CHECK THE SOLUTION FOR ACCURACY
 // AND ASSIGN TOKENS ACCORDINGLY
 
-
 // math problems (INITIALLY)
 // solution checker
 // token associations with math problems
@@ -14,22 +13,39 @@
     // track attacks and update health accordingly
 // track winner
 // track gameOver state
+
+
+// imports
+// import player class
+import { Player } from 'Player'
+// import problem generator 
+import { getProblem } from 'problemGenerator'
+// import solution API
+import { solve } from 'solutionApi'
     
 class Game {
     constructor() {
         this.gameState = true
         // initialize player
-        this.player
+        this.player = new Player()
         this.currProblem = ''
-        this.currSolution = ''    
+        this.currSolution = ''
+          
     }
 
     // IMPLEMENT FOR THIS VERSION
     // get new problem
     newProblem() {
+        let level = this.player.level
+        let problemCount = this.player.problemCount
+        let prevResult = this.player.prevResponseCorrectness // boolean
         // get a new problem based on player level
+        problem = getProblem(level, problemCount, prevResult)
+        
         // update currProblem
+        this.currProblem = problem
         // update currSolution with new solution
+        this.currSolution = solve(problem)
     }
 
     // IMPLEMENT FOR THIS VERSION
@@ -51,5 +67,9 @@ class Game {
     // TBD: Maybe this function, or maybe do it through html
     draw() {
         // display problem
+        // document => gamePlay.handlebars: display problem on screen
+        document.getElementById('problem').value = makeProblemReadable(this.currProblem)
     }
 }
+
+export default Game

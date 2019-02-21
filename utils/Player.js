@@ -12,6 +12,8 @@ class Player {
         this.attacks = attacks
         this.response = ''
         this.level = level
+        this.prevResponseCorrectness = true // Was the last response correct?
+        this.problemCount = 0 // how many problems did player deal with 
     }
 
     // IMPLEMENT THIS FOR VERSION ONE
@@ -32,3 +34,5 @@ class Player {
     }
 
 }
+
+export default Player
