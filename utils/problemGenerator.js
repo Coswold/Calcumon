@@ -375,3 +375,42 @@ class IntermediateEquations {
         return this.pattern1()
     }
 }
+
+let topics = [new Simple(), new SimpleFractions(), new MultiplyFractions(), new DivideFractions(), new SimpleEquations(), new IntermediateEquations()]
+// Give this function the player's level, and it will return a problem accordingly
+// input level must be more than 0 and less than the len(topics) 
+// current possibilities are upto len(topics)
+// for each level, give x easy problems, x medium problems, x hard problems in this order
+// i represents what problem to give
+// result represents whether or not prev answer was correct (false if question is skipped)
+function getProblem(level, i=0, result=true) {
+    let x = 5 // how many problems of each category
+    topic = topics[level-1]
+
+    // what problem pattern to use (1, 2, 3)?
+    pattern = i/5 + 1
+    // easier for same category if incorrect answer
+    if (result == false && pattern > 1){
+        pattern += 1
+    }
+
+    // get the problem
+    if (pattern <= 1) {
+        return topic.pattern1()
+    }
+
+    else if (pattern == 2) {
+        return topic.pattern2()
+    }
+
+    else if (pattern >= 3) {
+        return topic.pattern3()
+    }
+
+    return topic.pattern3()
+
+}
+
+// if a hard problem is skipped, go back to medium problem
+// if medium problem is skipped, go back to easy problem
+// more points for medium, and even more points for hard problems
