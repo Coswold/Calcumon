@@ -11,7 +11,7 @@ module.exports = (app) => {
         // INSTANTIATE INSTANCE OF CALCUMON MODEL
         if (req.user) {
             const calcumon = new Calcumon(req.body);
-            // SAVE INSTANCE OF POST MODEL TO DB
+            // SAVE INSTANCE OF CALCUMON MODEL TO DB
             calcumon.save().then(calcumon => {
                 return User.findById(req.user._id);
             })

@@ -7,7 +7,7 @@ Calcumon is a web-based game involving a virtual world with mini-math games/acti
 
 ## Website Project
 * [Github](https://github.com/Coswold/Calcumon) 
-* [Landing page](https://anisha7.github.io/Calcumon-website/?) 
+* [Landing page] https://calcumon.herokuapp.com/
 
 <!---
 ## Getting Started

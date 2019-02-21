@@ -8,7 +8,7 @@ const UserSchema = new Schema({
   updatedAt: { type: Date },
   password: { type: String, select: false },
   username: { type: String, required: true },
-  email: { type: String, required: true},
+  email: { type: String, required: false},
   level: { type: Number },
   calcumon: { type: Schema.Types.ObjectId, ref: 'Calcumon' }
 });
