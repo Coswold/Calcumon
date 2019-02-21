@@ -48,6 +48,12 @@ class Game {
         this.currSolution = solve(problem)
     }
 
+    // TO DO: check if player solution is valid
+    verifySolution(userInput) {
+        // user input == curr solution
+        return true
+    }
+
     // IMPLEMENT FOR THIS VERSION
     // run this function on a time loop
     update() {
@@ -59,8 +65,23 @@ class Game {
             userInput = document.getElementById('userInput').value
             alert(userInput)
             // check if player got the solution for the problem
+            if (verifySolution(userInput) == true) {
                 // if yes, call new problem
+                this.newProblem()
+                this.player.prevResponseCorrectness = true
+            } else {
                 // if no, clear input field and display try again above the input box
+                document.getElementById('userInput').placeholder = 'try again!'
+            }
+
+            return
+        }
+
+        let skip = document.getElementById('skip')
+        skip.onclick = function() {
+            this.player.prevResponseCorrectness = false
+            this.newProblem()
+            return
         }
     }
 

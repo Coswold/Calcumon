@@ -5,9 +5,9 @@
 // response input to a problem
 
 class Player {
-    constructor(health=100, tokens=0, attacks=[], level=0) {
+    constructor(health=100, mana=0, attacks=[], level=1) {
         // game
-        this.tokens = tokens
+        this.mana = mana
         this.health = health
         this.attacks = attacks
         this.response = ''
