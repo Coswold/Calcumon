@@ -11,7 +11,7 @@ class Player {
         this.health = health
         this.attacks = attacks
         this.response = ''
-        this.level = level
+        this.level = level // access from database
         this.prevResponseCorrectness = true // Was the last response correct?
         this.problemCount = 0 // how many problems did player deal with 
     }

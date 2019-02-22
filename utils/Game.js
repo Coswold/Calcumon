@@ -26,8 +26,10 @@ import { solve } from 'solutionApi'
 class Game {
     constructor() {
         this.gameState = true
-        // initialize player
-        this.player = new Player()
+
+        this.player = new Player() // initialize player
+        this.computer = '' // implement computer class
+
         this.currProblem = ''
         this.currSolution = ''
           
@@ -52,6 +54,12 @@ class Game {
     verifySolution(userInput) {
         // user input == curr solution
         return true
+    }
+
+    gameOver() {
+        // figure out who won
+        // if player won: update level, give coins
+        return
     }
 
     // IMPLEMENT FOR THIS VERSION
@@ -81,6 +89,11 @@ class Game {
             this.player.prevResponseCorrectness = false
             this.newProblem()
             return
+        }
+
+        // handle gameOver state
+        if (this.player.health == 0 || this.computer.health == 0) {
+            this.gameOver()
         }
     }
 
