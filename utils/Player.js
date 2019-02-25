@@ -38,7 +38,9 @@ class Player {
         
         // update currProblem
         this.currProblem = makeProblemReadable(result[0])
-        this.currProblemMana = result[1]
+        // 1, 2, or 3 (based on difficulty)
+        // Increment this depending on how much mana we want to give
+        this.currProblemMana = result[1]*10
         // update currSolution with new solution
         // console.log(result[0])
         // console.log('GETTING PROBLEM-SOLUTION')
@@ -49,6 +51,9 @@ class Player {
         this.problemCount += 1
     }
 
+    incrementMana() {
+        this.mana += this.currProblemMana
+    }
     // IMPLEMENT THIS FOR VERSION ONE
     respond() {
         // currently handled in game.js

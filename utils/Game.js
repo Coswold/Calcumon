@@ -213,6 +213,8 @@ class Game {
         
         // check if player got the solution for the problem
         if (this.foundSolution == true) {
+            // increment mana
+            this.player.incrementMana()
             // if yes, call new problem
             this.player.newProblem()
             // draw
