@@ -12,6 +12,14 @@ module.exports = function(app) {
     });
 
     // Need path to go to game play
+    app.get(`/gameplay`, (req, res) => {
+        if (req.user) {
+            var currentUser = req.user;
+            res.render('gameplay', { currentUser });
+        } else {
+            return res.status(401); // UNAUTHORIZED
+        }
+    });
 
     // Need path to edit profile
 

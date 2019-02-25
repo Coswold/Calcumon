@@ -1,3 +1,4 @@
+
 // this file deals with api calls to Wolfram's API to get solutions for a math problem
 // https://products.wolframalpha.com/short-answers-api/documentation/
 
@@ -21,4 +22,4 @@ async function solve(value) {
     return solution
 }
 
-export default solve
+// export default solve

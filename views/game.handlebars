@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CacluMon</title>
+    <link rel="stylesheet" href="../gameIndex.css">
+
+    <!-- For getting user input through canvas element -->
+    <script src = "CanvasInput/CanvasInput.js"></script>
+    <script src = "CanvasInput/CanvasInput.min.js"></script>
+  </head>
+
+  <body>
+
+    <div class = "content">
+      <!-- navbar (settings, level, dashboard) -->
+
+      {{{navbar}}}
+      
+    <script src="problemGenerator.js"></script>
+    <script src="solutionApi.js"></script>
+    <script src = "Player.js"></script>
+    <script src = "Game.js"></script>
+    <script>
+        let canvas = document.getElementById("game");
+        // 2D rendering context, to paint to canvas
+        let ctx = canvas.getContext("2d");
+        let Calcumon = new Game(ctx)
+        ctx.canvas.width  = window.innerWidth;
+        // ctx.canvas.height = window.innerHeight;
+        Calcumon.draw()
+        function run() {
+            Calcumon.update()
+        }
+        run()
+        // will execute draw every 10 milliseconds
+        setInterval(run, 10); //not working???
+    </script>
+  </body>
+
+</html>
