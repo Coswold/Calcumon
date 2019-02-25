@@ -4,7 +4,7 @@
 // attacks and attack costs
 // response input to a problem
 
-// import problem generator
+// import problem generator 
 // import { getProblem } from 'problemGenerator'
 // // import solution API
 // import { solve } from 'solutionApi'
@@ -18,7 +18,7 @@ class Player {
         this.response = ''
         this.level = level // access from database
         this.prevResponseCorrectness = true // Was the last response correct?
-        this.problemCount = 1 // how many problems did player deal with
+        this.problemCount = 1 // how many problems did player deal with 
 
         this.currProblem = ''
         this.currSolution = ''
@@ -32,15 +32,18 @@ class Player {
         let problemCount = this.problemCount
         let prevResult = this.prevResponseCorrectness // boolean
         // get a new problem based on player level
-
+        
 
         let result = getProblem(level, problemCount, prevResult)
-
+        
         // update currProblem
         this.currProblem = makeProblemReadable(result[0])
         this.currProblemMana = result[1]
         // update currSolution with new solution
+        // console.log(result[0])
+        // console.log('GETTING PROBLEM-SOLUTION')
         // this.currSolution = solve(result[0])
+        // console.log('this.currSolution')
 
         // increment problem count
         this.problemCount += 1
@@ -48,22 +51,19 @@ class Player {
 
     // IMPLEMENT THIS FOR VERSION ONE
     respond() {
-        // NOTE: CHECK IF WE CAN USE document.getElementById in this file to access gamePlay.handlebars!
-        let submit = document.getElementById('submit')
-        let userInput = null
-        submit.onclick = function() {
-            userInput = document.getElementById('userInput').value
-            alert(userInput)
-        }
-        return userInput
+        // currently handled in game.js
     }
 
+    // TODO
     attack(i) {
         // pick attack at index i
         // subtract attack token cost from player's tokens
         // return health to subtract
             // handle return value in game class
             // to subtract health from enemy
+
+        // TODO: delete when function is implemented
+        return 5
     }
 
 }
