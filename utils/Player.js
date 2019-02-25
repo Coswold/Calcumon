@@ -13,7 +13,7 @@ class Player {
     constructor(health=100, mana=0, attacks=[], level=1) {
         // game
         this.mana = mana
-        this.health = health
+        this.health = health // out of a 100
         this.attacks = attacks
         this.response = ''
         this.level = level // access from database

@@ -33,14 +33,6 @@ class Attacks {
     }
 
     draw(ctx) {
-        // update for responsiveness
-        // this.ctx = ctx
-        // // width, height position for attack
-        // this.width = ctx.canvas.width/this.numAttacks;
-        // this.height = 100;
-        // // x,y position for first attack click box's top left corner
-        // this.x = 0
-        // this.y = ctx.canvas.height - 300
 
         // attack label
         this.ctx.font = "30px Arial";
@@ -118,7 +110,7 @@ class Game {
     // DRAW FUNCTIONS
     drawProblem() {
         ctx.font = "30px Arial";
-        ctx.fillStyle = "white";
+        ctx.fillStyle = "black";
         console.log(this.player.currProblem)
         ctx.fillText("Problem: "+this.player.currProblem, 60, 50);
     }
@@ -149,29 +141,30 @@ class Game {
     }
 
     // draw attacks for player
-    drawAttacks() {
-        // variables
-        // number of attacks
-        // let numAttacks = 6 // use len(this.player.attacks)
-        // // width, height position for attack
-        // let width = ctx.canvas.width/numAttacks;
-        // let height = 100;
-        // // x,y position for first attack click box's top left corner
-        // let x = 0
-        // let y = ctx.canvas.height - 180
+    drawPlayerData() {
+        let y = 80
+        let x = 60
+        // draw player health
+        // outer rectangle
+        this.ctx.rect(x, y, 200, 20)
+        this.ctx.stroke()
+        // inner filled rectangle (depends on health percentage)
+        let health = this.player.health/100
         
-        // // attack label
-        // ctx.font = "30px Arial";
-        // ctx.fillStyle = "Black"
-        // ctx.fillText("Attacks", x, y-20)
+        ctx.fillStyle = "red";
+        ctx.fillRect(x, y, 200*health, 20);
 
-        // // attack boxes
-        // for (let i = 0; i < numAttacks; i++) {
-        //     ctx.rect(x + width*i, y, width, height)
-        //     ctx.stroke()
-        // }
-
-        this.attacks.draw(this.ctx)
+        // health text
+        ctx.font = "14px Arial";
+        ctx.fillStyle = "white";
+        ctx.fillText('Health', x+10, y+15)
+        
+        // draw player mana
+        let text = 'Mana: ' + this.player.mana
+        console.log(text)
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText(text, x, y+50)
     }
 
     // TBD: Maybe this function, or maybe do it through html
@@ -186,7 +179,13 @@ class Game {
         }
         
         this.drawInputField()
-        this.drawAttacks()
+
+        // draw attacks
+        this.attacks.draw(this.ctx)
+
+        // draw player data
+        this.drawPlayerData()
+        
     }
 
 
