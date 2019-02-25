@@ -1,4 +1,4 @@
-
+const axios = require('axios');
 // this file deals with api calls to Wolfram's API to get solutions for a math problem
 // https://products.wolframalpha.com/short-answers-api/documentation/
 
@@ -7,21 +7,18 @@
 async function solve(value) {
     console.log("SOLVING")
     console.log(value)
-    let URL = `https://cors-escape.herokuapp.com/http://api.wolframalpha.com/v1/result?appid=${APPID}&i=${value}%3f`
+    var key = process.env.API_KEY
+    let URL = `http://api.wolframalpha.com/v1/result?appid=${key}&i=${value}%3f`
+    console.log(URL)
     let solution = await axios({
         method:'get',
         url: URL,
         responseType:'text'
-      })
-        .then(function(response) {
-        // response.data.pipe(fs.createWriteStream('ada_lovelace.jpg'))
-            console.log(response.data)
-            return response.data
-
-        });
+    })
+    console.log(solution.data)
     return solution
 }
 
-solve("4 + 5")
+solve("4plus5")
 
 // export default solve
