@@ -10,7 +10,7 @@
 // import { solve } from 'solutionApi'
 
 class Player {
-    constructor(health=100, mana=0, attacks=[], level=1) {
+    constructor(attacks=[], health=100, mana=0, level=1) {
         // game
         this.mana = mana
         this.health = health // out of a 100
@@ -51,12 +51,13 @@ class Player {
         this.problemCount += 1
     }
 
+    // increments mana
     incrementMana() {
         this.mana += this.currProblemMana
     }
-    // IMPLEMENT THIS FOR VERSION ONE
+    
+    // currently handled in game.js
     respond() {
-        // currently handled in game.js
     }
 
     // TODO
@@ -69,6 +70,12 @@ class Player {
 
         // TODO: delete when function is implemented
         return 5
+    }
+
+    // TODO
+    drawCalcumon(ctx) {
+        // draw calcumon
+        // animate calcumon upon attack
     }
 
 }
