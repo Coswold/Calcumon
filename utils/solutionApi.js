@@ -22,4 +22,6 @@ async function solve(value) {
     return solution
 }
 
+solve("4 + 5")
+
 // export default solve
