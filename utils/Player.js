@@ -38,8 +38,6 @@ class Player {
         
         // update currProblem
         this.currProblem = makeProblemReadable(result[0])
-        // 1, 2, or 3 (based on difficulty)
-        // Increment this depending on how much mana we want to give
         this.currProblemMana = result[1]*10
         // update currSolution with new solution
         // console.log(result[0])
@@ -51,13 +49,13 @@ class Player {
         this.problemCount += 1
     }
 
-    // increments mana
     incrementMana() {
         this.mana += this.currProblemMana
     }
-    
-    // currently handled in game.js
+
+    // IMPLEMENT THIS FOR VERSION ONE
     respond() {
+        // currently handled in game.js
     }
 
     // TODO
@@ -70,12 +68,6 @@ class Player {
 
         // TODO: delete when function is implemented
         return 5
-    }
-
-    // TODO
-    drawCalcumon(ctx) {
-        // draw calcumon
-        // animate calcumon upon attack
     }
 
 }

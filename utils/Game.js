@@ -155,22 +155,24 @@ class Game {
         this.ctx.stroke()
         // inner filled rectangle (depends on health percentage)
         let health = this.player.health/100
-        
+        console.log("HEALTH: ")
+        console.log(health)
+        console.log(200*health)        
         // WAS WORKING BEFORE, NOW NOT WORKING??
-        ctx.fillStyle = "red";
-        ctx.fillRect(x, y, 200*health, 20);
+        this.ctx.fillStyle = "red";
+        this.ctx.fillRect(x, y, 200*health, 20);
 
         // health text
-        ctx.font = "14px Arial";
-        ctx.fillStyle = "white";
-        ctx.fillText('Health', x+10, y+15)
+        this.ctx.font = "14px Arial";
+        this.ctx.fillStyle = "white";
+        this.ctx.fillText('Health', x+10, y+15)
         
         // draw player mana
         let text = 'Mana: ' + this.player.mana
         console.log(text)
-        ctx.font = "20px Arial";
-        ctx.fillStyle = "black";
-        ctx.fillText(text, x, y+50)
+        this.ctx.font = "20px Arial";
+        this.ctx.fillStyle = "black";
+        this.ctx.fillText(text, x, y+50)
     }
 
     // TBD: Maybe this function, or maybe do it through html
