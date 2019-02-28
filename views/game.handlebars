@@ -25,16 +25,25 @@
         let canvas = document.getElementById("game");
         // 2D rendering context, to paint to canvas
         let ctx = canvas.getContext("2d");
-        let Calcumon = new Game(ctx)
-        ctx.canvas.width  = window.innerWidth;
+        ctx.canvas.width  = window.outerWidth;
+        ctx.canvas.height = window.outerHeight;
+        let Calcumon = new Game(ctx, canvas)
         // ctx.canvas.height = window.innerHeight;
+
+        // handle click events
+        canvas.addEventListener('click', (e) => {
+          return Calcumon.mouseClickHandler(e)
+        });
+
+        // draw game
         Calcumon.draw()
         function run() {
             Calcumon.update()
         }
         run()
+        
         // will execute draw every 10 milliseconds
-        setInterval(run, 10); //not working???
+        setInterval(run, 10);
     </script>
   </body>
 
