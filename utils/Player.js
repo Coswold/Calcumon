@@ -58,16 +58,35 @@ class Player {
         // currently handled in game.js
     }
 
-    // TODO
+    // Returns the health value that needs to be subtracted from opponent
     attack(i) {
         // pick attack at index i
+        attack = self.attacks[i]
         // subtract attack token cost from player's tokens
-        // return health to subtract
-            // handle return value in game class
-            // to subtract health from enemy
-
-        // TODO: delete when function is implemented
-        return 5
+        
+        if (attack == 'Punch') {
+            return 10
+        }
+        if (attack == 'Kick') {
+            return 10
+        }
+        if (attack == 'Super Attack') {
+            return 30
+        }
+        if (attack == 'Dodge') {
+            // restore health to before opponent's attack affected it
+        }
+        if (attack == 'Fireball') {
+            return 20
+        }
+        // health restore power
+        if (attack == 'Revive 10% health') {
+            self.health += 10
+            if (self.health > 100) {
+                self.health = 100
+            }
+        }
+        return 0
     }
 
 }
