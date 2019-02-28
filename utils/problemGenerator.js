@@ -423,4 +423,5 @@ function getProblem(level, i, result) {
 // if medium problem is skipped, go back to easy problem
 // more points for medium, and even more points for hard problems
 
-// export default getProblem
+export default getProblem
+export default function getProblem() 

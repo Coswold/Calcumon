@@ -5,9 +5,10 @@
 // response input to a problem
 
 // import problem generator
-// import { getProblem } from 'problemGenerator'
-// // import solution API
-// import { solve } from 'solutionApi'
+import { getProblem } from 'problemGenerator'
+
+// import solution API
+import { solve } from 'solutionApi'
 
 class Player {
     constructor(health=100, mana=0, attacks=[], level=1) {
@@ -40,7 +41,10 @@ class Player {
         this.currProblem = makeProblemReadable(result[0])
         this.currProblemMana = result[1]
         // update currSolution with new solution
-        // this.currSolution = solve(result[0])
+        // console.log(result[0])
+        // console.log('GETTING PROBLEM-SOLUTION')
+        this.currSolution = solve(result[0])
+        console.log(this.currSolution)
 
         // increment problem count
         this.problemCount += 1
@@ -49,13 +53,13 @@ class Player {
     // IMPLEMENT THIS FOR VERSION ONE
     respond() {
         // NOTE: CHECK IF WE CAN USE document.getElementById in this file to access gamePlay.handlebars!
-        let submit = document.getElementById('submit')
-        let userInput = null
-        submit.onclick = function() {
-            userInput = document.getElementById('userInput').value
-            alert(userInput)
-        }
-        return userInput
+        // let submit = document.getElementById('submit')
+        // let userInput = null
+        // submit.onclick = function() {
+        //     userInput = document.getElementById('userInput').value
+        //     alert(userInput)
+        // }
+        // return userInput
     }
 
     attack(i) {
@@ -68,4 +72,7 @@ class Player {
 
 }
 
-// export default Player
+player = new Player()
+player.newProblem()
+
+//export default Player

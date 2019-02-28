@@ -4,6 +4,8 @@ const axios = require('axios');
 
 // use wolfram api to SOLVE
 // Wolfram|Alpha Short Answer API
+module.exports = function(app) {
+
 async function solve(value) {
     console.log("SOLVING")
     console.log(value)
@@ -19,6 +21,5 @@ async function solve(value) {
     return solution
 }
 
-solve("4plus5")
-
-// export default solve
+//export default solve
+module.exports = ("solve", solve());
