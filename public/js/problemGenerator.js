@@ -47,7 +47,7 @@ class Simple {
         let num = getRandomInt(this.max)
         // determine random operand
         let op = this.getOp()
-        let equation = `${pattern1()} ${op} ${num}`
+        let equation = `${this.pattern1()} ${op} ${num}`
         return equation
     }
 
@@ -210,16 +210,16 @@ class DivideFractions {
 
     pattern2() {
         let op = "divided by"
-        let eq1 = pattern1()
-        let eq2 = pattern1()
+        let eq1 = this.pattern1()
+        let eq2 = this.pattern1()
         let equation = `(${eq1}) +    ${op}    + (${eq2})`
         return equation
     }
 
     pattern3() {
         let op = "divided by"
-        let eq1 = pattern2()
-        let eq2 = pattern1()
+        let eq1 = this.pattern2()
+        let eq2 = this.pattern1()
         let equation = `(${eq1}) +    ${op}    + (${eq2})`
         return equation
     }
@@ -405,15 +405,15 @@ function getProblem(level, i, result) {
 
     // get the problem
     if (pattern <= 1) {
-        return [topic.pattern1(), pattern]
+        return [topic.pattern1(), 1]
     }
 
     else if (pattern == 2) {
-        return [topic.pattern2(), pattern]
+        return [topic.pattern2(), 2]
     }
 
     else if (pattern >= 3) {
-        return [topic.pattern3(), pattern]
+        return [topic.pattern3(), 3]
     }
 
     return [topic.pattern3(), 3]
@@ -423,10 +423,3 @@ function getProblem(level, i, result) {
 // if a hard problem is skipped, go back to medium problem
 // if medium problem is skipped, go back to easy problem
 // more points for medium, and even more points for hard problems
-
-module.exports = getProblem()
-module.exports = topics
-module.exports = makeProblemReadable()
-module.exports = IntermediateEquations
-module.exports = getRandomInt()
-module.exports = Simple

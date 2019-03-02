@@ -6,12 +6,23 @@
 
 // import problem generator
 // import { getProblem } from 'problemGenerator'
+<<<<<<< HEAD
 var getProblem = require('./problemGenerator.js');
 
 // import solution API
 //import { solve } from 'solutionApi'
 var solve = require('./solutionApi.js');
+=======
+
+// import solution API
+<<<<<<< HEAD
+// import { solve } from 'solutionApi'
+// import problem generator 
+=======
+import { solve } from 'solutionApi'
+>>>>>>> 8f387c279a0816aa477cd5511ab01504e94ae72f
 // import problem generator
+>>>>>>> e9bdac2439461272f1121bd9745ae446fef9fc99
 // import { getProblem } from 'problemGenerator'
 // // import solution API
 // import { solve } from 'solutionApi'
@@ -19,6 +30,7 @@ var solve = require('./solutionApi.js');
 class Player {
     constructor(attacks=[], calcumon = "", health=100, mana=0, level=1) {
         // game
+        this.coins = 100
         this.mana = mana
         this.health = health // out of a 100
         this.attacks = attacks
@@ -38,6 +50,11 @@ class Player {
         this.currProblemMana = 0
         this.newProblem()
 
+<<<<<<< HEAD
+        this.dodge = false
+        
+=======
+>>>>>>> e9bdac2439461272f1121bd9745ae446fef9fc99
     }
 
     // get new problem
@@ -126,8 +143,8 @@ class Player {
                 return "Not Enough Mana"
             }
             this.decrementMana(20)
-            // restore health to before opponent's attack affected it
-            // OR DODGE next attack?
+            this.dodge = true
+            // DODGES next attack?
         }
         // health restore power
         if (attack == 'Revive 10% health') {
@@ -189,7 +206,7 @@ class Player {
     }
 
 }
-player = new Player()
-player.newProblem()
+// player = new Player()
+// player.newProblem()
 
 // export default Player
