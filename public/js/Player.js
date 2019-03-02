@@ -15,14 +15,16 @@ var solve = require('./solutionApi.js');
 =======
 
 // import solution API
-<<<<<<< HEAD
 // import { solve } from 'solutionApi'
 // import problem generator 
+<<<<<<< HEAD:public/js/Player.js
 =======
 import { solve } from 'solutionApi'
 >>>>>>> 8f387c279a0816aa477cd5511ab01504e94ae72f
 // import problem generator
 >>>>>>> e9bdac2439461272f1121bd9745ae446fef9fc99
+=======
+>>>>>>> 078ed8d8c84c98b1ee99191e9e0b60f76b9fec22:utils/Player.js
 // import { getProblem } from 'problemGenerator'
 // // import solution API
 // import { solve } from 'solutionApi'
@@ -50,11 +52,8 @@ class Player {
         this.currProblemMana = 0
         this.newProblem()
 
-<<<<<<< HEAD
         this.dodge = false
         
-=======
->>>>>>> e9bdac2439461272f1121bd9745ae446fef9fc99
     }
 
     // get new problem
