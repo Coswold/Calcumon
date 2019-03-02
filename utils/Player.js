@@ -8,13 +8,8 @@
 // import { getProblem } from 'problemGenerator'
 
 // import solution API
-<<<<<<< HEAD
 // import { solve } from 'solutionApi'
 // import problem generator 
-=======
-import { solve } from 'solutionApi'
-// import problem generator
->>>>>>> e9bdac2439461272f1121bd9745ae446fef9fc99
 // import { getProblem } from 'problemGenerator'
 // // import solution API
 // import { solve } from 'solutionApi'
@@ -42,11 +37,8 @@ class Player {
         this.currProblemMana = 0
         this.newProblem()
 
-<<<<<<< HEAD
         this.dodge = false
         
-=======
->>>>>>> e9bdac2439461272f1121bd9745ae446fef9fc99
     }
 
     // get new problem

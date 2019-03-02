@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>CacluMon</title>
-    <link rel="stylesheet" href="../css/gamePlay.css">
 
-    <!-- For getting user input through canvas element -->
-    <script type="text/javascript" src = "../utils/CanvasInput/CanvasInput.js"></script>
-    <script type="text/javascript" src = "../utils/CanvasInput/CanvasInput.min.js"></script>
-  </head>
-
-  <body>
-
-    <div class = "content">
+<div class = "content">
       <!-- navbar (settings, level, dashboard) -->
       <div class = "nav">
           <ul>
@@ -40,12 +27,9 @@
            width="300" height="227">
     </div>
 
-    <script type="text/javascript" src="../utils/problemGenerator.js"></script>
-    <script type="text/javascript" src="../utils/solutionApi.js"></script>
-    <script type="text/javascript" src = "../utils/Player.js"></script>
-    <script type="text/javascript" src = "../utils/Computer.js"></script>
-    <script type="text/javascript" src = "../utils/Game.js"></script>
+    
     <script>
+        console.log("PLEASE PRINT")
         let canvas = document.getElementById("game");
         // 2D rendering context, to paint to canvas
         let ctx = canvas.getContext("2d");
@@ -69,6 +53,3 @@
         // will execute draw every 10 milliseconds
         setInterval(run, 10);
     </script>
-  </body>
-
-</html>

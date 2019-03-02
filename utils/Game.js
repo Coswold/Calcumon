@@ -142,7 +142,10 @@ class Game {
         // figure out who won
         // if player won: update level, give coins
         this.player.level += 1
-
+        // allocate new computer
+        // display gameOver: YOU WON OR YOU LOSE SCREEN
+        // When play is clicked: Play again or Play next level:
+            // start level 2 game or restart game
         return
     }
 

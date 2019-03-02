@@ -1,5 +1,5 @@
 /* navbar */
-ul {
+.content ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -8,27 +8,27 @@ ul {
     margin-top: 0px;
   }
   
-  li {
+  .content li {
     float: left;
   }
-  a {
+  .content a {
       text-decoration: none;
   }
-  li {
+  .content li {
     display: block;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
   }
 
-  .nav img {
+  .content .nav img {
       width: 60%;
       margin: 0;
       padding:0;
       padding-top: 10px;
   }
 
-  .nav {
+  .content .nav {
       color: #130094;
       padding: 10px;
       margin: 10px;
@@ -43,17 +43,17 @@ ul {
       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
 
-  .nav {
+  .content .nav {
        padding-top: 10px;
   }
 
   /* question/answer display */
 
-  .problem {
+  .content .problem {
       text-align: center;
   }
 
-  .solution {
+  .content .solution {
       text-align: center;
       margin: 20px;
       padding: 20px;
@@ -62,15 +62,15 @@ ul {
       position: relative;
   }
 
-  .problem-content {
+  .content .problem-content {
       text-align: center;
   }
 
-  input {
+  .content input {
       display: inline-block;
   }
   /* game canvas */
-canvas {
+  .content canvas {
     width: 97%;
     position: relative;
 }
@@ -80,7 +80,7 @@ body {
     overflow: hidden;
 }
 
-.button {
+.content .button {
     color: #130094;
     background-color: #FCD12D;
     padding: 20px;
