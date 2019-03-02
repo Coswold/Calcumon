@@ -8,8 +8,13 @@
 // import { getProblem } from 'problemGenerator'
 
 // import solution API
+<<<<<<< HEAD
 // import { solve } from 'solutionApi'
 // import problem generator 
+=======
+import { solve } from 'solutionApi'
+// import problem generator
+>>>>>>> e9bdac2439461272f1121bd9745ae446fef9fc99
 // import { getProblem } from 'problemGenerator'
 // // import solution API
 // import { solve } from 'solutionApi'
@@ -30,15 +35,18 @@ class Player {
         this.response = ''
         this.level = level // access from database
         this.prevResponseCorrectness = true // Was the last response correct?
-        this.problemCount = 1 // how many problems did player deal with 
+        this.problemCount = 1 // how many problems did player deal with
 
         this.currProblem = ''
         this.currSolution = ''
         this.currProblemMana = 0
         this.newProblem()
 
+<<<<<<< HEAD
         this.dodge = false
         
+=======
+>>>>>>> e9bdac2439461272f1121bd9745ae446fef9fc99
     }
 
     // get new problem
@@ -47,10 +55,10 @@ class Player {
         let problemCount = this.problemCount
         let prevResult = this.prevResponseCorrectness // boolean
         // get a new problem based on player level
-        
+
 
         let result = getProblem(level, problemCount, prevResult)
-        
+
         // update currProblem
         this.currProblem = makeProblemReadable(result[0])
         this.currProblemMana = result[1]*10
@@ -74,7 +82,14 @@ class Player {
 
     // IMPLEMENT THIS FOR VERSION ONE
     respond() {
-        // currently handled in game.js
+        // NOTE: CHECK IF WE CAN USE document.getElementById in this file to access gamePlay.handlebars!
+        // let submit = document.getElementById('submit')
+        // let userInput = null
+        // submit.onclick = function() {
+        //     userInput = document.getElementById('userInput').value
+        //     alert(userInput)
+        // }
+        // return userInput
     }
 
     // Returns the health value that needs to be subtracted from opponent
@@ -85,7 +100,7 @@ class Player {
         console.log(this.attacks)
         let attack = this.attacks[i]
         // subtract attack token cost from player's tokens
-        console.log(attack)
+
         if (attack == 'Punch') {
             if (this.mana < 10) {
                 return "Not Enough Mana"
@@ -139,7 +154,7 @@ class Player {
 
     // draw attacks for player
     drawPlayerData(ctx) {
-        
+
         let y = 100
         let x = 60
         // player
@@ -151,7 +166,7 @@ class Player {
         ctx.rect(x, y+30, 200, 20)
         ctx.stroke()
         // inner filled rectangle (depends on health percentage)
-        let health = this.health/100       
+        let health = this.health/100
 
         ctx.fillStyle = "red";
         ctx.fillRect(x, y+30, 200*health, 20);
@@ -160,7 +175,7 @@ class Player {
         ctx.font = "14px Arial";
         ctx.fillStyle = "white";
         ctx.fillText('Health', x+10, y+45)
-        
+
         // draw player mana
         let text = 'Mana: ' + this.mana
         console.log(text)
