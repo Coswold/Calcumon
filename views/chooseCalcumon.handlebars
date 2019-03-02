@@ -5,25 +5,49 @@
     <h1> CHOOSE YOUR CALCUMON </h1>
     {{!-- grid of characters --}}
     <div class = "gridContainer">
-        <div class = "gridItem">
+        {{!-- add function call with a value that sets calcumon name --}}
+        <div onClick = "setCalcumon1()" class = "gridItem">
             <img src="" alt="character">
         </div>
-        <div class = "gridItem">
+        <div onClick = "setCalcumon2()" class = "gridItem">
             <img src="" alt="character">
         </div>
-        <div class = "gridItem">
+        <div onClick = "setCalcumon3()" class = "gridItem">
             <img src="" alt="character">
         </div>
-        <div class = "gridItem">
+        <div onClick = "setCalcumon4()" class = "gridItem">
             <img src="" alt="character">
         </div>
-        <div class = "gridItem">
+        <div onClick = "setCalcumon5()" class = "gridItem">
             <img src="" alt="character">
         </div>
-        <div class = "gridItem">
+        <div onClick = "setCalcumon6()" class = "gridItem">
             <img src="" alt="character">
         </div>
     </div>
     {{!-- next button to move to game page --}}
     <p class="button"><a href="/gameIndex">NEXT</a></p>
+
+    <script>
+        // connect to database such that this sets the player's calcumon string value
+        let calcumon = "" 
+        function setCalcumon1() {
+            calcumon = "calcumon1"
+        }
+        function setCalcumon2() {
+            calcumon = "calcumon2"
+        }
+        function setCalcumon3() {
+            calcumon = "calcumon3"
+        }
+        function setCalcumon4() {
+            calcumon = "calcumon4"
+        }
+        function setCalcumon5() {
+            calcumon = "calcumon5"
+        }
+        function setCalcumon6() {
+            calcumon = "calcumon6"
+        }
+    </script>
 </div>

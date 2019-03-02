@@ -16,9 +16,10 @@
 // track winner
 // track gameOver state
 class Attacks {
-    constructor(ctx, attacks=[]) {
+    constructor(ctx) {
         this.ctx = ctx
         this.attackNames = ['Punch', 'Revive 10% health', 'Kick', 'Super Attack', 'Dodge', 'Fireball']
+        this.attackCosts = [10, 20, 10, 30, 20, 30]
         // number of attacks
         this.numAttacks = 6 // use len(this.attacks)
         this.attackPositions = [0,0,0,0,0,0]
@@ -37,7 +38,7 @@ class Attacks {
         // attack label
         this.ctx.font = "30px Arial";
         this.ctx.fillStyle = "Black"
-        this.ctx.fillText("Attacks", this.x, this.y-20)
+        this.ctx.fillText("Attacks    (Pick an attack, then answer the question. If you answer correctly, the attack will execute.)", this.x, this.y-20)
         console.log("DRAWING ATTACKS")
         // attack boxes
         for (let i = 0; i < this.numAttacks; i++) {
@@ -45,9 +46,18 @@ class Attacks {
             this.attackPositions[i] = x
             ctx.rect(x, this.y, this.width, this.height)
             ctx.stroke()
+            ctx.fillStyle = "lightblue";
+            ctx.fillRect(x, this.y, this.width, this.height);
+
+            // attack names
             ctx.font = "20px Arial";
             ctx.fillStyle = "black";
             ctx.fillText(this.attackNames[i], x+20, this.y + (this.height/2))
+            
+            // costs
+            ctx.font = "18px Arial";
+            ctx.fillStyle = "red";
+            ctx.fillText(this.attackCosts[i], x+this.width - 30, this.y + 30)
         }
     }
 
@@ -67,6 +77,7 @@ class Attacks {
                 }
             }
         }
+        return 0
            
     }
 }
@@ -76,15 +87,16 @@ class Game {
         this.ctx = ctx
         this.canvas = canvas
         this.gameState = true
-
         
-        this.computer = '' // implement computer class
         this.input = ''
         this.foundSolution = false
         console.log(ctx.canvas.height)
         this.attacks = new Attacks(ctx)
 
-        this.player = new Player(this.attacks.attackNames) // initialize player
+        this.computer = new Computer(this.attacks.attackNames)
+        this.player = new Player(this.attacks.attackNames, "") // initialize player with attacks and calcumon name
+        
+        this.attackIndex = null
         
     }
 
@@ -94,16 +106,18 @@ class Game {
     // TO DO: check if player solution is valid
     // input: userInput
     verifySolution() {
-        // user input == curr solution
-        // alert(userInput)
         console.log(this.input._value)
-
-        alert(this.input._value)
-
+        let userInput = this.input._value
+        alert(userInput)
+        let solution = this.player.currSolution
         // set this to true in order to handle updates when solution is found
-        this.foundSolution = true
+        this.foundSolution = false
+        if (userInput == solution) {
+            this.foundSolution = true
+        }
+        this.player.prevResponseCorrectness = this.foundSolution
         
-        return true
+        return this.foundSolution
     }
 
     gameOver() {
@@ -139,40 +153,14 @@ class Game {
             x: ctx.canvas.width/2 + 50,
             y: 20,
             onsubmit: () => { 
-                return this.verifySolution() 
+                // if player just answered
+                this.verifySolution() 
+                // allow attacking
+                this.attack()
+                return
             }
         });
         this.input.render()
-    }
-
-    // draw attacks for player
-    drawPlayerData() {
-        let y = 80
-        let x = 60
-        // draw player health
-        // outer rectangle
-        this.ctx.rect(x, y, 200, 20)
-        this.ctx.stroke()
-        // inner filled rectangle (depends on health percentage)
-        let health = this.player.health/100
-        console.log("HEALTH: ")
-        console.log(health)
-        console.log(200*health)        
-        // WAS WORKING BEFORE, NOW NOT WORKING??
-        this.ctx.fillStyle = "red";
-        this.ctx.fillRect(x, y, 200*health, 20);
-
-        // health text
-        this.ctx.font = "14px Arial";
-        this.ctx.fillStyle = "white";
-        this.ctx.fillText('Health', x+10, y+15)
-        
-        // draw player mana
-        let text = 'Mana: ' + this.player.mana
-        console.log(text)
-        this.ctx.font = "20px Arial";
-        this.ctx.fillStyle = "black";
-        this.ctx.fillText(text, x, y+50)
     }
 
     // TBD: Maybe this function, or maybe do it through html
@@ -192,27 +180,61 @@ class Game {
         this.attacks.draw(this.ctx)
 
         // draw player data
-        this.drawPlayerData()
+        this.player.drawPlayerData(this.ctx)
+        // draw computer data
+        this.computer.drawComputerData(this.ctx)
         
     }
+    // determines where player attacks or opponent
+    // i = index of attack, value = true for player, false for opponent
+    attack() {
+        // WAIT TILL THEY CHOOSE AN ATTACK...
+        let i = this.attackIndex
+        
+        console.log("attacking, game class")
+        let value = this.player.prevResponseCorrectness;
+        console.log(value)
+        console.log("sol")
+        console.log(this.foundSolution)
+        let power;
+        if (value == true) {
+            power = this.player.attack(i)
+            
+            // if attack costs more mana than player has:
+            // give a message
+            if (power == "Not Enough Mana") {
+                // do something
+                alert("Not enough mana")
+            }
 
-
+            this.computer.decrementHealth(power)
+            console.log("Attacked computer")
+        }
+        else {
+            power = this.computer.attack()
+            this.player.health -= power
+        }
+        console.log(this.computer.health)
+        return
+    }
     // calling all mouse click handlers
     mouseClickHandler(e) {
         let x = e.clientX
         let y = e.clientY - 100
         console.log(x,y)
 
-        // handle attack
-        let attackIndex = this.attacks.attackHandler(x,y)
-        let attackPower = this.player.attack(attackIndex)
-        // TODO: opponent health -= attackPower
+        // update attack index
+        let i = this.attacks.attackHandler(x,y)
+        if (i){
+            this.attackIndex = this.attacks.attackHandler(x,y)
+        }
         
     }
 
     // IMPLEMENT FOR THIS VERSION
     // run this function on a time loop
     update() {
+        // update player and computer data
         // update for responsiveness
         // this.ctx.canvas.width  = window.outerWidth;
         // this.ctx.canvas.height = window.outerHeight;
