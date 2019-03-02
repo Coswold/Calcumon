@@ -383,6 +383,7 @@ let topics = [new Simple(), new SimpleFractions(), new MultiplyFractions(), new 
 // for each level, give x easy problems, x medium problems, x hard problems in this order
 // i represents what problem to give
 // result represents whether or not prev answer was correct (false if question is skipped)
+
 function getProblem(level, i, result) {
     let x = 5 // how many problems of each category
     topic = topics[level-1]
@@ -423,5 +424,9 @@ function getProblem(level, i, result) {
 // if medium problem is skipped, go back to easy problem
 // more points for medium, and even more points for hard problems
 
-export default getProblem
-export default function getProblem() 
+module.exports = getProblem()
+module.exports = topics
+module.exports = makeProblemReadable()
+module.exports = IntermediateEquations
+module.exports = getRandomInt()
+module.exports = Simple

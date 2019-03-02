@@ -5,21 +5,21 @@ const axios = require('axios');
 // use wolfram api to SOLVE
 // Wolfram|Alpha Short Answer API
 module.exports = function(app) {
-
-async function solve(value) {
-    console.log("SOLVING")
-    console.log(value)
-    var key = process.env.API_KEY
-    let URL = `http://api.wolframalpha.com/v1/result?appid=${key}&i=${value}%3f`
-    console.log(URL)
-    let solution = await axios({
-        method:'get',
-        url: URL,
-        responseType:'text'
-    })
-    console.log(solution.data)
-    return solution
+    async function solve(value) {
+        console.log("SOLVING")
+        console.log(value)
+        var key = process.env.API_KEY
+        let URL = `http://api.wolframalpha.com/v1/result?appid=${key}&i=${value}%3f`
+        console.log(URL)
+        let solution = await axios({
+            method:'get',
+            url: URL,
+            responseType:'text'
+        })
+        console.log(solution.data)
+        return solution
+    }
 }
 
 //export default solve
-module.exports = ("solve", solve());
+//module.exports.solve

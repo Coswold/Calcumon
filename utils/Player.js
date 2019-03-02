@@ -5,10 +5,12 @@
 // response input to a problem
 
 // import problem generator
-import { getProblem } from 'problemGenerator'
+// import { getProblem } from 'problemGenerator'
+var getProblem = require('./problemGenerator.js');
 
 // import solution API
-import { solve } from 'solutionApi'
+//import { solve } from 'solutionApi'
+var solve = require('./solutionApi.js');
 // import problem generator
 // import { getProblem } from 'problemGenerator'
 // // import solution API
@@ -46,7 +48,7 @@ class Player {
         // get a new problem based on player level
 
 
-        let result = getProblem(level, problemCount, prevResult)
+        let result = getProblem.getProblem(level, problemCount, prevResult)
 
         // update currProblem
         this.currProblem = makeProblemReadable(result[0])
