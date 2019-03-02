@@ -6,28 +6,12 @@
 
 // import problem generator
 // import { getProblem } from 'problemGenerator'
-<<<<<<< HEAD
-var getProblem = require('./problemGenerator.js');
+
+// var getProblem = require('./problemGenerator.js');
 
 // import solution API
 //import { solve } from 'solutionApi'
-var solve = require('./solutionApi.js');
-=======
-
-// import solution API
-// import { solve } from 'solutionApi'
-// import problem generator 
-<<<<<<< HEAD:public/js/Player.js
-=======
-import { solve } from 'solutionApi'
->>>>>>> 8f387c279a0816aa477cd5511ab01504e94ae72f
-// import problem generator
->>>>>>> e9bdac2439461272f1121bd9745ae446fef9fc99
-=======
->>>>>>> 078ed8d8c84c98b1ee99191e9e0b60f76b9fec22:utils/Player.js
-// import { getProblem } from 'problemGenerator'
-// // import solution API
-// import { solve } from 'solutionApi'
+// var solve = require('./solutionApi.js');
 
 class Player {
     constructor(attacks=[], calcumon = "", health=100, mana=0, level=1) {
@@ -64,7 +48,7 @@ class Player {
         // get a new problem based on player level
 
 
-        let result = getProblem.getProblem(level, problemCount, prevResult)
+        let result = getProblem(level, problemCount, prevResult)
 
         // update currProblem
         this.currProblem = makeProblemReadable(result[0])
