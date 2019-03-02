@@ -1,42 +1,74 @@
-<div class = "content">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CacluMon</title>
+    <link rel="stylesheet" href="../css/gamePlay.css">
+
+    <!-- For getting user input through canvas element -->
+    <script type="text/javascript" src = "../utils/CanvasInput/CanvasInput.js"></script>
+    <script type="text/javascript" src = "../utils/CanvasInput/CanvasInput.min.js"></script>
+  </head>
+
+  <body>
+
+    <div class = "content">
       <!-- navbar (settings, level, dashboard) -->
-      {{navbar}}
-
-      <div class = "problem-content">
-        <!-- place to dispay question -->
-        <h1 id = "problem" class = "problem"> Sample Problem: What is 5 + 5? </h1>
-
-        <!-- canvas (for drawing calcumons and animating-->
-        <canvas class = "game"></canvas>
-        <!-- place for answers -->
-        <input id = "userInput" class = "solution" placeholder="Enter solution">
-        <input id = "submit" class = "solution-submit button" type="submit" value="Submit">
-        <button id = "skip" class="button">skip</button>
+      <div class = "nav">
+          <ul>
+              <li><a href="#signup">settings</a></li>
+              <li>level: 0</li>
+              <li style="float:right">
+                  <a class="active" href="#home">
+                      Dashboard
+                  </a>
+              </li>
+          </ul>
       </div>
-      <!-- attacks (buttons) -->
-      <div>
-
-      </div>
+      <canvas class = "game" id="game" width="480" height="320"></canvas>
     </div>
-    <script src="../utils/problemGenerator.js"></script>
-    
+    <!-- images -->
+    <div style="display:none;">
+      <img id="monster1"
+           src="../images/Calcumons/monster1.png"
+           width="300" height="227">
+      <img id="monster2"
+           src="../images/Calcumons/monster2.png"
+           width="300" height="227">
+      <img id="monster3"
+           src="../images/Calcumons/monster1.png"
+           width="300" height="227">
+    </div>
+
+    <script type="text/javascript" src="../utils/problemGenerator.js"></script>
+    <script type="text/javascript" src="../utils/solutionApi.js"></script>
+    <script type="text/javascript" src = "../utils/Player.js"></script>
+    <script type="text/javascript" src = "../utils/Computer.js"></script>
+    <script type="text/javascript" src = "../utils/Game.js"></script>
     <script>
-      // these scripts are temporary until game object classes are connected
+        let canvas = document.getElementById("game");
+        // 2D rendering context, to paint to canvas
+        let ctx = canvas.getContext("2d");
+        ctx.canvas.width  = window.outerWidth;
+        ctx.canvas.height = window.outerHeight;
+        let Calcumon = new Game(ctx, canvas)
+        // ctx.canvas.height = window.innerHeight;
 
-      // function that gets and displays new problem
-      function displayNewProblem() {
-        problem = getProblem(1, 0, true)
-        document.getElementById('problem').value = makeProblemReadable(problem)
-      }
-      // Gets the player input from the problem-solution form when solution is submitted by player
-      // Remove from here when running through game class's update() function
-      let submit = document.getElementById('submit')
-      let userInput = null
-      submit.onclick = function() {
-          userInput = document.getElementById('userInput').value
-          alert(userInput)
-          // send this to player class...?
-          // do verification etc.
-      }
+        // handle click events
+        canvas.addEventListener('click', (e) => {
+          return Calcumon.mouseClickHandler(e)
+        });
 
+        // draw game
+        Calcumon.draw()
+        function run() {
+            Calcumon.update()
+        }
+        run()
+        
+        // will execute draw every 10 milliseconds
+        setInterval(run, 10);
     </script>
+  </body>
+
+</html>

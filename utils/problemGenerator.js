@@ -13,7 +13,7 @@ function makeProblemReadable(problem) {
     problem = problem.replace(/minus/g, "-")
     problem = problem.replace(/divided by/g, "/")
     problem = problem.replace(/multiplied by/g, "x")
-    return problem
+    return problem 
 }
 
 // Simple Adding and Subtracting
@@ -33,7 +33,7 @@ class Simple {
         }
         return op
     }
-
+    
     pattern1() {
         let num1 = getRandomInt(this.max)
         let num2 = getRandomInt(this.max)
@@ -42,15 +42,15 @@ class Simple {
         let equation = `${num1} ${op} ${num2}`
         return equation
     }
-
+    
     pattern2() {
         let num = getRandomInt(this.max)
         // determine random operand
         let op = this.getOp()
-        let equation = `${pattern1()} ${op} ${num}`
+        let equation = `${this.pattern1()} ${op} ${num}`
         return equation
     }
-
+    
     pattern3() {
         // determine random operand
         let op = this.getOp()
@@ -62,7 +62,7 @@ class Simple {
         let num = getRandomInt(this.max)
         if (num%this.patterns == 0) {
             return this.pattern1()
-        }
+        } 
         if (num%this.patterns == 1) {
             return this.pattern2()
         }
@@ -89,7 +89,7 @@ class SimpleFractions {
         }
         return op
     }
-
+    
     pattern1() {
         // get ints
         let max = 50
@@ -97,15 +97,15 @@ class SimpleFractions {
         let num2 = getRandomInt(max)
         let den1 = getRandomInt(max) + 1
         let den2 = getRandomInt(max) + 1
-
+    
         // determine random operand
         let op = this.getOp()
-
+    
         // create equation
         equation = `${num1} divided by ${den1} ${op} ${num2} divided by ${den2}`
         return equation
     }
-
+    
     pattern2() {
         let op = this.getOp()
         let eq1 = this.pattern1()
@@ -113,7 +113,7 @@ class SimpleFractions {
         let equation = eq1 + ` ${op} ` + eq2
         return equation
     }
-
+    
     pattern3() {
         let op = this.getOp()
         let eq1 = this.pattern2()
@@ -126,7 +126,7 @@ class SimpleFractions {
         let num = getRandomInt(this.max)
         if (num%this.patterns == 0) {
             return this.pattern1()
-        }
+        } 
         if (num%this.patterns == 1) {
             return this.pattern2()
         }
@@ -156,7 +156,7 @@ class MultiplyFractions {
         equation = `(${num1} ${op} ${den1}) multiplied by (${num2} ${op} ${den2})`
         return equation
     }
-
+    
     pattern2() {
         let op = "multiplied by"
         let eq1 = pattern1()
@@ -164,7 +164,7 @@ class MultiplyFractions {
         let equation = `(${eq1}) ${op} (${eq2})`
         return equation
     }
-
+    
     pattern3() {
         let op = "multiplied by"
         let eq1 = pattern2()
@@ -177,7 +177,7 @@ class MultiplyFractions {
         let num = getRandomInt(this.max)
         if (num%this.patterns == 0) {
             return this.pattern1()
-        }
+        } 
         if (num%this.patterns == 1) {
             return this.pattern2()
         }
@@ -207,19 +207,19 @@ class DivideFractions {
         equation = `(${num1} ${op} ${den1})   ${op}   (${num2} ${op} ${den2})`
         return equation
     }
-
+    
     pattern2() {
         let op = "divided by"
-        let eq1 = pattern1()
-        let eq2 = pattern1()
+        let eq1 = this.pattern1()
+        let eq2 = this.pattern1()
         let equation = `(${eq1}) +    ${op}    + (${eq2})`
         return equation
     }
-
+    
     pattern3() {
         let op = "divided by"
-        let eq1 = pattern2()
-        let eq2 = pattern1()
+        let eq1 = this.pattern2()
+        let eq2 = this.pattern1()
         let equation = `(${eq1}) +    ${op}    + (${eq2})`
         return equation
     }
@@ -228,7 +228,7 @@ class DivideFractions {
         let num = getRandomInt(this.max)
         if (num%this.patterns == 0) {
             return this.pattern1()
-        }
+        } 
         if (num%this.patterns == 1) {
             return this.pattern2()
         }
@@ -255,7 +255,7 @@ class SimpleEquations {
         }
         return op
     }
-
+    
     pattern1() {
         let num1 = getRandomInt(this.max/2)
         let num2 = getRandomInt(this.max/2)
@@ -265,7 +265,7 @@ class SimpleEquations {
         let equation = `${num1}a ${op} ${num2} = ${num3}`
         return equation
     }
-
+    
     pattern2() {
         let num1 = getRandomInt(this.max/2)
         let num2 = getRandomInt(this.max/2)
@@ -275,7 +275,7 @@ class SimpleEquations {
         let equation = `${num1} ${op} ${num2} = ${num3}a`
         return equation
     }
-
+    
     pattern3() {
         let num1 = getRandomInt(this.max/2)
         let num2 = getRandomInt(this.max/2)
@@ -292,7 +292,7 @@ class SimpleEquations {
         let num = getRandomInt(this.max)
         if (num%this.patterns == 0) {
             return this.pattern1()
-        }
+        } 
         if (num%this.patterns == 1) {
             return this.pattern2()
         }
@@ -319,7 +319,7 @@ class IntermediateEquations {
         }
         return op
     }
-
+    
     equation1() {
         let num1 = getRandomInt(this.max/2)
         let num2 = getRandomInt(this.max/2)
@@ -329,7 +329,7 @@ class IntermediateEquations {
         let equation = `${num1}a ${op} ${num2}b = ${num3}`
         return equation
     }
-
+    
     equation2() {
         let num1 = getRandomInt(this.max/2)
         let num2 = getRandomInt(this.max/2)
@@ -339,21 +339,21 @@ class IntermediateEquations {
         let equation = `${num1} ${op} ${num2}b = ${num3}a`
         return equation
     }
-
+    
     pattern1() {
         let eq1 = equation1()
         let eq2 = equation1()
         let equation = `${eq1} and ${eq2}`
         return equation
     }
-
+    
     pattern2() {
         let eq1 = equation2()
         let eq2 = equation2()
         let equation = `${eq1} and ${eq2}`
         return equation
     }
-
+    
     pattern3() {
         let eq1 = equation2()
         let eq2 = equation1()
@@ -365,7 +365,7 @@ class IntermediateEquations {
         let num = getRandomInt(this.max)
         if (num%this.patterns == 0) {
             return this.pattern1()
-        }
+        } 
         if (num%this.patterns == 1) {
             return this.pattern2()
         }
@@ -378,7 +378,7 @@ class IntermediateEquations {
 
 let topics = [new Simple(), new SimpleFractions(), new MultiplyFractions(), new DivideFractions(), new SimpleEquations(), new IntermediateEquations()]
 // Give this function the player's level, and it will return a problem accordingly
-// input level must be more than 0 and less than the len(topics)
+// input level must be more than 0 and less than the len(topics) 
 // current possibilities are upto len(topics)
 // for each level, give x easy problems, x medium problems, x hard problems in this order
 // i represents what problem to give
@@ -404,15 +404,15 @@ function getProblem(level, i, result) {
 
     // get the problem
     if (pattern <= 1) {
-        return [topic.pattern1(), pattern]
+        return [topic.pattern1(), 1]
     }
 
     else if (pattern == 2) {
-        return [topic.pattern2(), pattern]
+        return [topic.pattern2(), 2]
     }
 
     else if (pattern >= 3) {
-        return [topic.pattern3(), pattern]
+        return [topic.pattern3(), 3]
     }
 
     return [topic.pattern3(), 3]
@@ -423,5 +423,4 @@ function getProblem(level, i, result) {
 // if medium problem is skipped, go back to easy problem
 // more points for medium, and even more points for hard problems
 
-export default getProblem
-export default function getProblem() 
+// export default getProblem

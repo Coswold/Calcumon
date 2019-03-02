@@ -5,10 +5,10 @@
 // response input to a problem
 
 // import problem generator
-import { getProblem } from 'problemGenerator'
+// import { getProblem } from 'problemGenerator'
 
 // import solution API
-import { solve } from 'solutionApi'
+// import { solve } from 'solutionApi'
 // import problem generator 
 // import { getProblem } from 'problemGenerator'
 // // import solution API
@@ -17,6 +17,7 @@ import { solve } from 'solutionApi'
 class Player {
     constructor(attacks=[], calcumon = "", health=100, mana=0, level=1) {
         // game
+        this.coins = 100
         this.mana = mana
         this.health = health // out of a 100
         this.attacks = attacks
@@ -35,6 +36,8 @@ class Player {
         this.currSolution = ''
         this.currProblemMana = 0
         this.newProblem()
+
+        this.dodge = false
         
     }
 
@@ -117,8 +120,8 @@ class Player {
                 return "Not Enough Mana"
             }
             this.decrementMana(20)
-            // restore health to before opponent's attack affected it
-            // OR DODGE next attack?
+            this.dodge = true
+            // DODGES next attack?
         }
         // health restore power
         if (attack == 'Revive 10% health') {
@@ -180,7 +183,7 @@ class Player {
     }
 
 }
-player = new Player()
-player.newProblem()
+// player = new Player()
+// player.newProblem()
 
 // export default Player
