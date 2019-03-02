@@ -106,17 +106,18 @@ class Game {
     // TO DO: check if player solution is valid
     // input: userInput
     verifySolution() {
-        // user input == curr solution
-        // alert(userInput)
         console.log(this.input._value)
-
-        alert(this.input._value)
-
+        let userInput = this.input._value
+        alert(userInput)
+        let solution = this.player.currSolution
         // set this to true in order to handle updates when solution is found
-        this.foundSolution = true
-        this.player.prevResponseCorrectness = true
+        this.foundSolution = false
+        if (userInput == solution) {
+            this.foundSolution = true
+        }
+        this.player.prevResponseCorrectness = this.foundSolution
         
-        return true
+        return this.foundSolution
     }
 
     gameOver() {
