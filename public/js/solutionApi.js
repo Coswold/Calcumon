@@ -31,7 +31,7 @@ async function solve(value) {
     console.log(proxyURL+url)
     let solution = await axios({
         method:'get',
-        url: URL,
+        url: proxyURL+url,
         responseType:'text'
     })
     console.log(solution.data)
