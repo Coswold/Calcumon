@@ -123,7 +123,6 @@ class Game {
         
         this.player.prevResponseCorrectness = true
         this.foundSolution = true
-        console.log(this.player.currSolution)
         return true
         // console.log(this.input._value)
         // let userInput = this.input._value
@@ -143,10 +142,7 @@ class Game {
         // figure out who won
         // if player won: update level, give coins
         this.player.level += 1
-        // allocate new computer
-        // display gameOver: YOU WON OR YOU LOSE SCREEN
-        // When play is clicked: Play again or Play next level:
-            // start level 2 game or restart game
+
         return
     }
 
