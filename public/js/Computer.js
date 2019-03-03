@@ -50,13 +50,13 @@ class Computer {
     // draw attacks for player
     drawComputerData(ctx) {
         console.log("COMPUTER DATA")
-        let y = 100
+        let y = 120
         let x = ctx.canvas.width/2 + 100
 
         // bounding box
         ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
         ctx.fillRect(x-20, y-20, 240, 120)
-        
+
         // player
         ctx.font = "16px Arial";
         ctx.fillStyle = "black";

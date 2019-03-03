@@ -18,7 +18,7 @@
 .nav li {
     display: block;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 12px;
     text-decoration: none;
   }
 
@@ -36,9 +36,6 @@
     border-radius: 20px;
     font-size: 23px;
     padding-right: 25px;
-    /* padding-left: 25px; */
-    /* margin-left: 30px; */
-    /* margin-top: 30px; */
     font-weight: bold;
     border: 1px solid white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -46,4 +43,8 @@
 
 .nav {
     padding-top: 10px;
+}
+
+.nav .title {
+  padding: 100px;
 }

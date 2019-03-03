@@ -1,16 +1,20 @@
-
+<link rel="stylesheet" href="../css/gameNavbar.css">
+<link rel="stylesheet" href="../../css/gamePlay.css">
 <div class = "content">
       <!-- navbar (settings, level, dashboard) -->
       <div class = "nav">
           <ul>
               <li><a href="#signup">settings</a></li>
-              <li>level: 0</li>
+              {{!-- import and display player level from database here --}}
+              <li style="padding:27px">level: {{currentUser.level}}</li>
               <li style="float:right">
-                  <a class="active" href="#home">
+                  {{!-- import user id and take to /dashboard/{userid} link --}}
+                  <a class="active" href='/dashboard/{{currentUser._id}}'>
                       Dashboard
                   </a>
               </li>
           </ul>
+          
       </div>
       <canvas class = "game" id="game" width="480" height="320"></canvas>
     </div>
@@ -39,7 +43,7 @@
     <script src="../js/Player.js"></script>
     <script src="../js/Computer.js"></script>
     <script src="../js/Game.js"></script>
-    <link rel="stylesheet" href="../../css/gamePlay.css">
+    
     <script>
         console.log("PLEASE PRINT")
         let canvas = document.getElementById("game");

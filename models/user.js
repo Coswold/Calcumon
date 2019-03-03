@@ -10,7 +10,7 @@ const UserSchema = new Schema({
   password: { type: String, select: false },
   username: { type: String, required: true },
   email: { type: String, required: false},
-  level: { type: Number },
+  level: { type: Number, default: 0 },
   calcumon: { type: Schema.Types.ObjectId, ref: 'Calcumon' }
 });
 

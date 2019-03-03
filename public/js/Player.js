@@ -146,7 +146,7 @@ class Player {
     // draw attacks for player
     drawPlayerData(ctx) {
 
-        let y = 100
+        let y = 120
         let x = 200
 
         // bounding box

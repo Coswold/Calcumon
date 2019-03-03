@@ -219,26 +219,6 @@ class Game {
         this.attacks.currIndex = 0
         return
     }
-    // calling all mouse click handlers
-    mouseClickHandler(e) {
-        let x = e.clientX
-        let y = e.clientY - 100
-        console.log(x,y)
-
-        // update attack index
-        let i = this.attacks.attackHandler(x,y)
-        console.log("ATTACK INDEX IN MOUSE CLICK:")
-        console.log(i)
-        if (i) {
-            this.attackIndex = i
-        } else {
-            this.attackIndex = 0
-        }
-        // update attacks
-        // this.attacks.draw(this.ctx, this.attackIndex)
-        this.attacks.drawAttackButtons(this.attackIndex)
-        
-    }
 
     // IMPLEMENT FOR THIS VERSION
     // run this function on a time loop
