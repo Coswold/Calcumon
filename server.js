@@ -2,6 +2,7 @@ const express = require('express')
 const app = express();
 const port = process.env.PORT || 3000;
 require('dotenv').config();
+process.env.SECRET
 
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
@@ -43,7 +44,6 @@ require('./data/calcumon-db');
 require('./controllers/auth.js')(app);
 require('./controllers/choose.js')(app);
 require('./controllers/dashboard.js')(app);
-
 
 module.exports = app;
 
