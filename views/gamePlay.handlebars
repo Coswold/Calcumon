@@ -14,6 +14,11 @@
       </div>
       <canvas class = "game" id="game" width="480" height="320"></canvas>
     </div>
+
+    {{!-- display attacks --}}
+    <div id = "attackList">
+    </div>
+    
     <!-- images -->
     <div style="display:none;">
       <img id="monster1"
@@ -44,15 +49,19 @@
         let Calcumon = new Game(ctx, canvas)
         // ctx.canvas.height = window.innerHeight;
 
-        // handle click events
-        canvas.addEventListener('click', (e) => {
-          return Calcumon.mouseClickHandler(e)
-        });
-
         // draw game
         Calcumon.draw()
         function run() {
             Calcumon.update()
+            let buttons = document.getElementsByClassName('attackButton')
+            if (buttons) {
+                for (let i = 0; i < buttons.length; i++) {
+                    buttons[i].onclick = (e) => {
+                        console.log("setting stuff")
+                        Calcumon.updateIndex(i)
+                    }
+                }
+            }
         }
         run()
 

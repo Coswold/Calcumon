@@ -110,3 +110,29 @@ html, body {
 .content {
     height: 100%;
 }
+
+/* attack list css */
+#attackList {
+    position: fixed;
+    top: 80%;
+    left: 3%;
+    z-index: 100000;
+    width: 100%;
+    
+}
+
+.attackButton {
+    padding: 20px;
+    background-color: lightblue;
+    /* border: 1px solid blueviolet; */
+    border-radius: 10px;
+    margin-right: 10px;
+    font-size: 24px;
+    width: 15%;
+    height: 150px;
+}
+
+.attackButton p {
+    color: darkred;
+    font-size: 18px;
+}

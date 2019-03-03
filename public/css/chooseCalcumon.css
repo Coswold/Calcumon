@@ -20,6 +20,7 @@ h1 {
     grid-template-rows: 300px 300px;
     margin-right: 40px;
     margin-left: 40px;
+    
 }
 
 .button {
@@ -43,4 +44,8 @@ h1 {
 .gridItem {
     background-color: pink;
     border: 1px solid black;
+}
+
+img {
+    width: 70%;
 }

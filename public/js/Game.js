@@ -32,66 +32,37 @@ class Attacks {
         this.x = 0
         this.y = ctx.canvas.height - 320
         this.initialDraw(ctx)
+
+        this.currIndex = 0
     }
 
+    // ctx is canvas access, index is for selected attack
     initialDraw(ctx) {
         // attack label
         this.ctx.font = "30px Arial";
         this.ctx.fillStyle = "Black"
         this.ctx.fillText("Attacks    (Pick an attack, then answer the question. If you answer correctly, the attack will execute.)", this.x, this.y-20)
         console.log("DRAWING ATTACKS")
+        
     }
-    // ctx is canvas access, index is for selected attack
-    draw(ctx, index) {
-        ctx.clearRect(this.x, this.y, this.x*this.numAttacks, this.height);
-        // // attack label
-        // this.ctx.font = "30px Arial";
-        // this.ctx.fillStyle = "Black"
-        // this.ctx.fillText("Attacks    (Pick an attack, then answer the question. If you answer correctly, the attack will execute.)", this.x, this.y-20)
-        // console.log("DRAWING ATTACKS")
-        // attack boxes
-        for (let i = 0; i < this.numAttacks; i++) {
-            let x = this.x + this.width*i
-            this.attackPositions[i] = x
-            ctx.rect(x, this.y, this.width, this.height)
-            ctx.stroke()
-            ctx.fillStyle = "lightblue";
+    
+    drawAttackButtons() {
+        let index = this.currIndex
+        console.log("attack button index: ")
+        console.log(index)
+        let attackDiv = document.getElementById('attackList')
+        attackDiv.innerHTML = ''
+        for (let i = 0; i <this.numAttacks; i++) {
+            name = this.attackNames[i]
+            let color = 'lightblue'
             if (i == index) {
-                ctx.fillStyle = "pink"
+                color = 'lightcoral'
             }
-            ctx.fillRect(x, this.y, this.width, this.height);
-
-            // attack names
-            ctx.font = "20px Arial";
-            ctx.fillStyle = "black";
-            ctx.fillText(this.attackNames[i], x+20, this.y + (this.height/2))
-            
-            // costs
-            ctx.font = "18px Arial";
-            ctx.fillStyle = "red";
-            ctx.fillText(this.attackCosts[i], x+this.width - 30, this.y + 30)
+            attackDiv.innerHTML += `<button class = 'attackButton' style='background-color: ${color}' id='${name}'> ${name} <p> Cost: ${this.attackCosts[i]} </p> </button>`
         }
+
     }
 
-    // Onclick events: return string name of attack or i index of attack location in attacks array?
-    attackHandler(x, y) {
-        // check if y is in the right range
-        console.log(this.y, this.y + this.height)
-        if (y >= this.y & y <= this.y + this.height) {
-            // check which x it falls into
-            console.log("RIGHT RANGE")
-            for (let i = 0; i < this.numAttacks; i++) {
-                if (x >= this.attackPositions[i] & x <= this.attackPositions[i]+this.width) {
-                    console.log("THIS ATTACK: ")
-                    console.log(i)
-                    // i is the correct location for the attack
-                    return i
-                }
-            }
-        }
-        return 0
-           
-    }
 }
     
 class Game {
@@ -108,7 +79,9 @@ class Game {
         this.computer = new Computer(this.attacks.attackNames)
         this.player = new Player(this.attacks.attackNames, "") // initialize player with attacks and calcumon name
         
-        this.attackIndex = 0
+        // this.attackIndex = 0
+        this.computer.drawCalcumon(ctx)
+        this.attacks.drawAttackButtons()
         
     }
 
@@ -118,24 +91,27 @@ class Game {
     // TO DO: check if player solution is valid
     // input: userInput
     verifySolution() {
+        console.log("VERIFY SOLUTION")
         // userInput == curr solution
         // alert(userInput)
-        
+        let userInput = this.input._value.toString()
+        let correctSolution = this.player.currSolution.toString()
+        console.log(userInput, correctSolution)
+        if (userInput == correctSolution) {
+            this.player.prevResponseCorrectness = this.foundSolution
+            this.foundSolution = true
+        }
+        else {
+            this.player.prevResponseCorrectness = this.foundSolution
+            this.foundSolution = false
+        }
+        console.log("VERIFY SOLUTION ENDS")
+        // testing
         this.player.prevResponseCorrectness = true
         this.foundSolution = true
         return true
-        // console.log(this.input._value)
-        // let userInput = this.input._value
-        // alert(userInput)
-        // let solution = this.player.currSolution
-        // // set this to true in order to handle updates when solution is found
-        // this.foundSolution = true
-        // if (userInput == solution) {
-        //     this.foundSolution = true
-        // }
-        // this.player.prevResponseCorrectness = this.foundSolution
-        
-        // return this.foundSolution
+        // testing ends
+        return this.foundSolution
     }
 
     gameOver() {
@@ -197,7 +173,7 @@ class Game {
         this.drawInputField()
 
         // draw attacks
-        this.attacks.draw(this.ctx, this.attackIndex)
+        this.attacks.drawAttackButtons()
 
         // draw player data
         this.player.drawPlayerData(this.ctx)
@@ -209,7 +185,8 @@ class Game {
     // i = index of attack, value = true for player, false for opponent
     attack() {
         // WAIT TILL THEY CHOOSE AN ATTACK...
-        let i = this.attackIndex
+        // let i = this.attackIndex
+        let i = this.attacks.currIndex
         
         console.log("attacking, game class")
         let value = this.player.prevResponseCorrectness;
@@ -227,6 +204,7 @@ class Game {
                 alert("Not enough mana")
             }
             else {
+                this.player.decrementMana(this.attacks.attackCosts[i])
                 this.computer.decrementHealth(power)
                 console.log("Attacked computer")
             }
@@ -237,7 +215,8 @@ class Game {
             this.player.dodge = false
         }
         console.log(this.computer.health)
-        this.attackIndex = 0
+        // this.attackIndex = 0
+        this.attacks.currIndex = 0
         return
     }
     // calling all mouse click handlers
@@ -256,19 +235,14 @@ class Game {
             this.attackIndex = 0
         }
         // update attacks
-        this.attacks.draw(this.ctx, this.attackIndex)
+        // this.attacks.draw(this.ctx, this.attackIndex)
+        this.attacks.drawAttackButtons(this.attackIndex)
         
     }
 
     // IMPLEMENT FOR THIS VERSION
     // run this function on a time loop
     update() {
-        // update player and computer data
-        // update for responsiveness
-        // this.ctx.canvas.width  = window.outerWidth;
-        // this.ctx.canvas.height = window.outerHeight;
-        // this.drawProblem()
-        // run verify solution and foundSolution
         
         // check if player got the solution for the problem
         if (this.foundSolution == true) {
@@ -297,7 +271,14 @@ class Game {
         // handle gameOver state
         if (this.player.health == 0 || this.computer.health == 0) {
             this.gameOver()
-        }
+        } 
+
+    }
+    updateIndex(i) {
+        console.log("setting ", i)
+        this.attacks.currIndex = i
+        console.log(this.attacks.currIndex)
+        this.attacks.drawAttackButtons()
 
     }
 
