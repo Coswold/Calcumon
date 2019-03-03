@@ -147,7 +147,12 @@ class Player {
     drawPlayerData(ctx) {
 
         let y = 100
-        let x = 60
+        let x = 200
+
+        // bounding box
+        ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+        ctx.fillRect(x-20, y-20, 240, 120)
+
         // player
         ctx.font = "16px Arial";
         ctx.fillStyle = "black";
@@ -172,7 +177,7 @@ class Player {
         console.log(text)
         ctx.font = "20px Arial";
         ctx.fillStyle = "black";
-        ctx.fillText(text, x+250, y+48)
+        ctx.fillText(text, x, y+90)
 
         // draw calcumon
         this.drawCalcumon(ctx)
@@ -180,7 +185,7 @@ class Player {
 
     drawCalcumon(ctx) {
         let image = document.getElementById(this.calcumon)
-        let x = 60
+        let x = 170
         let y = 250
         // let width = 200
         // let height = 200
