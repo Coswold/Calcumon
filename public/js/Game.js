@@ -123,6 +123,7 @@ class Game {
         
         this.player.prevResponseCorrectness = true
         this.foundSolution = true
+        console.log(this.player.currSolution)
         return true
         // console.log(this.input._value)
         // let userInput = this.input._value
