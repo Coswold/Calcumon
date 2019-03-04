@@ -2,9 +2,15 @@ const User = require("../models/user");
 const jwt = require('jsonwebtoken');
 
 module.exports = (app) => {
-    // SIGN UP FORM
-    app.get("/signup", (req, res) => {
-        res.render("signup");
+    // // SIGN UP FORM
+    // app.get("/signup", (req, res) => {
+    //     res.render("signup");
+    // });
+
+    // SIGN-UP GET
+    app.get('/signup', (req, res) => {
+        const currentUser = req.user;
+        res.render('sign-up', { currentUser });
     });
 
     // SIGN UP POST
@@ -30,10 +36,16 @@ module.exports = (app) => {
         res.redirect('/');
     })
 
-    // Login FORM
+    // // Login FORM
+    // app.get('/', (req, res) => {
+    //     res.render('login');
+    // });
+
+    // LOGIN GET
     app.get('/', (req, res) => {
-        res.render('login');
-    });
+        const currentUser = req.user;
+        res.render('login', { currentUser })
+    })
 
     // LOGIN
     app.post("/login", (req, res) => {
@@ -59,7 +71,7 @@ module.exports = (app) => {
                 });
                 // Set a cookie and redirect to root
                 res.cookie("nToken", token, { maxAge: 900000, httpOnly: true });
-                res.redirect('/dashboard/' + user._id);
+                res.redirect(`/dashboard/${user._id}`);
             });
         })
         .catch(err => {
