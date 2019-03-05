@@ -171,7 +171,7 @@ class Player {
         ctx.font = "14px Arial";
         ctx.fillStyle = "white";
         ctx.fillText('Health', x+10, y+45)
-
+    
         // draw player mana
         let text = 'Mana: ' + this.mana
         console.log(text)
