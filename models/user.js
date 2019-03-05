@@ -10,7 +10,7 @@ const UserSchema = new Schema({
   password: { type: String, select: false },
   username: { type: String, required: true },
   email: { type: String, required: false},
-  level: { type: Number, default: 0 },
+  level: { type: Number, default: 1 },
   monster: { type: String }
 });
 
