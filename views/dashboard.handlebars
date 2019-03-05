@@ -1,19 +1,27 @@
-
 <link rel="stylesheet" href="../../css/dashboard.css">
 
-<div class="row">
+<div class="content">
+  <div class = "nav">
+          <ul>
+              <li><a class = "button" href="#signup">settings</a></li>
+              {{!-- import and display player level from database here --}}
+              <li style="padding:27px"><p>level: {{currentUser.level}}</p></li>
+              <li style="float:right">
+                  <a class="button" href="/gameplay">PLAY</a>
+              </li>
+              <li style="float:right">
+                  <a class="button" href="/logout">Logout</a>
+              </li>
+          </ul>
+          
+  </div>
 
   <div class="col-sm-6 col-sm-offset-3">
     <a href="{{post.url}}" class="lead">{{post.postTitle}}</a>
     <h1>{{currentUser.username}}</h1>
     <p>{{currentUser.calcumon}}</p>
-    <img src="/Calcumon/public/images/Calcumons{{currentUser.calcumon.name}}.png"
+    <img src="/Calcumon/public/images/Calcumons/{{currentUser.monster}}.png"
           width="300" height="227">
-    <a class="button" href="/gameplay">PLAY</a>
-    <a class="button" href="/logout">Logout</a>
-
-    {{#if currentUser}}
-    {{/if}}
 
 
   </div>
