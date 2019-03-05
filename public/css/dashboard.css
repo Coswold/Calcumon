@@ -10,3 +10,11 @@ body {
 .content {
     color: white;
 }
+
+.nav .level {
+    font-size: 25px;
+}
+
+.data {
+    margin: 40px;
+}

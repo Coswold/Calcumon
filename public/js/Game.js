@@ -78,7 +78,7 @@ class Game {
         this.attacks = new Attacks(ctx)
 
         this.computer = new Computer(this.attacks.attackNames)
-        this.player = new Player(this.attacks.attackNames, "") // initialize player with attacks and calcumon name
+        this.player = new Player(this.attacks.attackNames, "", 1) // initialize player with attacks and calcumon name
         
         // this.attackIndex = 0
         this.computer.drawCalcumon(ctx)

@@ -3,9 +3,9 @@
 <div class="content">
   <div class = "nav">
           <ul>
-              <li><a class = "button" href="#signup">settings</a></li>
+              {{!-- <li><a class = "button" href="#signup">settings</a></li> --}}
               {{!-- import and display player level from database here --}}
-              <li style="padding:27px"><p>level: {{currentUser.level}}</p></li>
+              <li class = "level" style="padding:18px"><p>level: {{currentUser.level}}</p></li>
               <li style="float:right">
                   <a class="button" href="/gameplay">PLAY</a>
               </li>
@@ -16,13 +16,12 @@
           
   </div>
 
-  <div class="col-sm-6 col-sm-offset-3">
+  <div class="data">
     <a href="{{post.url}}" class="lead">{{post.postTitle}}</a>
     <h1>{{currentUser.username}}</h1>
     <p>{{currentUser.calcumon}}</p>
     <img src="/Calcumon/public/images/Calcumons/{{currentUser.monster}}.png"
           width="300" height="227">
-
 
   </div>
 </div>

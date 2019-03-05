@@ -14,7 +14,7 @@
 // var solve = require('./solutionApi.js');
 
 class Player {
-    constructor(attacks=[], calcumon = "", health=100, mana=0, level=1) {
+    constructor(attacks=[], calcumon = "", level=1, health=100, mana=0) {
         // game
         this.coins = 100
         this.mana = mana
