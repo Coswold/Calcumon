@@ -14,15 +14,17 @@
 // var solve = require('./solutionApi.js');
 
 class Player {
-    constructor(attacks=[], calcumon = "", health=100, mana=0, level=1) {
+    constructor(attacks=[], calcumon = "", level=1, health=100, mana=0) {
         // game
         this.coins = 100
         this.mana = mana
         this.health = health // out of a 100
         this.attacks = attacks
         this.calcumon = calcumon
+        console.log("INITIALIZING PLAYER")
+        console.log(calcumon)
         // for testing purposes ONLY:
-        this.calcumon = "monster1"
+        // this.calcumon = "monster1"
 
         // ['Punch', 'Revive 10% health', 'Kick', 'Super Attack', 'Dodge', 'Fireball']
         // [-10, +10, -10, -30, (restore what was lost), -20]
@@ -37,7 +39,7 @@ class Player {
         this.newProblem()
 
         this.dodge = false
-        
+
     }
 
     // get new problem
@@ -171,7 +173,7 @@ class Player {
         ctx.font = "14px Arial";
         ctx.fillStyle = "white";
         ctx.fillText('Health', x+10, y+45)
-    
+
         // draw player mana
         let text = 'Mana: ' + this.mana
         console.log(text)
@@ -190,7 +192,7 @@ class Player {
         // let width = 200
         // let height = 200
         // add width, height parameters after x,y if needed
-        ctx.drawImage(image, x, y, 300, 300); // image, x, y, width, height
+        ctx.drawImage(this.calcumon, x, y, 300, 300); // image, x, y, width, height
     }
 
 }

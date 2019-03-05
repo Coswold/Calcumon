@@ -14,7 +14,7 @@
                   </a>
               </li>
           </ul>
-          
+
       </div>
       <canvas class = "game" id="game" width="480" height="320"></canvas>
     </div>
@@ -22,7 +22,7 @@
     {{!-- display attacks --}}
     <div id = "attackList">
     </div>
-    
+
     <!-- images -->
     <div style="display:none;">
       <img id="monster1"
@@ -34,20 +34,20 @@
       <img id="monster3"
            src="../images/Calcumons/monster3.png"
            width="300" height="227">
-      <img id="dash" 
-            width="10" height="10" 
+      <img id="dash"
+            width="10" height="10"
             src="../images/gameOver/dashboard.png">
-      <img id="lose" 
-            width="220" height="277" 
+      <img id="lose"
+            width="220" height="277"
             src="../images/gameOver/lose.png">
-      <img id="win" 
-            width="300" height="227" 
+      <img id="win"
+            width="300" height="227"
             src="../images/gameOver/win.png">
-      <img id="next" 
-            width="10" height="10" 
+      <img id="next"
+            width="10" height="10"
             src="../images/gameOver/next_level.png">
-      <img id="try" 
-            width="10" height="10" 
+      <img id="try"
+            width="10" height="10"
             src="../images/gameOver/try_again.png">
     </div>
 
@@ -58,7 +58,7 @@
     <script src="../js/Player.js"></script>
     <script src="../js/Computer.js"></script>
     <script src="../js/Game.js"></script>
-    
+
     <script>
         console.log("PLEASE PRINT")
         let canvas = document.getElementById("game");
@@ -66,7 +66,9 @@
         let ctx = canvas.getContext("2d");
         ctx.canvas.width  = window.outerWidth;
         ctx.canvas.height = window.outerHeight;
-        let Calcumon = new Game(ctx, canvas)
+        console.log("IN GAMEPLAY HANDLEBARS, PRINTING MONSTER")
+        console.log({{currentUser.monster}})
+        let Calcumon = new Game(ctx, canvas, {{currentUser.level}}, {{currentUser.monster}})
         // ctx.canvas.height = window.innerHeight;
 
         // draw game

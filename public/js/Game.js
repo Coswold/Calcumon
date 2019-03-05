@@ -1,6 +1,6 @@
 // import { throwStatement } from "babel-types";
 
-// FOR V1, IMPLEMENT PLAYER AND GAME CLASS, SUCH THAT 
+// FOR V1, IMPLEMENT PLAYER AND GAME CLASS, SUCH THAT
 // THEY CAN DEAL WITH A MATH PROBLEM AND ALLOW PLAYER TO ENTER A SOLUTION
 // AND CHECK THE SOLUTION FOR ACCURACY
 // AND ASSIGN TOKENS ACCORDINGLY
@@ -43,9 +43,9 @@ class Attacks {
         this.ctx.fillStyle = "White"
         this.ctx.fillText("Attacks    (Pick an attack, then answer the question. If you answer correctly, the attack will execute.)", this.x+70, this.y-100)
         console.log("DRAWING ATTACKS")
-        
+
     }
-    
+
     drawAttackButtons() {
         let index = this.currIndex
         console.log("attack button index: ")
@@ -64,30 +64,30 @@ class Attacks {
     }
 
 }
-    
+
 class Game {
-    constructor(ctx, canvas) {
+    constructor(ctx, canvas, level=1, calcumon='monster1') {
         this.ctx = ctx
         this.canvas = canvas
         this.gameState = true
         this.gameOveris = false
-        
+
         this.input = ''
         this.foundSolution = false
         console.log(ctx.canvas.height)
         this.attacks = new Attacks(ctx)
 
         this.computer = new Computer(this.attacks.attackNames)
-        this.player = new Player(this.attacks.attackNames, "") // initialize player with attacks and calcumon name
-        
+        this.player = new Player(this.attacks.attackNames, calcumon, level) // initialize player with attacks and calcumon name
+
         // this.attackIndex = 0
         this.computer.drawCalcumon(ctx)
         this.attacks.drawAttackButtons()
-        
+
     }
 
     // IMPLEMENT FOR THIS VERSION
-    
+
 
     // TO DO: check if player solution is valid
     // input: userInput
@@ -141,9 +141,9 @@ class Game {
             value: this.input._value,
             x: ctx.canvas.width/2 + 50,
             y: 20,
-            onsubmit: () => { 
+            onsubmit: () => {
                 // if player just answered
-                this.verifySolution() 
+                this.verifySolution()
                 // allow attacking
                 this.attack()
                 return
@@ -166,7 +166,7 @@ class Game {
         var img3 = document.getElementById("dash");
         this.ctx.drawImage(img3, 620, 500, 400, 80);
     }
-    
+
     losePopup() {
 
         var img = document.getElementById("lose");
@@ -175,9 +175,9 @@ class Game {
         this.ctx.drawImage(img2, 620, 350, 400, 80);
         var img3 = document.getElementById("dash");
         this.ctx.drawImage(img3, 620, 500, 400, 80);
-        
+
     }
-    
+
     gameOver(winner) {
         // figure out who won
         // if player won: update level, give coins
@@ -185,7 +185,7 @@ class Game {
         // display gameOver: YOU WON OR YOU LOSE SCREEN
         // When play is clicked: Play again or Play next level:
         // start level 2 game or restart game
-    
+
         //if player wins show You WIn! and link to next level
         //if player loses show Try again (link)
         if (winner == "Player") {
@@ -195,7 +195,7 @@ class Game {
             this.losePopup()
             this.gameOveris = true
         }
-       
+
     }
 
 
@@ -209,9 +209,9 @@ class Game {
         if (this.input) {
             this.input._value = ''
         }
-        
+
         this.drawInputField()
-        
+
         this.attacks.initialDraw()
         // draw attacks
         this.attacks.drawAttackButtons()
@@ -220,7 +220,7 @@ class Game {
         this.player.drawPlayerData(this.ctx)
         // draw computer data
         this.computer.drawComputerData(this.ctx)
-        
+
     }
     // determines where player attacks or opponent
     // i = index of attack, value = true for player, false for opponent
@@ -228,7 +228,7 @@ class Game {
         // WAIT TILL THEY CHOOSE AN ATTACK...
         // let i = this.attackIndex
         let i = this.attacks.currIndex
-        
+
         console.log("attacking, game class")
         let value = this.player.prevResponseCorrectness;
         console.log(value)
@@ -237,7 +237,7 @@ class Game {
         let power;
         if (value == true) {
             power = this.player.attack(i)
-            
+
             // if attack costs more mana than player has:
             // give a message
             if (power == "Not Enough Mana") {
@@ -278,10 +278,10 @@ class Game {
             if (this.player.health > 0 & this.computer.health > 0) {
                 this.player.incrementMana()
                 this.player.newProblem()
-            } 
+            }
 
             // if yes, call new problem
-            
+
             // draw
             this.draw()
             // add to mana
@@ -293,7 +293,7 @@ class Game {
 
         } else {
             // TODO: display try again above the input box
-            
+
             this.player.prevResponseCorrectness = false
             this.foundSolution = false
         }
@@ -306,7 +306,7 @@ class Game {
         //     gameOver(winner = "Player")
         //     alert("bye")
         // }
-        
+
     }
 
     updateIndex(i) {
@@ -317,6 +317,5 @@ class Game {
             this.attacks.drawAttackButtons()
         }
     }
-    
-}
 
+}

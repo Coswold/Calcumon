@@ -19,8 +19,13 @@ module.exports = function(app) {
     // Need path to go to game play
     app.get(`/gameplay`, (req, res) => {
         if (req.user) {
-            var currentUser = req.user;
-            res.render('gamePlay', { currentUser });
+            let id = req.user._id.toString()
+            User.findById(id).then( currentUser => {
+                console.log(currentUser)
+                res.render('gamePlay', { currentUser });
+            }).catch((err) => {
+                console.log(err.message)
+            });
         } else {
             return res.status(401); // UNAUTHORIZED
         }
