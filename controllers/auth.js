@@ -36,16 +36,10 @@ module.exports = (app) => {
         res.redirect('/');
     })
 
-    // // Login FORM
-    // app.get('/', (req, res) => {
-    //     res.render('login');
-    // });
-
-    // LOGIN GET
+    // Login FORM
     app.get('/', (req, res) => {
-        const currentUser = req.user;
-        res.render('login', { currentUser })
-    })
+        res.render('login');
+    });
 
     // LOGIN
     app.post("/login", (req, res) => {
