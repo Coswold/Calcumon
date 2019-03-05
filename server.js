@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express();
-const port = process.env.PORT || 3000;
 require('dotenv').load();
 process.env.SECRET
 
@@ -45,6 +44,10 @@ require('./controllers/auth.js')(app);
 require('./controllers/choose.js')(app);
 require('./controllers/dashboard.js')(app);
 
-module.exports = app;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))
+
+module.exports = app;
+
+
