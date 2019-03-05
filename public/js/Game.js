@@ -70,6 +70,7 @@ class Game {
         this.ctx = ctx
         this.canvas = canvas
         this.gameState = true
+        this.gameOveris = false
         
         this.input = ''
         this.foundSolution = false
@@ -114,14 +115,6 @@ class Game {
         return this.foundSolution
     }
 
-    gameOver() {
-        // figure out who won
-        // if player won: update level, give coins
-        this.player.level += 1
-
-        return
-    }
-
     // DRAW FUNCTIONS
     drawProblem() {
         ctx.font = "30px Arial";
@@ -158,6 +151,53 @@ class Game {
         });
         this.input.render()
     }
+
+    winPopup() {
+        this.player.level += 1
+
+        // // bounding box
+        // ctx.fillStyle = "rgba(200, 205, 255, 0.6)";
+        // ctx.fillRect(100, 0, 1500, 1000)
+
+        var img = document.getElementById("win");
+        this.ctx.drawImage(img, 500, 200, 620, 500);
+        var img2 = document.getElementById("next");
+        this.ctx.drawImage(img2, 620, 350, 400, 80);
+        var img3 = document.getElementById("dash");
+        this.ctx.drawImage(img3, 620, 500, 400, 80);
+    }
+    
+    losePopup() {
+
+        var img = document.getElementById("lose");
+        this.ctx.drawImage(img, 500, 200, 620, 500);
+        var img2 = document.getElementById("try");
+        this.ctx.drawImage(img2, 620, 350, 400, 80);
+        var img3 = document.getElementById("dash");
+        this.ctx.drawImage(img3, 620, 500, 400, 80);
+        
+    }
+    
+    gameOver(winner) {
+        // figure out who won
+        // if player won: update level, give coins
+        // allocate new computer reset health
+        // display gameOver: YOU WON OR YOU LOSE SCREEN
+        // When play is clicked: Play again or Play next level:
+        // start level 2 game or restart game
+    
+        //if player wins show You WIn! and link to next level
+        //if player loses show Try again (link)
+        if (winner == "Player") {
+            this.winPopup()
+            this.gameOveris = true
+        } else if (winner == "Computer"){
+            this.losePopup()
+            this.gameOveris = true
+        }
+       
+    }
+
 
     // TBD: Maybe this function, or maybe do it through html
     draw() {
@@ -212,7 +252,10 @@ class Game {
         }
         else if (this.player.dodge == false) {
             power = this.computer.attack()
-            this.player.health -= power
+            if (this.player.health > 0){
+                this.player.health -= power
+            }
+            //Do I put this in the if statement
             this.player.dodge = false
         }
         console.log(this.computer.health)
@@ -224,13 +267,21 @@ class Game {
     // IMPLEMENT FOR THIS VERSION
     // run this function on a time loop
     update() {
-        
+        if (this.player.health <= 0) {
+            this.gameOver("Computer")
+        } else if (this.computer.health <= 0) {
+            this.gameOver("Player")
+        }
         // check if player got the solution for the problem
         if (this.foundSolution == true) {
             // increment mana
-            this.player.incrementMana()
+            if (this.player.health > 0 & this.computer.health > 0) {
+                this.player.incrementMana()
+                this.player.newProblem()
+            } 
+
             // if yes, call new problem
-            this.player.newProblem()
+            
             // draw
             this.draw()
             // add to mana
@@ -247,22 +298,25 @@ class Game {
             this.foundSolution = false
         }
 
+        // // handle gameOver state
+        // if (this.player.health <= 0) {
+        //     gameOver(winner = "Computer")
+        //     alert("Hi")
+        // } else if (this.computer.health <= 0) {
+        //     gameOver(winner = "Player")
+        //     alert("bye")
+        // }
         
-
-        // handle gameOver state
-        if (this.player.health == 0 || this.computer.health == 0) {
-            this.gameOver()
-        } 
-
     }
+
     updateIndex(i) {
-        console.log("setting ", i)
-        this.attacks.currIndex = i
-        console.log(this.attacks.currIndex)
-        this.attacks.drawAttackButtons()
-
+        if (this.gameOveris != true) {
+            console.log("setting ", i)
+            this.attacks.currIndex = i
+            console.log(this.attacks.currIndex)
+            this.attacks.drawAttackButtons()
+        }
     }
-
     
 }
 

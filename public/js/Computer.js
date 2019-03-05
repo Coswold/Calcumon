@@ -9,7 +9,9 @@ class Computer {
     decrementHealth(power) {
         console.log("decrementing:")
         console.log(this.health)
-        this.health -= power;
+        if (this.health > 0) {
+            this.health -= power;
+        } 
         console.log(this.health)
         console.log("done")
         return
