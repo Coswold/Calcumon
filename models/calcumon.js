@@ -4,9 +4,7 @@ const Schema = mongoose.Schema;
 
 const CalcumonSchema = new Schema({
     name: { type: String , default: "monster1"},
-    level: { type: Number },
-    image: { type: String },
-    health: { type: Number }
+    image: { type: String }
 });
 
-module.exports = mongoose.model("Calcumon", UserSchema);
+module.exports = mongoose.model("Calcumon", CalcumonSchema);

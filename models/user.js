@@ -11,7 +11,7 @@ const UserSchema = new Schema({
   username: { type: String, required: true },
   email: { type: String, required: false},
   level: { type: Number, default: 0 },
-  calcumon: { type: Schema.Types.ObjectId, ref: 'Calcumon' }
+  monster: { type: String }
 });
 
 // Define the callback with a regular function to avoid problems with this

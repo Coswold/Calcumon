@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const Calcumon = require('../models/calcumon')
 
 module.exports = (app) => {
 
@@ -11,19 +12,19 @@ module.exports = (app) => {
         // INSTANTIATE INSTANCE OF CALCUMON MODEL
         if (req.user) {
             const calcumon = new Calcumon(req.body);
-            // SAVE INSTANCE OF CALCUMON MODEL TO DB
-            calcumon.save().then(calcumon => {
-                return User.findById(req.user._id);
-            })
-            .then(user => {
-                user.calcumon.unshift(calcumon);
-                user.save();
-                // REDIRECT TO THE DASHBOARD
-                res.redirect(`/dashboard/${user._id}`)
-            })
-            .catch(err => {
-                console.log(err.message);
-            })
+         // SAVE INSTANCE OF CALCUMON MODEL TO DB
+         calcumon.save().then(calcumon => {
+             return User.findById(req.user._id);
+         })
+         .then(user => {
+             user.monster = calcumon;
+             user.save();
+             // REDIRECT TO THE DASHBOARD
+             res.redirect(`/dashboard/${user._id}`)
+         })
+         .catch(err => {
+             console.log(err.message);
+         })
         } else {
             return res.status(401); // UNAUTHORIZED
         }

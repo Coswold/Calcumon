@@ -4,33 +4,43 @@
     {{!-- title --}}
     <h1> CHOOSE YOUR CALCUMON </h1>
     {{!-- grid of characters --}}
+    <form action="/choose/calcumon" method="POST">
     <div class = "gridContainer">
+
         {{!-- add function call with a value that sets calcumon name --}}
-        <div onClick = "setCalcumon1()" class = "gridItem">
+        <div class = "gridItem">
             <img src="../images/Calcumons/monster1.png" alt="character">
+            <input type="submit" value="monster1">
         </div>
-        <div onClick = "setCalcumon2()" class = "gridItem">
+        <div class = "gridItem">
             <img src="../images/Calcumons/monster2.png" alt="character">
+            <input type="submit" value="monster2">
         </div>
-        <div onClick = "setCalcumon3()" class = "gridItem">
+        <div class = "gridItem">
             <img src="../images/Calcumons/monster3.png" alt="character">
+            <input type="submit" value="monster3">
         </div>
-        <div onClick = "setCalcumon4()" class = "gridItem">
+        <div class = "gridItem">
             <img src="../images/Calcumons/monster1.png" alt="character">
+            <input type="submit" value="monster1">
         </div>
-        <div onClick = "setCalcumon5()" class = "gridItem">
+        <div class = "gridItem">
             <img src="../images/Calcumons/monster2.png" alt="character">
+            <input type="submit" value="monster2">
         </div>
-        <div onClick = "setCalcumon6()" class = "gridItem">
+        <div class = "gridItem">
             <img src="../images/Calcumons/monster3.png" alt="character">
+            <input type="submit" value="monster3">
         </div>
     </div>
+</form>
+
     {{!-- next button to move to game page --}}
     <p class="button"><a href="/gamePlay">NEXT</a></p>
 
     <script>
         // connect to database such that this sets the player's calcumon string value
-        let calcumon = "" 
+        let calcumon = ""
         function setCalcumon1() {
             calcumon = "calcumon1"
         }
