@@ -10,7 +10,7 @@ module.exports = (app) => {
     // SIGN-UP GET
     app.get('/signup', (req, res) => {
         const currentUser = req.user;
-        res.render('sign-up', { currentUser });
+        res.render('signup', { currentUser });
     });
 
     // SIGN UP POST
