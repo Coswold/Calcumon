@@ -17,7 +17,8 @@ module.exports = (app) => {
              return User.findById(req.user._id);
          })
          .then(user => {
-             user.monster = calcumon;
+             user.monster = calcumon.name;
+             console.log(user.monster)
              user.save();
              // REDIRECT TO THE DASHBOARD
              res.redirect(`/dashboard/${user._id}`)
