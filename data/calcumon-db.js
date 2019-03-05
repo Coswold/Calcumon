@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 assert = require("assert");
 
-const url = "mongodb://localhost/calcumon-db";
+const url = process.env.MONGODB_URI || "mongodb://localhost/calcumon-db";
 mongoose.Promise = global.Promise;
 mongoose.connect(
   "mongodb://localhost/reddit-db",
