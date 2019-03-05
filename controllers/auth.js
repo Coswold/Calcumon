@@ -2,15 +2,9 @@ const User = require("../models/user");
 const jwt = require('jsonwebtoken');
 
 module.exports = (app) => {
-    // // SIGN UP FORM
-    // app.get("/signup", (req, res) => {
-    //     res.render("signup");
-    // });
-
-    // SIGN-UP GET
-    app.get('/signup', (req, res) => {
-        const currentUser = req.user;
-        res.render('sign-up', { currentUser });
+    // SIGN UP FORM
+    app.get("/signup", (req, res) => {
+        res.render("signup");
     });
 
     // SIGN UP POST
@@ -36,16 +30,10 @@ module.exports = (app) => {
         res.redirect('/');
     })
 
-    // // Login FORM
-    // app.get('/', (req, res) => {
-    //     res.render('login');
-    // });
-
-    // LOGIN GET
+    // Login FORM
     app.get('/', (req, res) => {
-        const currentUser = req.user;
-        res.render('login', { currentUser })
-    })
+        res.render('login');
+    });
 
     // LOGIN
     app.post("/login", (req, res) => {
