@@ -40,8 +40,8 @@ class Attacks {
     initialDraw(ctx) {
         // attack label
         this.ctx.font = "30px Arial";
-        this.ctx.fillStyle = "Black"
-        this.ctx.fillText("Attacks    (Pick an attack, then answer the question. If you answer correctly, the attack will execute.)", this.x, this.y-20)
+        this.ctx.fillStyle = "White"
+        this.ctx.fillText("Attacks    (Pick an attack, then answer the question. If you answer correctly, the attack will execute.)", this.x+70, this.y-100)
         console.log("DRAWING ATTACKS")
         
     }
@@ -107,9 +107,9 @@ class Game {
         }
         console.log("VERIFY SOLUTION ENDS")
         // testing
-        this.player.prevResponseCorrectness = true
-        this.foundSolution = true
-        return true
+        // this.player.prevResponseCorrectness = true
+        // this.foundSolution = true
+        // return true
         // testing ends
         return this.foundSolution
     }
@@ -171,7 +171,8 @@ class Game {
         }
         
         this.drawInputField()
-
+        
+        this.attacks.initialDraw()
         // draw attacks
         this.attacks.drawAttackButtons()
 
