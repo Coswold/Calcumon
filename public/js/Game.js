@@ -78,8 +78,13 @@ class Game {
         this.attacks = new Attacks(ctx)
 
         this.computer = new Computer(this.attacks.attackNames)
+<<<<<<< HEAD
         this.player = new Player(this.attacks.attackNames, calcumon, level) // initialize player with attacks and calcumon name
 
+=======
+        this.player = new Player(this.attacks.attackNames, "", 1) // initialize player with attacks and calcumon name
+        
+>>>>>>> a48a1442e9fbe22750791a239aaa6018d4af371d
         // this.attackIndex = 0
         this.computer.drawCalcumon(ctx)
         this.attacks.drawAttackButtons()
