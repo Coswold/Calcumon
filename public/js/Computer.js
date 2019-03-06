@@ -18,11 +18,13 @@ class Computer {
     }
 
     attack() {
-        let i = Math.random()*((this.attacks.length))
+        let i = Math.floor(Math.random()*((this.attacks.length)))
         // pick attack at index i
         let attack = this.attacks[i]
         // subtract attack token cost from player's tokens
-        
+        console.log(this.attacks)
+        console.log(i)
+        console.log(attack)
         if (attack == 'Punch') {
             return 10
         }

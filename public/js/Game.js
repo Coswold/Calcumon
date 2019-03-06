@@ -234,8 +234,9 @@ class Game {
         console.log(value)
         console.log("sol")
         console.log(this.foundSolution)
+        console.log(this.player.dodge)
         let power;
-        if (value == true) {
+        if (this.foundSolution === true) {
             power = this.player.attack(i)
 
             // if attack costs more mana than player has:
@@ -250,17 +251,24 @@ class Game {
                 console.log("Attacked computer")
             }
         }
-        else if (this.player.dodge == false) {
+        
+        else if (this.player.dodge === false) {
+            console.log("Here")
             power = this.computer.attack()
-            if (this.player.health > 0){
-                this.player.health -= power
-            }
-            //Do I put this in the if statement
-            this.player.dodge = false
+            console.log(power)
+            this.player.decrementHealth(power)
+            console.log("attacked player")
+            console.log(this.player.health)
         }
+        
+        this.player.dodge = false
         console.log(this.computer.health)
         // this.attackIndex = 0
         this.attacks.currIndex = 0
+
+        // new problem after attack
+        this.player.newProblem()
+        this.draw()
         return
     }
 
@@ -277,7 +285,7 @@ class Game {
             // increment mana
             if (this.player.health > 0 & this.computer.health > 0) {
                 this.player.incrementMana()
-                this.player.newProblem()
+                // this.player.newProblem()
             }
 
             // if yes, call new problem
@@ -296,6 +304,7 @@ class Game {
 
             this.player.prevResponseCorrectness = false
             this.foundSolution = false
+            
         }
 
         // // handle gameOver state

@@ -73,6 +73,17 @@ class Player {
         this.mana -= x
     }
 
+    decrementHealth(power) {
+        console.log("decrementing:")
+        console.log(this.health)
+        if (this.health > 0) {
+            this.health -= power;
+        } 
+        console.log(this.health)
+        console.log("done")
+        return
+    }
+
     // IMPLEMENT THIS FOR VERSION ONE
     respond() {
         // NOTE: CHECK IF WE CAN USE document.getElementById in this file to access gamePlay.handlebars!
