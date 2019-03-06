@@ -36,7 +36,7 @@ async function solve(value) {
     })
     console.log(solution.data)
     console.log("DONE")
-    return solution
+    return solution.data
 }
 
 //export default solve

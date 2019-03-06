@@ -43,7 +43,7 @@ class Player {
     }
 
     // get new problem
-    newProblem() {
+    async newProblem() {
         let level = this.level
         let problemCount = this.problemCount
         let prevResult = this.prevResponseCorrectness // boolean
@@ -58,7 +58,7 @@ class Player {
         // update currSolution with new solution
         // console.log(result[0])
         // console.log('GETTING PROBLEM-SOLUTION')
-        this.currSolution = solve(result[0])
+        this.currSolution = await solve(result[0])
         console.log(this.currSolution)
 
         // increment problem count
