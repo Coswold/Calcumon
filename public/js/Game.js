@@ -161,20 +161,20 @@ class Game {
 
         var img = document.getElementById("win");
         this.ctx.drawImage(img, 500, 200, 620, 500);
-        var img2 = document.getElementById("next");
-        this.ctx.drawImage(img2, 620, 350, 400, 80);
-        var img3 = document.getElementById("dash");
-        this.ctx.drawImage(img3, 620, 500, 400, 80);
+        // var img2 = document.getElementById("next");
+        // this.ctx.drawImage(img2, 620, 350, 400, 80);
+        // var img3 = document.getElementById("dash");
+        // this.ctx.drawImage(img3, 620, 500, 400, 80);
     }
 
     losePopup() {
 
         var img = document.getElementById("lose");
         this.ctx.drawImage(img, 500, 200, 620, 500);
-        var img2 = document.getElementById("try");
-        this.ctx.drawImage(img2, 620, 350, 400, 80);
-        var img3 = document.getElementById("dash");
-        this.ctx.drawImage(img3, 620, 500, 400, 80);
+        // var img2 = document.getElementById("try");
+        // this.ctx.drawImage(img2, 620, 350, 400, 80);
+        // var img3 = document.getElementById("dash");
+        // this.ctx.drawImage(img3, 620, 500, 400, 80);
 
     }
 
@@ -188,6 +188,11 @@ class Game {
 
         //if player wins show You WIn! and link to next level
         //if player loses show Try again (link)
+
+        // set display to true when you start a new game
+        let attackDiv = document.getElementById('attackList')
+        attackDiv.style.display = "None"
+
         if (winner == "Player") {
             this.winPopup()
             this.gameOveris = true
@@ -245,14 +250,14 @@ class Game {
                 // do something
                 alert("Not enough mana")
             }
-            else {
+            else if (this.computer.health > 0){
                 this.player.decrementMana(this.attacks.attackCosts[i])
                 this.computer.decrementHealth(power)
                 console.log("Attacked computer")
             }
         }
         
-        else if (this.player.dodge === false) {
+        else if (this.player.dodge === false && this.player.health > 0) {
             console.log("Here")
             power = this.computer.attack()
             console.log(power)
