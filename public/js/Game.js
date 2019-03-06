@@ -155,10 +155,6 @@ class Game {
     winPopup() {
         this.player.level += 1
 
-        // // bounding box
-        // ctx.fillStyle = "rgba(200, 205, 255, 0.6)";
-        // ctx.fillRect(100, 0, 1500, 1000)
-
         var img = document.getElementById("win");
         this.ctx.drawImage(img, 500, 200, 620, 500);
         // var img2 = document.getElementById("next");
@@ -272,8 +268,12 @@ class Game {
         this.attacks.currIndex = 0
 
         // new problem after attack
-        this.player.newProblem()
-        this.draw()
+        if (this.player.health > 0 & this.computer.health > 0) {
+            this.player.newProblem()
+            this.draw()
+        }
+
+        
         return
     }
 
