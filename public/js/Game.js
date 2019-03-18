@@ -190,13 +190,21 @@ class Game {
         attackDiv.style.display = "None"
 
         if (winner == "Player") {
+            let newUrl = "/gameOverWin"
             this.winPopup()
             this.gameOveris = true
             // TODO: update data base and set player level equal to data base level
         } else if (winner == "Computer"){
+            let newUrl = "/gameOverLose"
+            document.location.href = newUrl
             this.losePopup()
             this.gameOveris = true
         }
+
+        // change url
+        // var newUrl = [some code to build up URL string];
+        // document.location.href = newUrl;
+
 
     }
 

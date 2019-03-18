@@ -1,0 +1,23 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    /* align-content: center;
+    justify-content: center; */
+}
+
+.content * {
+    text-align: center;
+    font-size: 40px;
+}
+
+.content h1 {
+    font-size: 80px;
+}
+
+button {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 40px;
+}
