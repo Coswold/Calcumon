@@ -31,6 +31,7 @@ module.exports = function(app) {
         }
     });
 
+    /*
     // UPDATE USER STATS
     app.put('/save', (req, res) => {
         if (req.user) {
@@ -44,6 +45,7 @@ module.exports = function(app) {
             return res.status(401); // UNAUTHORIZED
         }
     })
+    */
 
     // Need route to edit profile
 

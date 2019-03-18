@@ -12,7 +12,7 @@ const UserSchema = new Schema({
   email: { type: String, required: false},
   level: { type: Number, default: 1 },
   monster: { type: String },
-  coins: { coins: Number, default: 10 },
+  coins: { type: Number, default: 10 },
   items: [{ type: String }]
 });
 

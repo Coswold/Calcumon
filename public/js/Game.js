@@ -261,7 +261,7 @@ class Game {
                 console.log("Attacked computer")
             }
         }
-        
+
         else if (this.player.dodge === false && this.player.health > 0) {
             console.log("Here")
             power = this.computer.attack()
@@ -270,7 +270,7 @@ class Game {
             console.log("attacked player")
             console.log(this.player.health)
         }
-        
+
         this.player.dodge = false
         console.log(this.computer.health)
         // this.attackIndex = 0
@@ -282,7 +282,7 @@ class Game {
             this.draw()
         }
 
-        
+
         return
     }
 
@@ -320,7 +320,7 @@ class Game {
 
             this.player.prevResponseCorrectness = false
             this.foundSolution = false
-            
+
         }
 
         // // handle gameOver state
