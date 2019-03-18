@@ -1,27 +1,45 @@
 <link rel="stylesheet" href="../../css/dashboard.css">
 
 <div class="content">
-  <div class = "nav">
-          <ul>
-              {{!-- <li><a class = "button" href="#signup">settings</a></li> --}}
-              {{!-- import and display player level from database here --}}
-              <li class = "level" style="padding:18px"><p>level: {{currentUser.level}}</p></li>
-              <li style="float:right">
-                  <a class="button" href="/gameplay">PLAY</a>
-              </li>
-              <li style="float:right">
-                  <a class="button" href="/logout">Logout</a>
-              </li>
-          </ul>
 
+  <div class="grid-container">
+    <div class="item1">
+      <ul> 
+        <li class = "heading" style="padding:18px"><h1>DASHBOARD</h1></li>
+        <li class = "play" style="float:right">
+            <h2><a class="button" href="/gameplay">PLAY</a></h2>
+        </li>
+        <li class = "logout" style="float:right">
+            <a class="button" href="/logout">Logout</a>
+        </li>
+      </ul>
+
+    </div>
+    
+    <div class="item2">
+      <div class="data">
+        <a href="{{post.url}}" class="lead">{{post.postTitle}}</a>
+        <p>{{currentUser.calcumon}}</p>
+        <img src="../images/Calcumons/{{currentUser.monster}}.png"
+              width="300" height="227">
+        <h1>{{currentUser.username}}</h1>
+        <h3>level: {{currentUser.level}}</h3>
+        
+
+      </div>
+
+    </div>
+    
+    <div class="item3">
+      Main
+      {{!-- buttons: My items, Change Calcumon(buy), Store (accessories/assets) --}}
+    </div>  
+    
+    <div class="item4">
+      Right
+      {{!-- options to display based on above selected button --}}
+    </div>
   </div>
 
-  <div class="data">
-    <a href="{{post.url}}" class="lead">{{post.postTitle}}</a>
-    <h1>{{currentUser.username}}</h1>
-    <p>{{currentUser.calcumon}}</p>
-    <img src="../images/Calcumons/{{currentUser.monster}}.png"
-          width="300" height="227">
 
-  </div>
 </div>
