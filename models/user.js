@@ -11,7 +11,9 @@ const UserSchema = new Schema({
   username: { type: String, required: true },
   email: { type: String, required: false},
   level: { type: Number, default: 1 },
-  monster: { type: String }
+  monster: { type: String },
+  coins: { coins: Number, default: 10 },
+  items: [{ type: String }]
 });
 
 // Define the callback with a regular function to avoid problems with this
