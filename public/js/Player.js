@@ -176,6 +176,9 @@ class Player {
         ctx.stroke()
         // inner filled rectangle (depends on health percentage)
         let health = this.health/100
+        if (this.health <= 0) {
+            this.health = 0
+        }
 
         ctx.fillStyle = "red";
         ctx.fillRect(x, y+30, 200*health, 20);

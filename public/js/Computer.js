@@ -71,8 +71,9 @@ class Computer {
         ctx.stroke()
         // inner filled rectangle (depends on health percentage)
         let health = this.health/100     
-        console.log(this.health)  
-        console.log(health)
+        if (this.health <= 0) {
+            this.health = 0
+        }
         ctx.fillStyle = "red";
         ctx.fillRect(x, y+30, 200*health, 20);
 
