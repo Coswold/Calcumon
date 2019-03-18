@@ -32,10 +32,9 @@ module.exports = function(app) {
     });
 
     // UPDATE USER STATS
-    app.put('/save/:id', (req, res) => {
+    app.put('/save', (req, res) => {
         if (req.user) {
-            let stats = req.body;
-            User.findByIdAndUpdate(req.user._id, { $inc: {views:stats.coins}} ).then(user => {
+            User.findByIdAndUpdate(req.user._id, { $inc: {coins: 10}, {level: 1} } ).then(user => {
                 res.redirect(`/dashboard/${req.user._id}`)
             })
             .catch(err => {
