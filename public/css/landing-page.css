@@ -15,8 +15,9 @@ body, html {
 
 /* Hero Image ("Calcmon") */
 .hero-image {
+    margin-top: 1%;
     height: 15em;
-    width: 40em;
+    width: 50em;
     max-width: 70%
 }
 
@@ -37,10 +38,11 @@ body, html {
     padding:2em;
 }
 
-/* Input Feild Styles (username, pword) */
+/* Input Feild Styles (username, password) */
  .form-control {
-     background: #6bb8bf;
-     opacity: .6;
+    background: #bff9ff;
+    text-align: center;
+    opacity: .6;
  }
 
  /* Input Feild Hover Styles */
@@ -50,12 +52,13 @@ body, html {
 
  /* Signup Link*/
  .signup-link {
-     color:#17a2b8;
-     font-family: 'Lilita One', cursive;
-     align-items: center;
-     display: flex;
-     justify-content: center;
-     text-decoration: none;
+    color:#17a2b8;
+    font-size: 1em;
+    font-family: 'Baloo Chettan', cursive;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
  }
 
 /* Signup Link Hover */
@@ -66,17 +69,34 @@ body, html {
 
 /* "Not Registered? Style" */
 p {
-    font-family: 'Lilita One', cursive;
+    font-family: 'Baloo Chettan', cursive;
     margin-top:1em;
+    margin-bottom: .3em;
     color:#343a40;
 }
 
   /* Login Button Style */
   .login-button {
-
+    font-family: 'Baloo Chettan', cursive;
   }
 
+/* Play Button Container*/
   .play-button-container {
       display: flex;
       justify-content: center;
   }
+
+  .play-button {
+      width:20%;
+  }
+
+
+/* Star Key Frames */
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}

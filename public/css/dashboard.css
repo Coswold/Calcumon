@@ -1,5 +1,5 @@
 body {
-    background-color:  #130094;
+    
 }
 
 .content .nav {
@@ -29,8 +29,8 @@ html, body {
 
  /* Grid layout */
 
-.item1 { 
-    grid-area: header; 
+.item1 {
+    grid-area: header;
     padding-left: 40px;
 }
 .item2 { grid-area: menu; }

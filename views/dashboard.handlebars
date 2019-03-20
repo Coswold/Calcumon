@@ -1,10 +1,16 @@
 <link rel="stylesheet" href="../../css/dashboard.css">
 
+<!-- Dashboard Hero Text -->
+<div class="dashboard-hero-container">
+    <img class="dashboard-hero" src="../images/dashboard-hero.svg" alt="dashboard hero text">
+</div>
+
+
 <div class="content">
 
   <div class="grid-container">
     <div class="item1">
-      <ul> 
+      <ul>
         <li class = "heading" style="padding:18px"><h1>DASHBOARD</h1></li>
         <li class = "play" style="float:right">
             <h2><a class="button" href="/gameplay">PLAY</a></h2>
@@ -15,7 +21,7 @@
       </ul>
 
     </div>
-    
+
     <div class="item2">
       <div class="data">
         <a href="{{post.url}}" class="lead">{{post.postTitle}}</a>
@@ -24,17 +30,17 @@
               width="300" height="227">
         <h1>{{currentUser.username}}</h1>
         <h3>level: {{currentUser.level}}</h3>
-        
+
 
       </div>
 
     </div>
-    
+
     <div class="item3">
       Main
       {{!-- buttons: My items, Change Calcumon(buy), Store (accessories/assets) --}}
-    </div>  
-    
+    </div>
+
     <div class="item4">
       Right
       {{!-- options to display based on above selected button --}}
