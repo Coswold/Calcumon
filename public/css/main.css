@@ -7,6 +7,11 @@ body, html {
     padding: 0;
 }
 
+/*Calcmon Hero.png  */
+.hero-image {
+    
+}
+
 .bg {
     /* The image used */
     background-image: url("../images/bg.png");
@@ -138,7 +143,7 @@ ul {
     left: 18%;
   }
 
-  /* For iPhones, with login button going below */ 
+  /* For iPhones, with login button going below */
   /* Any height 500px or less */
   @media only screen and (max-device-height: 550px) {
     body {
@@ -160,5 +165,5 @@ ul {
       padding: 10px;
       margin: 10px;
     }
-    
+
   }
