@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Calcumon is a web-based game involving a virtual world with mini-math games/activities. The game can be played after a simple signup to setup your game user. It consists of multiple levels of calcumon battles against opponents. Attacks can be used through tokens, and players earn tokens via completing math problems within the game.",
   "engines": {
-      "node": "8.9.0"
+    "node": "8.9.0"
   },
   "main": "server.js",
   "directories": {
@@ -27,6 +27,7 @@
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "bootstrap": "^4.3.1",
     "canvas": "^2.4.1",
     "cookie-parser": "^1.4.4",
     "dotenv": "^6.2.0",

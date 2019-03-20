@@ -1,0 +1,29 @@
+body, html {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    /* background: linear-gradient(white,#fffddd,#fffa82)fixed; */
+}
+
+/* Calcumon Hero */
+.hero-image {
+
+}
+
+/* Login Form Styles */
+.login input, .signup input {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+    font-size: 27px;
+    font-weight: bolder;
+    border: 1px solid white;
+  }
+
+  /* Login Button Style */
+  .login-button {
+
+  }

@@ -1,40 +1,40 @@
-<link rel="stylesheet" href="../css/main.css">
+<link rel="stylesheet" href="../../css/landing-page.css">
 
-<div class = "landing-page-background">
-
-    <!-- Calcumon Hero Image -->
-    <img class="hero-image" src="../images/calcmon-hero.png" alt="calcmon hero text">
-    <!-- <a class="active" href="#home"> </a> -->
+    <!-- Calcumon Hero Image (Place Holder) -->
+    <img class="hero-image" src="../images/calcmon-hero.svg" alt="calcmon hero text">
 
     <!-- Play Button  -->
 
-    <!-- Login Form -->
+    <!-- Login Container  -->
+    <div class="login-container">
+        <!-- Login Form  -->
+        <form class="login" action="/login" method="POST">
 
-    <!-- Register Button (transition to new page)  -->
+            <!-- Username -->
+            <div class="form-group">
+                <input class="form-control" id="username" type="text" placeholder="Enter Your Username" name="username"/>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <input class="form-control" id="password" type="password" name="password" placeholder="Enter Your Password"/>
+            </div>
+
+            <!-- Login Button -->
+            <button class="btn btn-lg btn-info login-button" type="submit">LOGIN</button>
+
+            <p style="text-align:center; margin-top:2em"> Not Registered?</p>
+
+            <!-- Link to Sign Up / Register Page -->
+            <a style="font-size:1em; color:#204272; text-align:center" href="/signup" >Sign Up</a>
+
+        </form>
 
 
-        <div class = "nav">
-            <ul>
-                <li class="button"><a href="/signup">JOIN NOW</a></li>
-                <li style="float:right"><a class="active" href="#home"> </a>
-            </ul>
-        </div>
+    </div>
 
-        <div class = "login">
-            <form name = "login" method="POST" action="/login">
-                <label> Username</label>
-                <input class = "info" type="text" placeholder = "username"
-                name="username" id="username">
-                <label> Password</label>
-                <input class = "info" type="password" placeholder = "password"
-                name="password" id="password">
-                <input class = "play" type="submit" value="LOGIN">
-            </form>
-        </div>
 
 
         <!-- Canvas Elements -->
-        <canvas class = "coin1" id="coinAnimation"></canvas>
-        <canvas class = "coin2" id="coinAnimation2"></canvas>
-
-</div>
+        <!-- <canvas class = "coin1" id="coinAnimation"></canvas>
+        <canvas class = "coin2" id="coinAnimation2"></canvas> -->

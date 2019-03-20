@@ -7,11 +7,6 @@ body, html {
     padding: 0;
 }
 
-/*Calcmon Hero.png  */
-.hero-image {
-    
-}
-
 .bg {
     /* The image used */
     background-image: url("../images/bg.png");
@@ -80,29 +75,17 @@ ul {
   }
 
   /* login form */
-  .login label, .login input, .signup label, .signup input {
+  /* .login label, .login input, .signup label, .signup input {
       display: inline-block;
       width: 100%;
       margin-bottom: 15px;
       font-size: 24px;
       text-align: center;
-  }
+  } */
 
-  .login input, .signup input {
-      padding-bottom: 20px;
-      padding-top: 20px;
-      background-color: #FCD12D;
-      margin-bottom: 30px;
-      color: #130094;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      border-radius: 15px;
-      margin-top: 20px;
-      font-size: 27px;
-      font-weight: bolder;
-      border: 1px solid white;
-    }
 
-  .login .info, .signup .info{
+
+  /* .login .info, .signup .info{
       background-color: #00B2DF;
       color: white;
       border-radius: 15px;
@@ -110,9 +93,9 @@ ul {
       font-size: 30px;
       font-weight: normal;
       border: 0px;
-  }
+  } */
 
-  .login form, .signup form {
+  /* .login form, .signup form {
       width: 300px;
       float: right;
       margin-top: 5%;
@@ -120,7 +103,7 @@ ul {
       color: white;
       font-weight: bolder;
       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
+  } */
 
 /* layering positions */
   .login, .signup {
