@@ -27,7 +27,12 @@ module.exports = function(app) {
                 console.log(err.message)
             });
         } else {
-            return res.status(401); // UNAUTHORIZED
+            const currentUser = new User;
+            currentUser.username = 'guest'
+            currentUser.password = '1234'
+            currentUser.monster = 'monster1'
+            console.log(currentUser)
+            res.render('gamePlay', { currentUser });
         }
     });
 

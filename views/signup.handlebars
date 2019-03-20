@@ -1,30 +1,59 @@
-<div class = "bg">
-        <div class = "nav">
-            <ul>
-                <li class="button"><a href="/">Login</a></li>
-                <li style="float:right"><a class="active" href="#home">
-                    <img src="../images/logo.png">
-                </a></li>
-            </ul>
-        </div>
+<link rel="stylesheet" href="../../css/landing-page.css">
 
-        <div class = "signup">
-            <form name = "signup" method="POST" action="/sign-up">
-                <label> Username</label>
-                <input class = "info" placeholder = "username" name="username"
-                id="username">
-                <label> Password</label>
-                <input class = "info" placeholder = "password" name="password"
-                id="password" type="password">
-                <label> Email</label>
-                <input class = "info" placeholder = "email" name="email"
-                id="email" >
-                <input class = "play" type="submit" value="SIGNUP">
-            </form>
-        </div>
+    <!-- Calcumon Hero Image (Place Holder) -->
+    <div class="hero-container">
+        <img class="hero-image" src="../images/calcmon-hero.svg" alt="calcmon hero text">
+    </div>
+
+    <!-- Play Button  -->
+    <div class="play-button-container">
+        <input type="image" src="../images/play-button.svg" name="play-button" class="btTxt submit" id="play-button"/>
+    </div>
 
 
-        <canvas class = "coin1" id="coinAnimation"></canvas>
-        <canvas class = "coin2" id="coinAnimation2"></canvas>
+    <!-- Login Container  -->
+    <div class="login-form-container">
+        <!-- Signup Form  -->
+        <form class="signup-form" action="/sign-up" method="POST">
 
-</div>
+            <!-- TODO -->
+            <!-- Birthday Feild (Date Picker)-->
+
+            <!-- Name -->
+            <div class="form-group">
+                <input class="form-control" id="username" type="text" placeholder="Enter Your Name" name="username"/>
+            </div>
+
+            <!-- Username -->
+            <div class="form-group">
+                <input class="form-control" id="username" type="text" placeholder="Create a Username" name="username"/>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <input class="form-control" id="password" type="password" name="password" placeholder="Create a Password"/>
+            </div>
+
+            <!-- Login Button -->
+            <button class="btn btn-lg btn-info login-button" type="submit">Sign Up!</button>
+
+            <p style="text-align:center"> Already Registered?</p>
+
+            <!-- Signup Link-->
+            <a class="signup-link" href="/signup">Login</a>
+
+        </form>
+
+
+    </div>
+
+
+
+        <!-- Canvas Elements -->
+        <!-- <canvas class = "coin1" id="coinAnimation"></canvas>
+        <canvas class = "coin2" id="coinAnimation2"></canvas> -->
+
+
+
+
+<form name = "signup" method="POST" action="/sign-up">

@@ -1,26 +1,54 @@
-<div class = "bg">
-        <div class = "nav">
-            <ul>
-                <li class="button"><a href="/signup">JOIN NOW</a></li>
-                <li style="float:right"><a class="active" href="#home">
-                    <img src="../images/logo.png">
-                </a></li>
-            </ul>
-        </div>
+<link rel="stylesheet" href="../../css/landing-page.css">
 
-        <div class = "login">
-            <form name = "login" method="POST" action="/login">
-                <label> Username</label>
-                <input class = "info" type="text" placeholder = "username"
-                name="username" id="username">
-                <label> Password</label>
-                <input class = "info" type="password" placeholder = "password"
-                name="password" id="password">
-                <input class = "play" type="submit" value="LOGIN">
-            </form>
-        </div>
 
-        <canvas class = "coin1" id="coinAnimation"></canvas>
-        <canvas class = "coin2" id="coinAnimation2"></canvas>
+    <!-- Calcumon Hero Image (Place Holder) -->
+    <div class="hero-container">
+        <img class="hero-image" src="../images/calcmon-hero.svg" alt="calcmon hero text">
+    </div>
 
-</div>
+    <!-- Play Button  -->
+
+    <div class="play-button-container">
+        <a href="/gameplay"><img class="play-button" src="../images/play-button.svg" alt=""></a>
+    </div>
+
+        <!-- <input class="play-button" type="image" src="../images/play-button.svg" name="play-button" class="btTxt submit" id="play-button"/> -->
+
+    <!-- Login Container  -->
+    <div class="login-form-container">
+        <!-- Login Form  -->
+        <form class="login-form" action="/login" method="POST">
+
+            <!-- Username -->
+            <div class="form-group">
+                <input class="form-control" id="username" type="text" placeholder="Enter Your Username" name="username"/>
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <input class="form-control" id="password" type="password" name="password" placeholder="Enter Your Password"/>
+            </div>
+
+            <!-- Login Button -->
+            <button class="btn btn-lg btn-info login-button" type="submit">LOGIN</button>
+
+            <p style="text-align:center"> Not Registered?</p>
+
+            <!-- Signup Link-->
+            <a class="signup-link" href="/signup"> SIGN UP</a>
+
+        </form>
+
+
+    </div>
+
+    <!-- Star Dust  -->
+    <div id='stars'></div>
+    <div id='stars2'></div>
+    <div id='stars3'></div>
+
+
+
+        <!-- Canvas Elements -->
+        <!-- <canvas class = "coin1" id="coinAnimation"></canvas>
+        <canvas class = "coin2" id="coinAnimation2"></canvas> -->
