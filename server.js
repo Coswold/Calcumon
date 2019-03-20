@@ -2,7 +2,16 @@ const express = require('express')
 const app = express();
 require('dotenv').load();
 process.env.SECRET
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
+
+const methodOverride = require('method-override')
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 
@@ -11,6 +20,7 @@ const jwt = require('jsonwebtoken');
 var exphbs = require('express-handlebars')
 
 app.use(cookieParser());
+app.use(methodOverride('_method'));
 
 // Use Body Parser
 app.use(bodyParser.json());
@@ -43,6 +53,9 @@ require('./data/calcumon-db');
 require('./controllers/auth.js')(app);
 require('./controllers/choose.js')(app);
 require('./controllers/dashboard.js')(app);
+require('./controllers/game.js')(app);
+require('./controllers/mobile_api.js')(app);
+
 
 const port = process.env.PORT || 3000;
 

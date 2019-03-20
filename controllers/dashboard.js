@@ -31,22 +31,6 @@ module.exports = function(app) {
         }
     });
 
-    /*
-    // UPDATE USER STATS
-    app.put('/save', (req, res) => {
-        if (req.user) {
-            User.findByIdAndUpdate(req.user._id, { $inc: {coins: 10}, {level: 1} } ).then(user => {
-                res.redirect(`/dashboard/${req.user._id}`)
-            })
-            .catch(err => {
-                console.log(err.message)
-            })
-        } else {
-            return res.status(401); // UNAUTHORIZED
-        }
-    })
-    */
-
     // Need route to edit profile
 
 }
