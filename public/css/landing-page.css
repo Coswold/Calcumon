@@ -6,9 +6,18 @@ body, html {
     /* background: linear-gradient(white,#fffddd,#fffa82)fixed; */
 }
 
-/* Calcumon Hero */
-.hero-image {
+/* Hero Container */
+.hero-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
 
+/* Hero Image */
+.hero-image {
+    height: 15em;
+    width: 40em;
+    max-width: 70%
 }
 
 /* Login Form Styles */
