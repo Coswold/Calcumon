@@ -13,7 +13,7 @@ body, html {
     margin-top: 2em;
 }
 
-/* Hero Image */
+/* Hero Image ("Calcmon") */
 .hero-image {
     height: 15em;
     width: 40em;
@@ -31,25 +31,52 @@ body, html {
 .login-form {
     display: flex;
     flex-direction: column;
-    border: 1px solid pink;
-    border-radius: 15px;
-    width: 30%;
+    /* border: 1.2px solid #444444; */
+    border-radius: 10px;
+    width: 20%;
     padding:2em;
 }
 
-/* Login Form Styles */
-.login input, .signup input {
-    padding-bottom: 20px;
-    padding-top: 20px;
-    margin-bottom: 30px;
-    border-radius: 15px;
-    margin-top: 20px;
-    font-size: 27px;
-    font-weight: bolder;
-    border: 1px solid white;
-  }
+/* Input Feild Styles (username, pword) */
+ .form-control {
+     background: #6bb8bf;
+     opacity: .6;
+ }
+
+ /* Input Feild Hover Styles */
+ .form-control:hover {
+     opacity: .4;
+ }
+
+ /* Signup Link*/
+ .signup-link {
+     color:#17a2b8;
+     font-family: 'Lilita One', cursive;
+     align-items: center;
+     display: flex;
+     justify-content: center;
+     text-decoration: none;
+ }
+
+/* Signup Link Hover */
+ .signup-link:hover{
+     text-decoration: none;
+     color:#6bb8bf;
+ }
+
+/* "Not Registered? Style" */
+p {
+    font-family: 'Lilita One', cursive;
+    margin-top:1em;
+    color:#343a40;
+}
 
   /* Login Button Style */
   .login-button {
 
+  }
+
+  .play-button-container {
+      display: flex;
+      justify-content: center;
   }
