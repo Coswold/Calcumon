@@ -1,95 +1,123 @@
-<link rel="stylesheet" href="../css/gameNavbar.css">
-<link rel="stylesheet" href="../../css/gamePlay.css">
-<div class = "content">
-      <!-- navbar (settings, level, dashboard) -->
-      <div class = "nav">
-          <ul>
-              {{!-- <li><a href="#signup">settings</a></li> --}}
-              {{!-- import and display player level from database here --}}
-              <li style="padding:27px">level: {{currentUser.level}}</li>
-              <li style="float:right">
-                  {{!-- import user id and take to /dashboard/{userid} link --}}
-                  <a class="active" href='/dashboard/{{currentUser._id}}'>
-                      Dashboard
-                  </a>
 
-              </li>
-          </ul>
+    <!--  custom styles  -->
+    <link rel="stylesheet" href="../../css/gamestyles.css">
+
+      <div class="container">
+        <!-- problem container -->
+          <div class="row">
+            <div class="col">
+              <!-- empty div for space purposes -->
+            </div>
+            <div class="col-8 prob" id = "problem">
+              PROBLEM
+            </div>
+            <div class="col">
+              <!-- empty div for space purposes -->
+            </div>
+          </div>
+
+          <!-- INPUT container -->
+          <div class="row">
+              <div class="col">
+                <!-- empty div for space purposes -->
+              </div>
+              <div class="col-8 sol">
+                <input id = "answer" placeholder="Enter solution here">
+                <button>SKIP</button>
+                <button id = "submit-solution" type ="submit">SUBMIT</button>
+              </div>
+              <div class="col">
+                <!-- empty div for space purposes -->
+              </div>
+          </div>
+
+          <!-- Health bars -->
+
+          <div class="row justify-content-between health">
+              <div class="col-1">
+                <div id = "player-health"></div>
+              </div>
+              <div class="col-1">
+                <div id = "opponent-health"></div>
+              </div>
+            </div>
+          </div>
 
       </div>
-      <canvas class = "game" id="game" width="480" height="320"></canvas>
-    </div>
 
-    {{!-- display attacks --}}
-    <div id = "attackList">
-    </div>
+      <script>
+          let currProblem = ''
+          let currSolution = ''
+          let playerHealth = 100
+          let opponentHealth = 100
 
-    <!-- images -->
-    <div style="visibility:hidden">
-      <img id="monster1"
-           src="../images/Calcumons/monster1.png"
-           width="300" height="227">
-      <img id="monster2"
-           src="../images/Calcumons/monster2.png"
-           width="300" height="227">
-      <img id="monster3"
-           src="../images/Calcumons/monster3.png"
-           width="300" height="227">
-      <img id="dash"
-            onclick="alert('works')"
-            width="10" height="10"
-            src="../images/gameOver/dashboard.png">
-      <img id="lose"
-            width="220" height="277"
-            src="../images/gameOver/lose.png">
-      <img id="win"
-            width="300" height="227"
-            src="../images/gameOver/win.png">
-      <img id="next"
-            width="10" height="10"
-            src="../images/gameOver/next_level.png">
-      <img id="try"
-            width="10" height="10"
-            src="../images/gameOver/try_again.png">
-    </div>
+          let playerInput = document.getElementById('answer')
+          let problemDisplay = document.getElementById('problem')
+          let submitButton = document.getElementById('submit-solution')
+          let playerHealthDisplay = document.getElementById('player-health')
+          let playerHealthDisplay = document.getElementById('opponent-health')
+          
+          // updates
+          function update() {
+              // Add a problem to the div
+              if (currProblem == '') {
+                  // TODO: generate new curr problem
+                  // TODO: set problemDisplay.value = currProblem
+                  // TODO: set currSolution to new solution
+              }
+              
+              // check if player submitted a solution
+              submitButton.onClick = function() {
+                  let inp = playerInput.value // the submitted player's answer
+                  let sol = verifySolution(inp) // verify this answer with currSolution
+                  sendToSocket(sol) // send that to socket
+              }
 
-    <script src="../js/CanvasInput/CanvasInput.js"></script>
-    <script src="../js/CanvasInput/CanvasInput.min.js"></script>
-    <script src="../js/problemGenerator.js"></script>
-    <script src="../js/solutionApi.js"></script>
-    <script src="../js/Player.js"></script>
-    <script src="../js/Computer.js"></script>
-    <script src="../js/Game.js"></script>
+              // updated health for player and opponent
+              let health = getFromSocket()
+              if (health !== null) {
+                  if (playerHealth != health[0]) {
+                      playerHealth = health[0]
+                      // TODO: player was attacked --> animate
+                      
+                      // update health bar interface
+                      let perc = playerHealth+"%"
+                      playerHealthDisplay.style.width= perc
+                  }
+                  else if (opponentHealth != health[1]) {
+                      opponentHealth = health[1]
+                      // TODO: opponent was attacked --> animate
 
-    <script>
-        console.log("PLEASE PRINT")
-        let canvas = document.getElementById("game");
-        // 2D rendering context, to paint to canvas
-        let ctx = canvas.getContext("2d");
-        ctx.canvas.width  = window.outerWidth;
-        ctx.canvas.height = window.outerHeight;
-        console.log("IN GAMEPLAY HANDLEBARS, PRINTING MONSTER")
-        console.log({{currentUser.monster}})
-        let Calcumon = new Game(ctx, canvas, {{currentUser.level}}, {{currentUser.monster}})
-        // ctx.canvas.height = window.innerHeight;
+                      // update heath bar interface
+                      let perc = opponentHealth+"%"
+                      opponentHealthDisplay.style.width= perc
+                  }
+                  
+                  
+              }
+              
+          }
+          
+          // TODO: inp = string value of player's answer
+          function verifySolution(inp) {
+              return true
+          }
 
-        // draw game
-        Calcumon.draw()
-        function run() {
-            Calcumon.update()
-            let buttons = document.getElementsByClassName('attackButton')
-            if (buttons) {
-                for (let i = 0; i < buttons.length; i++) {
-                    buttons[i].onclick = (e) => {
-                        console.log("setting stuff")
-                        Calcumon.updateIndex(i)
-                    }
-                }
-            }
+          // TODO: socket server access
+          // sol = bool value of whether or not solution was correct
+          // send player name as well
+          function sendToSocket(sol) {
+              // send that value to socket
+          }
 
-        }
-        run()
+          // TODO: returns list of int values of new healths [player, opponent] and player name??
+          function getFromSocket() {
+              if ()
+              return 0, 0
+          }
+          
+          // will execute update every 10 milliseconds
+          setInterval(update, 10);
 
-        // will execute draw every 10 milliseconds
-        setInterval(run, 10);
-    </script>
+      </script>
+      
