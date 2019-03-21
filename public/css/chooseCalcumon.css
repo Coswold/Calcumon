@@ -1,18 +1,21 @@
 body {
-    background-color: #130094;
-    color: white;
+
 }
 
-.chooseCalcumon {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+/* Hero Container */
+.pick-calcmon-hero-container {
+    display: flex;
+    justify-content: center;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 60px;
-    margin-top: 50px;
+/* Pick Calcmon png */
+.pick-calcmon-hero-image {
+    height: 25vh;
+    width: auto;
+    margin:3vh;
 }
 
+/* Monster Selection Grid Container */
 .gridContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -20,8 +23,9 @@ h1 {
     grid-template-rows: 300px 300px;
     margin-right: 40px;
     margin-left: 40px;
-    
+
 }
+
 
 .button {
     color: #130094;
@@ -41,10 +45,12 @@ h1 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+/* Grid Cards */
 .gridItem {
     background-color: pink;
     border: 1px solid black;
 }
+
 
 img {
     width: 70%;
