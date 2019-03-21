@@ -5,12 +5,6 @@ process.env.SECRET
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
-});
-
 const methodOverride = require('method-override')
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
@@ -55,7 +49,7 @@ require('./controllers/choose.js')(app);
 require('./controllers/dashboard.js')(app);
 require('./controllers/game.js')(app);
 require('./controllers/mobile_api.js')(app);
-
+require('./controllers/sockets.js')(app, io);
 
 const port = process.env.PORT || 3000;
 
