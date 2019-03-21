@@ -45,6 +45,9 @@
 
       </div>
 
+      <script src="../js/problemGenerator.js"></script>
+      <script src="../js/solutionApi.js"></script>
+
       <script>
           let currProblem = ''
           let currSolution = ''
@@ -92,8 +95,7 @@
                       let perc = opponentHealth+"%"
                       opponentHealthDisplay.style.width= perc
                   }
-                  
-                  
+  
               }
               
           }
@@ -107,7 +109,7 @@
           // sol = bool value of whether or not solution was correct
           // send player name as well
           function sendToSocket(sol) {
-              // send that value to socket
+              // send that value to socket with player name [val, playername]
           }
 
           // TODO: returns list of int values of new healths [player, opponent] and player name??
