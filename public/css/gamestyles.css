@@ -1,0 +1,48 @@
+
+/* outer game div */
+.container {
+    padding: 20px;
+}
+/* problem section */
+.prob {
+    border: 1px solid black;
+    padding: 20px;
+    font-size: 30px;
+}
+
+/* solution section */
+.sol {
+    /* border: 1px solid black; */
+    margin-top: 10px;
+    text-align: center;
+}
+
+.sol input {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.sol button {
+    margin: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+}
+
+/*  health bars  */
+.health > div {
+    height: 250px;
+    border: 1px solid black;
+}
+
+.health {
+    margin-top: 5%;
+}
+
+#player-health, #opponent-health {
+    background-color: rgb(244, 127, 255);
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid black; */
+}
