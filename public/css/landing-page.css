@@ -4,7 +4,7 @@ body, html {
     overflow: hidden;
     margin: 0;
     padding: 0;
-    background: radial-gradient(#baffff,#63f2f2, #66d8ff)fixed;
+    background: radial-gradient(#baffff,#63f2f2, #25aeed)fixed;
 }
 
 /* Body Styles*/
@@ -21,8 +21,8 @@ body{
     height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    /* flex-direction: column; */
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -39,6 +39,18 @@ body{
     /* display: flex;
     justify-content: center;
     margin-top: 5.5vh; */
+}
+
+/* Happy Monster */
+.happy-monster {
+    height:50vh;
+
+}
+
+.happy-monster-container{
+    width:100%;
+    background:white;
+
 }
 
 /* Hero Image ("Calcmon") */
@@ -58,13 +70,19 @@ body{
 .login-form {
     min-width: 290px;
     min-height: 240px;
+    width:30vh;
     display: flex;
     flex-direction: column;
     /* border: 2px solid #444444;
     background: white; */
     border-radius: 15px;
-    padding:1.5em;
-    margin: 1vh;
+    padding:2vh;
+
+}
+
+.login-form-container {
+    display: flex;
+    justify-content: center;
 }
 
 .signup-form {
@@ -81,19 +99,22 @@ body{
 
 /* Input Feild Styles (username, password) */
  .form-control {
-    background:#E9FC5E;
-    font-family: 'Baloo Chettan', cursive;
+    background: #D8FF5F;
+    /* font-family: 'Baloo Chettan', cursive; */
     text-align: center;
-    opacity: .8;
-    border: 1.5px solid #444444;
+    /* border: 1.5px solid #444444; */
+    border-radius: 15px;
  }
 
  /* Input Feild Hover Styles */
  .form-control:hover {
-     background:#F967DE;
-     opacity: .6;
+     background:#ffa5e2;
  }
 
+.checkbox {
+    font-family: 'Baloo Chettan', cursive;
+
+}
  /* Signup Link*/
  .signup-link {
     color:#F967DE;
@@ -108,7 +129,7 @@ body{
 /* Signup Link Hover */
  .signup-link:hover{
      text-decoration: none;
-     color:#E9FC5E;
+     color:#3db0bf;
  }
 
 /* "Not Registered? Style" */
@@ -123,6 +144,7 @@ p {
   .login-button {
     font-family: 'Baloo Chettan', cursive;
     background: #F967DE;
+    border-radius:15px;
 
   }
 
@@ -135,9 +157,7 @@ p {
 
 /* Play Button png Styles */
   .play-button {
-    height: 4vh;
-    margin:5vh;
-    min-height: 130px;
+    height: 45vh;
 
   }
 
