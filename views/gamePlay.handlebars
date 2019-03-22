@@ -60,47 +60,19 @@
           let problemDisplay = document.getElementById('problem')
           let submitButton = document.getElementById('submit-solution')
           let playerHealthDisplay = document.getElementById('player-health')
-          let playerHealthDisplay = document.getElementById('opponent-health')
+          let opponentHealthDisplay = document.getElementById('opponent-health')
           
-          // updates
-          function update() {
-              // Add a problem to the div
-              if (currProblem == '') {
-                  // generate new curr problem
-                  newProblem()
-              }
-              
-              // check if player submitted a solution
-              submitButton.onClick = function() {
-                  let inp = playerInput.value // the submitted player's answer
-                  let sol = verifySolution(inp) // verify this answer with currSolution
-                  sendToSocket(sol) // send that to socket
-                  newProblem() // update problem
-              }
+          
 
-              // updated health for player and opponent
-              let health = getFromSocket()
-              if (health !== null) {
-                  if (playerHealth != health[0]) {
-                      playerHealth = health[0]
-                      // TODO: player was attacked --> animate
-                      
-                      // update health bar interface
-                      let perc = playerHealth+"%"
-                      playerHealthDisplay.style.width= perc
-                  }
-                  else if (opponentHealth != health[1]) {
-                      opponentHealth = health[1]
-                      // TODO: opponent was attacked --> animate
-
-                      // update heath bar interface
-                      let perc = opponentHealth+"%"
-                      opponentHealthDisplay.style.width= perc
-                  }
-  
-              }
-              
+          // handle player input
+          function handleInput() {
+              let inp = playerInput.value // the submitted player's answer
+              let sol = verifySolution(inp) // verify this answer with currSolution
+              sendToSocket(sol) // send that to socket
+              newProblem() // update problem
+              console.log("HI")
           }
+
           // get new problem
           async function newProblem() {
 
@@ -112,6 +84,7 @@
             problemDisplay.innerText = currProblem
             // update currSolution with new solution
             currSolution = await solve(result[0])
+            // WHY IS THIS LOGGING UNDEFINED??? IT WORKS IN PLAYER FILE!!!
             console.log(this.currSolution)
 
             // increment problem count
@@ -120,7 +93,7 @@
           
           // TODO: inp = string value of player's answer
           function verifySolution(inp) {
-              return true
+              return inp == currSolution
           }
 
           // TODO: socket server access
@@ -132,8 +105,58 @@
 
           // TODO: returns list of int values of new healths [player, opponent] and player name??
           function getFromSocket() {
-              if ()
-              return 0, 0
+              //if ()
+              return [10, 70]
+          }
+
+          
+          // updates
+          function update() {
+              // Add a problem to the div
+              if (currProblem == '') {
+                  // generate new curr problem
+                  newProblem()
+              }
+              
+              // check if player submitted a solution by clicking submit button
+              submitButton.onclick = function() {
+                  handleInput()
+              }
+              
+              // check if player submitted a solution by pressing enter key
+              playerInput.onkeypress = function(e) {
+                  if (!e) e = window.event;
+                  var keyCode = e.keyCode || e.which;
+                  if (keyCode == '13'){
+                    // Enter pressed
+                    handleInput()
+                  }
+              }
+
+              // updated health for player and opponent
+              let health = getFromSocket()
+              //console.log(health)
+              if (health !== null) {
+                  if (playerHealth != health[0]) {
+                      playerHealth = health[0]
+                      // TODO: player was attacked --> animate
+                      
+                      // update health bar interface
+                      let perc = playerHealth+"%"
+                      playerHealthDisplay.style.height= perc
+                      console.log(playerHealthDisplay.style.height)
+                  }
+                  
+                  if (opponentHealth != health[1]) {
+                      opponentHealth = health[1]
+                      // TODO: opponent was attacked --> animate
+
+                      // update heath bar interface
+                      let perc = opponentHealth+"%"
+                      opponentHealthDisplay.style.height= perc
+                      console.log(opponentHealthDisplay.style.height)
+                  }
+              }
           }
           
           // will execute update every 10 milliseconds
