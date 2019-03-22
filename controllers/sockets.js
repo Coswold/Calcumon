@@ -8,13 +8,17 @@ module.exports = (app, io) => {
             let player1 = 100;
             let player2 = 100;
             socket.join('room-' + ++rooms);
-            socket.emit('newGame', {name: data.name, room: 'room-'+rooms});
+            socket.emit('newGame', {'player1': player1, 'player2': player2, room: 'room-'+rooms});
         });
 
 
         socket.on('answer submission', function(data) {
-            player1 -= 10;
-            player2 -= 10;
+            if (data.player == "player1") {
+                player1 -= 10;
+            }
+            if (data.player == "player2") {
+                player2 -= 10;
+            }
             socket.broadcast.to(data.room).emit('answer submission',
             {'player1': player1, 'player2': player2});
             console.log('player1 health: ' + player1);
