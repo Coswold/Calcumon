@@ -53,6 +53,8 @@
           let currSolution = ''
           let playerHealth = 100
           let opponentHealth = 100
+          let level = 1 // add level from database
+          let problemCount = 0 // how many problems has the player seen
 
           let playerInput = document.getElementById('answer')
           let problemDisplay = document.getElementById('problem')
@@ -64,9 +66,8 @@
           function update() {
               // Add a problem to the div
               if (currProblem == '') {
-                  // TODO: generate new curr problem
-                  // TODO: set problemDisplay.value = currProblem
-                  // TODO: set currSolution to new solution
+                  // generate new curr problem
+                  newProblem()
               }
               
               // check if player submitted a solution
@@ -74,6 +75,7 @@
                   let inp = playerInput.value // the submitted player's answer
                   let sol = verifySolution(inp) // verify this answer with currSolution
                   sendToSocket(sol) // send that to socket
+                  newProblem() // update problem
               }
 
               // updated health for player and opponent
@@ -98,6 +100,22 @@
   
               }
               
+          }
+          // get new problem
+          async function newProblem() {
+
+            let result = getProblem(level, problemCount, true)
+
+            // update currProblem
+            currProblem = makeProblemReadable(result[0])
+            // set problemDisplay.value = currProblem
+            problemDisplay.innerText = currProblem
+            // update currSolution with new solution
+            currSolution = await solve(result[0])
+            console.log(this.currSolution)
+
+            // increment problem count
+            problemCount += 1
           }
           
           // TODO: inp = string value of player's answer
