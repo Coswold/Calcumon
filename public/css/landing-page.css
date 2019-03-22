@@ -17,6 +17,7 @@ body{
 
 /* Register Page Background Color  */
 .register-page {
+    /* background: radial-gradient(white,#e5ff54)fixed; */
     background: white;
     height: 100%;
     width: 100%;
@@ -29,7 +30,7 @@ body{
 
 .register-monster-container {
     width:100%;
-     background: white;
+     background: transparent;
 ]
 }
 /* Hero Container */
@@ -89,7 +90,7 @@ body{
     /* border: 2px solid #444444;
     background: white; */
     border-radius: 15px;
-    padding:2vh;
+    padding:1vh;
 
 }
 
@@ -171,6 +172,7 @@ p {
 /* Play Button png Styles */
   .play-button {
     height: 45vh;
+    margin-bottom: 2vh
 
   }
 
@@ -233,5 +235,111 @@ p {
   }
   to {
     transform: translateY(-2000px);
+  }
+}
+
+
+/* DECORATIVE bubbles */
+.bubbles {
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.bubbles li {
+  position: fixed;
+  list-style: none;
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius:50%;
+  background:#4cd5ff;
+  opacity: 0.7;
+  /* background-color: rgba(255, 255, 255, 0.15); */
+  bottom: -160px;
+  animation: square 25s infinite;
+  transition-timing-function: linear;
+}
+.bubbles li:nth-child(1) {
+  left: 10%;
+}
+.bubbles li:nth-child(2) {
+  left: 20%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0.5s;
+  animation-duration: 17s;
+}
+.bubbles li:nth-child(3) {
+  left: 25%;
+  animation-delay: 4s;
+
+}
+.bubbles li:nth-child(4) {
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-duration: 18s;
+  background:#4cd5ff;
+  opacity: 0.3;
+  /* background-color: rgba(255, 255, 255, 0.25); */
+}
+.bubbles li:nth-child(5) {
+  left: 70%;
+}
+.bubbles li:nth-child(6) {
+  left: 80%;
+  width: 120px;
+  height: 120px;
+  animation-delay: 1s;
+  background: #4cd5ff;
+  opacity: 0.2;
+  /* background-color: rgba(255, 255, 255, 0.2); */
+}
+.bubbles li:nth-child(7) {
+  left: 32%;
+  width: 160px;
+  height: 160px;
+  animation-delay: 5s;
+}
+.bubbles li:nth-child(8) {
+  left: 55%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 10s;
+  animation-duration: 40s;
+}
+.bubbles li:nth-child(9) {
+  left: 25%;
+  width: 30px;
+  height: 30px;
+  animation-delay: 0.5s;
+  animation-duration: 40s;
+  background: #4cd5ff;
+  opacity: 0.3;
+
+}
+.bubbles li:nth-child(10) {
+  left: 90%;
+  width: 560px;
+  height: 160px;
+  animation-delay: 5s;
+}
+@keyframes square {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-700px) rotate(600deg);
+  }
+}
+@keyframes square {
+  0% {
+            transform: translateY(0);
+  }
+  100% {
+            transform: translateY(-700px) rotate(600deg);
   }
 }
