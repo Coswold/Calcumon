@@ -102,7 +102,7 @@ class SimpleFractions {
         let op = this.getOp()
 
         // create equation
-        equation = `${num1} divided by ${den1} ${op} ${num2} divided by ${den2}`
+        let equation = `${num1} divided by ${den1} ${op} ${num2} divided by ${den2}`
         return equation
     }
 

@@ -3,38 +3,64 @@ module.exports = (app, io) => {
     var rooms = 0;
 
     io.on('connection', function(socket) {
-        // NOTE: cleint side sends in username when game is initialized using 
-                    // 'socket.emit('add user', username)' 
+        // NOTE: cleint side sends in username when game is initialized using
+                    // 'socket.emit('add user', username)'
         // I believe this can be accessed as data.username
         // reference: https://github.com/socketio/socket.io/blob/master/examples/chat/public/main.js
 
-        // NOTE: client side sends in a bool value when solution is submitted using: 
+        // NOTE: client side sends in a bool value when solution is submitted using:
                     // socket.emit('solution submitted', [sol, username])
 
-        // NOTE: client side EXPECTS server side to send health updates as [username, health]. Accessed as follows : 
+        // NOTE: client side EXPECTS server side to send health updates as [username, health]. Accessed as follows :
                     // socket.on('health update', function(msg) {...})
-
+        let roomExists = false
+        let room = ''
+        socket.on('find opponent', function(data) {
+            room = data.room
+            roomExists = true
+        })
         socket.on('createGame', function(data){
-            let player1 = 100;
-            let player2 = 100;
-            socket.join('room-' + ++rooms);
-            socket.emit('newGame', {'player1': player1, 'player2': player2, room: 'room-'+rooms});
+            if (roomExists) {
+                joinRoom(room)
+            } else {
+                createGame(data)
+            }
+            /*
+            if (data.room) {
+                socket.join(data.room);
+                socket.broadcast.to(data.room).emit('newGame', { room: data.room });
+            } else {
+                socket.join('room-' + ++rooms);
+                socket.emit('newGame', { room: 'room-'+rooms });
+            }
+            */
         });
 
-        socket.on('answer submission', function(data) {
-            if (data.player == "player1") {
-                player1 -= 10;
+        function joinRoom(room) {
+            socket.join(room);
+            socket.broadcast.to(data.room).emit('newGame', { room: room, found = true });
+            roomExists = false
+            room = ''
+        }
+        function createRoom(data) {
+            socket.join('room-' + ++rooms);
+            socket.emit('newGame', { room: 'room-'+rooms , found = false});
+            roomExists = true
+            room = 'room-'+rooms
+        }
+
+        socket.on('solution submitted', function(data) {
+            if (data.sol == true) {
+                data[3] -= 10;
+            } else {
+                data[2] -= 10
             }
-            if (data.player == "player2") {
-                player2 -= 10;
-            }
-            socket.broadcast.to(data.room).emit('answer submission',
-            {'player1': player1, 'player2': player2});
-            console.log('player1 health: ' + player1);
+            socket.broadcast.to(data.room).emit('answer submission', data);
+            console.log(data);
         });
 
         socket.on('chat message', function(data) {
-            socket.broadcast.to(data.room).emit('chat message', msg);
+            socket.broadcast.to(data.room).emit('health update', msg);
             console.log(msg)
         });
     });
