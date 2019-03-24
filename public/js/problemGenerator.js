@@ -153,7 +153,7 @@ class MultiplyFractions {
         let den2 = getRandomInt(this.max) + 1
         let op = "divided by"
         // create equation
-        equation = `(${num1} ${op} ${den1}) multiplied by (${num2} ${op} ${den2})`
+        let equation = `(${num1} ${op} ${den1}) multiplied by (${num2} ${op} ${den2})`
         return equation
     }
 
