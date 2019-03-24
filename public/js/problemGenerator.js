@@ -376,7 +376,7 @@ class IntermediateEquations {
     }
 }
 
-let topics = [new Simple(), new SimpleFractions(), new MultiplyFractions(), new DivideFractions(), new SimpleEquations(), new IntermediateEquations()]
+var topics = [new Simple(), new SimpleFractions(), new MultiplyFractions(), new DivideFractions(), new SimpleEquations(), new IntermediateEquations()]
 // Give this function the player's level, and it will return a problem accordingly
 // input level must be more than 0 and less than the len(topics)
 // current possibilities are upto len(topics)
@@ -386,7 +386,10 @@ let topics = [new Simple(), new SimpleFractions(), new MultiplyFractions(), new 
 
 function getProblem(level, i, result) {
     let x = 5 // how many problems of each category
-    topic = topics[level-1]
+    console.log(topics)
+    console.log('level: ', level)
+    let topic = topics[level-1]
+    console.log(topic)
 
     // what problem pattern to use (1, 2, 3)?
     if (i < x) {
