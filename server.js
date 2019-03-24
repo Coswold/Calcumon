@@ -53,6 +53,6 @@ require('./controllers/sockets.js')(app, io);
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => console.log(`App listening on port ${port}!`))
+http.listen(port, () => console.log(`App listening on port ${port}!`))
 
 module.exports = app;

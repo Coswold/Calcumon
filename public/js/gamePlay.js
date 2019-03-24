@@ -31,7 +31,7 @@ function findOpponent() {
   socket.emit('find opponent', room)
   socket.on('found oppenent', function(msg) {
     foundOpponent = msg
-  }) 
+  })
 }
 
 // sol = bool value of whether or not solution was correct
@@ -57,7 +57,7 @@ function getFromSocket() {
         findOpponent()
       }
     }
-    
+
   })
 }
 
@@ -76,6 +76,7 @@ function handleInput() {
 async function newProblem() {
 
     let result = getProblem(level, problemCount, true)
+    console.log('*******************'+result)
 
     // update currProblem
     currProblem = makeProblemReadable(result[0])
@@ -104,16 +105,16 @@ function updateHealth(msg) {
           playerHealth = health[2]
           opponentHealth = health[3]
           // TODO: player was attacked --> animate
-          
-          
+
+
       }
-      
+
       else {
           opponentHealth = health[2]
           playerHealth = health[3]
           // TODO: opponent was attacked --> animate
 
-          
+
       }
 
       // update player health bar interface
@@ -162,12 +163,12 @@ function update() {
       // generate new curr problem
       newProblem()
   }
-  
+
   // check if player submitted a solution by clicking submit button
   submitButton.onclick = function() {
       handleInput()
   }
-  
+
   // check if player submitted a solution by pressing enter key
   playerInput.onkeypress = function(e) {
       if (!e) e = window.event;
@@ -183,6 +184,8 @@ function update() {
   updateHealth(msg)
 }
 
+console.log("PLEASE WORK!!!!")
+update()
 // will execute update every 10 milliseconds
 setInterval(update, 1000);
 
