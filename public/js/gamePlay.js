@@ -27,12 +27,13 @@ setUsername()
 
 // sol = bool value of whether or not solution was correct
 // send player name as well
+// [true/false, username, player's health, opp's health]
 function sendToSocket(sol) {
-  socket.emit('solution submitted', [sol, username])
+  socket.emit('solution submitted', [sol, username, playerHealth, opponentHealth])
   // send that value to socket with player name [sol, playername]
 }
 
-// returns list of int values of new healths [username, health]
+// returns list of int values of new healths [sol, username, username-health, other-Health]
 function getFromSocket() {
   socket.on('health update', function(msg) {
       if (msg != null) {
@@ -81,24 +82,30 @@ function updateHealth(msg) {
   console.log(msg)
   if (msg) {
       if (username == msg[0]) {
-          playerHealth = health[1]
+          playerHealth = health[2]
+          opponentHealth = health[3]
           // TODO: player was attacked --> animate
           
-          // update health bar interface
-          let perc = playerHealth+"%"
-          playerHealthDisplay.style.height= perc
-          console.log(playerHealthDisplay.style.height)
+          
       }
       
       else {
-          opponentHealth = health[1]
+          opponentHealth = health[2]
+          playerHealth = health[3]
           // TODO: opponent was attacked --> animate
-
-          // update heath bar interface
-          let perc = opponentHealth+"%"
-          opponentHealthDisplay.style.height= perc
-          console.log(opponentHealthDisplay.style.height)
+          
+          
       }
+
+      // update player health bar interface
+      let perc = playerHealth+"%"
+      playerHealthDisplay.style.height= perc
+      console.log(playerHealthDisplay.style.height)
+
+      // update opponent heath bar interface
+      let perc = opponentHealth+"%"
+      opponentHealthDisplay.style.height= perc
+      console.log(opponentHealthDisplay.style.height)
   }
 }
 
