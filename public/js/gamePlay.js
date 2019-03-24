@@ -9,6 +9,7 @@ let playerHealth = 100
 let opponentHealth = 100
 let level = document.getElementById('level').textContent // add level from database
 let problemCount = 0 // how many problems has the player seen
+let room = ''
 
 let playerInput = document.getElementById('answer')
 let problemDisplay = document.getElementById('problem')
@@ -17,6 +18,7 @@ let playerHealthDisplay = document.getElementById('player-health')
 let opponentHealthDisplay = document.getElementById('opponent-health')
 
 let socket = io()
+let foundOpponent = false; // tracks if opponent joined
 
 ////////////// ****** SOCKETS ************ ////////
 // when joined, send username to socket
@@ -25,20 +27,37 @@ function setUsername() {
 }
 setUsername()
 
+function findOpponent() {
+  socket.emit('find opponent', room)
+  socket.on('found oppenent', function(msg) {
+    foundOpponent = msg
+  }) 
+}
+
 // sol = bool value of whether or not solution was correct
 // send player name as well
-// [true/false, username, player's health, opp's health]
+// [true/false, username, player's health, opp's health, room#]
 function sendToSocket(sol) {
-  socket.emit('solution submitted', [sol, username, playerHealth, opponentHealth])
+  socket.emit('solution submitted', [sol, username, playerHealth, opponentHealth, room])
   // send that value to socket with player name [sol, playername]
 }
 
-// returns list of int values of new healths [sol, username, username-health, other-Health]
+// returns list of int values of new healths [sol, username, username-health, other-Health, room#]
 function getFromSocket() {
   socket.on('health update', function(msg) {
       if (msg != null) {
           return msg
       }
+  })
+
+  socket.on('createGame', function(data) {
+    room = data.rm
+    if (data.found == false){
+      while (foundOpponent == false) {
+        findOpponent()
+      }
+    }
+    
   })
 }
 
@@ -80,7 +99,7 @@ function verifySolution(inp) {
 // handle updating health for given player [username, health]
 function updateHealth(msg) {
   console.log(msg)
-  if (msg) {
+  if (msg && room.length == 5 && room == msg[4]) {
       if (username == msg[0]) {
           playerHealth = health[2]
           opponentHealth = health[3]
@@ -93,7 +112,7 @@ function updateHealth(msg) {
           opponentHealth = health[2]
           playerHealth = health[3]
           // TODO: opponent was attacked --> animate
-          
+
           
       }
 
@@ -103,7 +122,7 @@ function updateHealth(msg) {
       console.log(playerHealthDisplay.style.height)
 
       // update opponent heath bar interface
-      let perc = opponentHealth+"%"
+      perc = opponentHealth+"%"
       opponentHealthDisplay.style.height= perc
       console.log(opponentHealthDisplay.style.height)
   }

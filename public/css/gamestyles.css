@@ -49,3 +49,11 @@
     height: 100%;
     /* border: 1px solid black; */
 }
+
+/* phaser elem */
+canvas {
+    /* for a width of 800px and height of 600px */
+    position: fixed;
+    top: calc(50% - 300px); /* 600/2 = 300 */
+    left: calc(50% - 400px); /* 800/2 = 400 */
+}
