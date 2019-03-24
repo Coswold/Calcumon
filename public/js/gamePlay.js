@@ -76,7 +76,8 @@ function getFromSocket() {
 
 // handle updating health for given player [username, health]
 function updateHealth(msg) {
-  if (msg !== null) {
+  console.log(msg)
+  if (msg) {
       if (username == msg[0]) {
           playerHealth = health[1]
           // TODO: player was attacked --> animate
