@@ -18,11 +18,30 @@ let opponentHealthDisplay = document.getElementById('opponent-health')
 
 let socket = io()
 
+////////////// ****** SOCKETS ************ ////////
 // when joined, send username to socket
 function setUsername() {
   socket.emit('add user', username)
 }
 setUsername()
+
+// sol = bool value of whether or not solution was correct
+// send player name as well
+function sendToSocket(sol) {
+  socket.emit('solution submitted', [sol, username])
+  // send that value to socket with player name [sol, playername]
+}
+
+// returns list of int values of new healths [username, health]
+function getFromSocket() {
+  socket.on('health update', function(msg) {
+      if (msg != null) {
+          return msg
+      }
+  })
+}
+
+////////////// ****** GAME ************ ////////
 
 // handle player input
 function handleInput() {
@@ -57,23 +76,6 @@ function verifySolution(inp) {
   return inp == currSolution
 }
 
-// TODO: socket server access
-// sol = bool value of whether or not solution was correct
-// send player name as well
-function sendToSocket(sol) {
-  socket.emit('solution submitted', [sol, username])
-  // send that value to socket with player name [sol, playername]
-}
-
-// returns list of int values of new healths [username, health]
-function getFromSocket() {
-  socket.on('health update', function(msg) {
-      if (msg != null) {
-          return msg
-      }
-  })
-}
-
 // handle updating health for given player [username, health]
 function updateHealth(msg) {
   console.log(msg)
@@ -100,9 +102,35 @@ function updateHealth(msg) {
   }
 }
 
+// handles player lost redirect
+function lose() {
+  let newUrl = "/gameOverLose"
+  document.location.href = newUrl
+}
+
+// handles player win redirect
+function win() {
+  let newUrl = "/gameOverWin"
+  document.location.href = newUrl
+}
+
+// checks for game state
+function checkGameState() {
+  console.log("CHECKING GAME STATE")
+  console.log(playerHealth, opponentHealth)
+  if (playerHealth == 0) {
+    lose()
+  }
+  else if (opponentHealth == 0){
+    win()
+  }
+}
 
 // updates
 function update() {
+  // check if game is over
+  checkGameState()
+
   // Add a problem to the div
   if (currProblem == '') {
       // generate new curr problem
