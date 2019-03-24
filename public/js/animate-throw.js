@@ -51,6 +51,8 @@ function preload () {
 
     // OR Load an image:
     // this.load.image('paint', '/path');
+
+    // Load paint splotches as well
 }
 
 // building the actual scene
@@ -67,6 +69,8 @@ function create () {
     // paint = this.physics.add.sprite(400, 460, 'paint'); //OR use add group to add sprite images
     // paint.setCollideWorldBounds(true); // prevent going out of bounds of our game box
     // paint.visible = false // set to true when needed
+
+    // create a paint splotches asset group: add to it as needed, and display on top of attacked calcumon
 
     // CREATE ANIMATIONS
     // this.anims.create({
