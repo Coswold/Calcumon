@@ -10,6 +10,7 @@ let opponentHealth = 100
 let level = document.getElementById('level').textContent // add level from database
 let problemCount = 0 // how many problems has the player seen
 let room = ''
+let opponentName = ''
 
 let playerInput = document.getElementById('answer')
 let problemDisplay = document.getElementById('problem')
@@ -20,18 +21,36 @@ let opponentHealthDisplay = document.getElementById('opponent-health')
 let socket = io()
 let foundOpponent = false; // tracks if opponent joined
 
+// create / join game button events
+document.getElementById('createGame').onclick = () => {
+  console.log("*******YOYO******")
+  createGame()
+}
+//addEventListener("onclick", createGame)
+document.getElementById('joinGame').onclick = () => {
+  console.log("JOIN GAME BUTTON PRESSED")
+  findOpponent()
+}
+
 ////////////// ****** SOCKETS ************ ////////
 // when joined, send username to socket
-function setUsername() {
-  socket.emit('createGame', room)
+function createGame() {
+  console.log("create button pressed")
+  socket.emit('createGame', { username: username })
 }
-setUsername()
 
 function findOpponent() {
-  socket.emit('find opponent', room)
-  socket.on('found oppenent', function(msg) {
-    foundOpponent = msg
+  console.log("find button pressed")
+  socket.emit('joinGame', { username: username })
+  socket.on(username, function(msg) {
+    if (msg.success == true) {
+      room = msg.room
+      opponentName = msg.name
+    } else {
+      console.log("Could not find a room to join.", msg.message)
+    }
   })
+  console.log(room, opponentName)
 }
 
 // sol = bool value of whether or not solution was correct
@@ -86,7 +105,7 @@ async function newProblem() {
     currSolution = await solve(result[0])
 
     // !!! ****** WHY IS THIS LOGGING UNDEFINED??? IT WORKS IN PLAYER FILE!!! ***** !!!
-    console.log(this.currSolution)
+    console.log(currSolution)
 
     // increment problem count
     problemCount += 1
@@ -99,7 +118,7 @@ function verifySolution(inp) {
 
 // handle updating health for given player [username, health]
 function updateHealth(msg) {
-  console.log(msg)
+  // console.log(msg)
   if (msg && room.length == 5 && room == msg[4]) {
       if (username == msg[0]) {
           playerHealth = health[2]
@@ -143,8 +162,8 @@ function win() {
 
 // checks for game state
 function checkGameState() {
-  console.log("CHECKING GAME STATE")
-  console.log(playerHealth, opponentHealth)
+  // console.log("CHECKING GAME STATE")
+  // console.log(playerHealth, opponentHealth)
   if (playerHealth == 0) {
     lose()
   }
@@ -154,7 +173,7 @@ function checkGameState() {
 }
 
 // updates
-function update() {
+async function update() {
   // check if game is over
   checkGameState()
 
