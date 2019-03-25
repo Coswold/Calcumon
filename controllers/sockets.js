@@ -84,6 +84,7 @@ module.exports = (app, io) => {
                 data[2] -= 10
             }
             socket.emit('answer submission', data);
+            socket.emit('health update', data);
             console.log(data);
         });
 

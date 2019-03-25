@@ -134,7 +134,7 @@ function verifySolution(inp) {
   return inp == currSolution
 }
 
-// handle updating health for given 
+// handle updating health for given
 function updateHealth(msg) {
   console.log("MESSAGE FROM SOCKET", msg)
   console.log("UPDATING HEALTH", msg)
@@ -143,8 +143,6 @@ function updateHealth(msg) {
           playerHealth = msg[2]
           opponentHealth = msg[3]
           console.log(playerHealth, opponentHealth)
-
-          // animate
           if (msg[0] == true) {
             attackPlayer() // player attacks opponent
           } else {
@@ -242,12 +240,12 @@ function update() {
 }
 
   // updated health for player and opponent
-  
+
   socket.on('answer submission', function(data) {
      updateHealth(data)
      console.log(data)
   })
-  
+
 }
 
 // will execute update every 10 milliseconds
