@@ -122,25 +122,29 @@ function verifySolution(inp) {
   return inp == currSolution
 }
 
-// handle updating health for given player [username, health]
+// handle updating health for given 
 function updateHealth(msg) {
-  console.log(msg)
-  if (msg && room.length == 5 && room == msg[4]) {
-      if (username == msg[0]) {
+  
+  console.log("MESSAGE FROM SOCKET", msg)
+  console.log("UPDATING HEALTH", msg)
+  // if (msg && room.length == 2 && room == msg[4]) {
+      if (username == msg[1]) {
           console.log("****HAHA I GOT THIS*** ")
-          playerHealth = health[2]
-          opponentHealth = health[3]
+          playerHealth = msg[2]
+          opponentHealth = msg[3]
           // TODO: player was attacked --> animate
-          attackOpponent()
+          console.log(playerHealth, opponentHealth)
+          // attackOpponent()
 
       }
 
       else {
-          opponentHealth = health[2]
-          playerHealth = health[3]
+          opponentHealth = msg[2]
+          playerHealth = msg[3]
+          console.log(playerHealth, opponentHealth)
           // TODO: opponent was attacked --> animate
 
-          attackPlayer()
+          // attackPlayer()
       }
 
       // update player health bar interface
@@ -153,7 +157,7 @@ function updateHealth(msg) {
       opponentHealthDisplay.style.height= perc
       console.log(opponentHealthDisplay.style.height)
   }
-}
+// }
 
 // handles player lost redirect
 function lose() {
@@ -171,11 +175,15 @@ function win() {
 function checkGameState() {
   // console.log("CHECKING GAME STATE")
   // console.log(playerHealth, opponentHealth)
-  if (playerHealth == 0) {
-    lose()
+  if (playerHealth <= 0) {
+    console.log("LOST")
+    let newUrl = "/gameOverLose"
+    document.location.href = newUrl
   }
-  else if (opponentHealth == 0){
-    win()
+  else if (opponentHealth <= 0){
+    console.log("WON")
+    let newUrl = "/gameOverWin"
+    document.location.href = newUrl
   }
 }
 
@@ -214,8 +222,12 @@ function update() {
 }
 
   // updated health for player and opponent
-  let msg = getFromSocket()
-  updateHealth(msg)
+  
+  socket.on('answer submission', function(data) {
+     updateHealth(data)
+     console.log(data)
+  })
+  
 }
 
 console.log("PLEASE WORK!!!!")

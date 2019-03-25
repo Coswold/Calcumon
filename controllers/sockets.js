@@ -81,7 +81,7 @@ module.exports = (app, io) => {
             if (data[0] == true) {
                 data[3] -= 10;
             } else {
-                data.playerHealth -= 10
+                data[2] -= 10
             }
             socket.emit('answer submission', data);
             console.log(data);

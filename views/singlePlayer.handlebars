@@ -1,0 +1,74 @@
+
+<!--  custom styles  -->
+<link rel="stylesheet" href="../../css/gamestyles.css">
+<script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+<script type="text/javascript" src="../js/animate.js" charset="utf-8"></script>
+
+<div class="container">
+  <div class = "row full-width">
+    <h1 class="quit"><a href = "/dashboard/{{currentUser._id}}">eXit</a></h1>
+  </div>
+
+  <!-- problem container -->
+  <div class="row">
+    <div class="col">
+      <!-- empty div for space purposes -->
+    </div>
+    <div class="col-8 prob" id = "problem">
+      Loading...
+    </div>
+    <div class="col">
+      <!-- empty div for space purposes -->
+    </div>
+  </div>
+
+  <!-- INPUT container -->
+  <div class="row">
+    <div class="col">
+      <!-- empty div for space purposes -->
+    </div>
+    <div class="col-8 sol">
+      <input id = "answer" placeholder="Enter solution here">
+      <button id = "skip-problem">SKIP</button>
+      <button id = "submit-solution" type ="submit">SUBMIT</button>
+    </div>
+    <div class="col">
+      <!-- empty div for space purposes -->
+    </div>
+  </div>
+
+  <!-- Paint buckets -->
+  <div class="row justify-content-between">
+    <div style="padding:0" class="col-1">
+      <img style="width:100px" src="../images/bucket-right.jpg">
+    </div>
+    <div style="padding:0" class="col-1">
+       <img style="width:100px" src="../images/bucket.jpg">
+    </div>
+  </div>
+  
+
+  <!-- Health bars -->
+
+   <!-- Health bars -->
+  <div class="row justify-content-between health">
+    <div class="col-1">
+      <div id = "player-health"></div>
+    </div>
+    <div class="col-1">
+      <div id = "opponent-health"></div>
+    </div>
+  </div>
+</div>
+
+<div class="hidden">
+  <span style="white-space: pre-line; display: none;" id="username">{{currentUser.username}}</span>
+  <span style="white-space: pre-line; display: none;" id="level">{{currentUser.level}}</span>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../js/problemGenerator.js"></script>
+<script src="../js/solutionApi.js"></script>
+<script type="text/javascript" src="../js/singlePlayer.js"></script>
+
