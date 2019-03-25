@@ -124,17 +124,20 @@ function verifySolution(inp) {
 
 // handle updating health for given 
 function updateHealth(msg) {
-  
   console.log("MESSAGE FROM SOCKET", msg)
   console.log("UPDATING HEALTH", msg)
   // if (msg && room.length == 2 && room == msg[4]) {
       if (username == msg[1]) {
-          console.log("****HAHA I GOT THIS*** ")
           playerHealth = msg[2]
           opponentHealth = msg[3]
-          // TODO: player was attacked --> animate
           console.log(playerHealth, opponentHealth)
-          // attackOpponent()
+          // TODO: player was attacked --> animate
+          
+          if (msg[0] == true) {
+            attackPlayer() // player attacks opponent
+          } else {
+            attackOpponent() // opponent attacks player
+          }
 
       }
 
@@ -143,8 +146,11 @@ function updateHealth(msg) {
           playerHealth = msg[3]
           console.log(playerHealth, opponentHealth)
           // TODO: opponent was attacked --> animate
-
-          // attackPlayer()
+          if (msg[0] == false) {
+            attackPlayer() // player attacks opponent
+          } else {
+            attackOpponent() // opponent attacks player
+          }
       }
 
       // update player health bar interface

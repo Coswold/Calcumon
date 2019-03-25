@@ -117,12 +117,13 @@ function setup() {
 }
 
 function attackPlayer() {
-    console.log("ATTACKING")
+    console.log("ATTACKING TEST PLAYER")
     attack = true
 }
 
 function attackOpponent() {
     // update values
+    console.log("TESTING COMPUTER ANIMATION THING")
 }
 
 function update () {
@@ -135,7 +136,7 @@ function update () {
         // paint.x = 450
         // paint.y = 460
         // paint.visible = true // or false
-    attack = true
+    // attack = true
     if (player) {
         if (attack == true) {
             player.anims.play('hand-throw', true)
