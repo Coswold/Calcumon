@@ -93,8 +93,8 @@ module.exports = (app, io) => {
             console.log(msg)
         });
 
-        socket.on('test', function(data) {
-            console.log(`We were pinged with: ${data.room}`)
+        socket.on('keepalive', function(data) {
+            // console.log(`We were pinged with: ${data}`)
             if (data.room == '') {
                 return
             }
@@ -102,15 +102,19 @@ module.exports = (app, io) => {
                 name: data.room
             }
             Room.findOne(query)
-            .then(room => {
-                console.log(room)
-                room.lastping = new Date(Date.now())
-                room.save()
-                console.log(`Updated ${data.room} last ping to: ${room.lastping}`)
+            .then(roomEntry => {
+                // console.log(roomEntry)
+                roomEntry.lastping = new Date(Date.now())
+                roomEntry.save()
+                // console.log(`Updated ${data.room} last ping to: ${roomEntry.lastping}`)
             })
             .catch(error => {
                 console.log(error)
             })
+        });
+
+        socket.on('test', function(data) {
+            console.log(`We were pinged with: ${data}`)
         });
     });
 

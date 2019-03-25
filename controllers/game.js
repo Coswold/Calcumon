@@ -5,7 +5,10 @@ module.exports = function(app) {
     // Need path to go to game play
     app.get(`/gameOverLose`, (req, res) => {
         if (req.user) {
-            res.render(`gameOverLose`)
+            let id = req.user._id.toString()
+            User.findById(id).then( currentUser => {
+                res.render(`gameOverLose`, { currentUser });
+            })
         } else {
             return res.status(401); // UNAUTHORIZED
         }
