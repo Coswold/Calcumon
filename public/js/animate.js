@@ -58,7 +58,7 @@ function preload () {
     );
 
     // OR Load an image:
-    this.load.image('bg', '../images/Asset-20.png');
+    this.load.image('bg', '../images/bg-new-small.png');
 
     // Load paint splotches as well
 }

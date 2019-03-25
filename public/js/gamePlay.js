@@ -15,6 +15,7 @@ let opponentName = ''
 let playerInput = document.getElementById('answer')
 let problemDisplay = document.getElementById('problem')
 let submitButton = document.getElementById('submit-solution')
+let skipButton = document.getElementById('skip-problem')
 let playerHealthDisplay = document.getElementById('player-health')
 let opponentHealthDisplay = document.getElementById('opponent-health')
 
@@ -189,6 +190,12 @@ function update() {
   // check if player submitted a solution by clicking submit button
   submitButton.onclick = function() {
       handleInput()
+  }
+
+  // skip a problem
+  skipButton.onclick = function() {
+      newProblem()
+      problemCount -= 1
   }
 
   // check if player submitted a solution by pressing enter key
