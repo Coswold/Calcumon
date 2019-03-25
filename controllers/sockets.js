@@ -23,11 +23,14 @@ module.exports = (app, io) => {
             roomExists = true
         })
         socket.on('createGame', function(data){
-            let newRoomName = 'room-' + ++rooms
-            socket.join(newRoomName);
-            let newRoom = new Room({ name: newRoomName, players: [data.username]})
+            let newRoom = new Room({ name: "placeholder", players: [data.username]})
+            let newRoomName = 'room-' + newRoom._id.toString()
+            newRoom.name = newRoomName
+            newRoom.lastping = new Date(Date.now())
             newRoom.save()
-            socket.emit('newGame', {name: data.name, room: 'room-'+rooms});
+            
+            socket.join(newRoomName);
+            socket.emit('newGame', {name: data.name, room: newRoomName});
         });
 
         socket.on('joinGame', function(data){
@@ -38,6 +41,8 @@ module.exports = (app, io) => {
             .then(activeRoomList => {
                 if (activeRoomList.length > 0) {
                     let eligibleRoomList = activeRoomList.map(entry => {
+                        let roomAge = Date.now() - entry.lastping
+                        console.log("Room Age: ")
                         if (entry.players.length == 1) {
                             return entry
                         }
@@ -82,6 +87,25 @@ module.exports = (app, io) => {
         socket.on('chat message', function(data) {
             socket.broadcast.to(data.room).emit('health update', msg);
             console.log(msg)
+        });
+
+        socket.on('ping', function(data) {
+            console.log(`We were pinged with: ${data}`)
+            if (data.room == '') {
+                return
+            }
+            let query = {
+                room: data.room
+            }
+            Room.findOne(query)
+            .then(room => {
+                room.lastping = new Date(Date.now())
+                room.save()
+                console.log(`Updated ${data.room} last ping to: ${room.lastping}`)
+            })
+            .catch(error => {
+                console.log(error)
+            })
         });
     });
 

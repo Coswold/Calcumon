@@ -43,14 +43,15 @@ function findOpponent() {
   console.log("find button pressed")
   socket.emit('joinGame', { username: username })
   socket.on(username, function(msg) {
+    console.log(msg)
     if (msg.success == true) {
       room = msg.room
       opponentName = msg.name
     } else {
       console.log("Could not find a room to join.", msg.message)
     }
+    console.log(room, opponentName)
   })
-  console.log(room, opponentName)
 }
 
 // sol = bool value of whether or not solution was correct
@@ -173,7 +174,8 @@ function checkGameState() {
 }
 
 // updates
-async function update() {
+function update() {
+  socket.emit('ping', { room: room })
   // check if game is over
   checkGameState()
 
