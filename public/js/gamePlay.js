@@ -143,13 +143,6 @@ function updateHealth(msg) {
           playerHealth = msg[2]
           opponentHealth = msg[3]
           console.log(playerHealth, opponentHealth)
-<<<<<<< HEAD
-          // TODO: player was attacked --> animate
-
-=======
-
-          // animate
->>>>>>> d5b07c0e30ff3365e3d53cec40490d714a57ce2a
           if (msg[0] == true) {
             attackPlayer() // player attacks opponent
           } else {
