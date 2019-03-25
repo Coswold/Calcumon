@@ -21,43 +21,20 @@ module.exports = (app, io) => {
             roomExists = true
         })
         socket.on('createGame', function(data){
-            // if (roomExists) {
-            //     joinRoom(room)
-            if (socket.current_room) {
-                    if (socket.current_room.length < 2) {
-                    joinRoom(room)
-                }
-            } else {
-                createRoom(data)
-                console.log("joined game")
-            }
-            console.log("HERE")
-            /*
-            if (data.room) {
-                socket.join(data.room);
-                socket.broadcast.to(data.room).emit('newGame', { room: data.room });
-            } else {
-                socket.join('room-' + ++rooms);
-                socket.emit('newGame', { room: 'room-'+rooms });
-            }
-            */
+          socket.join('room-' + ++rooms);
+          socket.emit('newGame', {name: data.name, room: 'room-'+rooms});
         });
 
-        function joinRoom(room) {
-            socket.join(room);
-            socket.broadcast.to(room).emit('newGame', { room: room, found: true });
-            roomExists = false
-            room = ''
-        }
-        function createRoom(data) {
-            socket.join('room-' + ++rooms);
-            socket.emit('newGame', { room: 'room-'+rooms , found: false});
-            // roomExists = true
-            // room = 'room-'+room
-            socket.current_room = 'room-'+rooms
-            console.log(socket.current_room)
-            
-        }
+        socket.on('joinGame', function(data){
+            var room = io.nsps['/'].adapter.rooms[data.room];
+            if( room && room.length == 1){
+                socket.join(data.room);
+                socket.broadcast.to(data.room).emit('player1', {});
+                socket.emit('player2', {name: data.name, room: data.room })
+            } else {
+                socket.emit('err', {message: 'Sorry, The room is full!'});
+            }
+        });
 
         socket.on('solution submitted', function(data) {
             if (data.sol == true) {
