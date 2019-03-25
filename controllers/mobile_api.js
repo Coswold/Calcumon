@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 module.exports = (app) => {
 
     // SIGN UP POST
-    app.get("/mobile/sign-up/:username/:password", (req, res) => {
+    app.post("/mobile/sign-up/", (req, res) => {
         // Create User and JWT
         const user = new User();
         user.username = req.params.username
@@ -25,11 +25,11 @@ module.exports = (app) => {
     // Logout
     app.get('/logout', (req, res) => {
         res.clearCookie('nToken');
-        res.redirect('/');
+        return res.status(200).send({ message: "success"});
     })
 
     // LOGIN
-    app.get("/mobile/login/:username/:password", (req, res) => {
+    app.post("/mobile/login/", (req, res) => {
         console.log(req.params)
         const username = req.params.username;
         const password = req.params.password;
