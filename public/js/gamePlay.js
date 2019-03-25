@@ -59,17 +59,17 @@ function findOpponent() {
 // send player name as well
 // [true/false, username, player's health, opp's health, room#]
 function sendToSocket(sol) {
-  console.log("PLEASE PRINT ME") 
+  console.log("PLEASE PRINT ME")
   socket.emit('solutionSubmitted', [sol, username, playerHealth, opponentHealth, room])
   // send that value to socket with player name [sol, playername]
 }
 
 // returns list of int values of new healths [sol, username, username-health, other-Health, room#]
 function getFromSocket() {
-  socket.on('answer submission', function(msg) {
-      if (msg != null) {
-          return msg
-      }
+  socket.on('answer submission', function(data) {
+      console.log(data)
+      playerHealth = data[2]
+      opponentHealth = data[3]
   })
 
   socket.on('newGame', function(data) {
@@ -77,7 +77,7 @@ function getFromSocket() {
     console.log("YOOOO: ", data.room)
     if (data.found == false){
       findOpponent()
-      
+
     }
 
   })
@@ -181,9 +181,10 @@ function checkGameState() {
 
 // updates
 function update() {
-  socket.emit('ping', { room: room })
-  // check if game is over
-  checkGameState()
+    console.log('should ping ' + room)
+    socket.emit('ping', { room: room });
+    // check if game is over
+    checkGameState()
 
   // Add a problem to the div
   if (currProblem == '') {
