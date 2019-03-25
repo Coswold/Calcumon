@@ -73,9 +73,9 @@ function create () {
     // opponent.setBounce(0.2); // slight bounce after throw
     // opponent.setCollideWorldBounds(true); // prevent going out of bounds of our game box
 
-    paint = this.physics.add.sprite(400, 460, 'paint'); //OR use add group to add sprite images
+    paint = this.physics.add.sprite(160, 460, 'paint'); //OR use add group to add sprite images
     paint.setCollideWorldBounds(true); // prevent going out of bounds of our game box
-    paint.visible = true // set to true when needed
+    paint.visible = false // set to true when needed
 
     // create a paint splotches asset group: add to it as needed, and display on top of attacked calcumon
 
@@ -116,6 +116,10 @@ function setup() {
 
 function attackPlayer() {
     player.anims.play('hand-throw', true)
+    paint.visible = true
+    // make ball move
+    paint.setVelocityX(200)
+    paint.setVelocityY(-50)
 
 
 }
@@ -123,7 +127,7 @@ function attackPlayer() {
 function attackOpponent() {
     // update values
 }
-
+let attack = true
 function update () {
     // call a function that checks for a true/false for creating animation, and what animation to create
     // based on result, do stuff here
@@ -134,7 +138,25 @@ function update () {
         // paint.x = 450
         // paint.y = 460
         // paint.visible = true // or false
+    
     if (player) {
-        attackPlayer()
+        if (attack == true) {
+            attackPlayer()
+        }
+        
+        attack = false
+    }
+
+    // make ball stop moving and restore location
+    if (paint.x >= 750) {
+        paint.setVelocityX(0)
+        paint.setVelocityY(0)
+        paint.visible = false
+        paint.x = 160
+        paint.y = 460
+    }
+    // make ball curve down
+    if (paint.y <= 380) {
+        paint.setVelocityY(50)
     }
 }
