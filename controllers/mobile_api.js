@@ -23,7 +23,7 @@ module.exports = (app) => {
     });
 
     // Logout
-    app.get('/logout', (req, res) => {
+    app.get('/mobile/logout', (req, res) => {
         res.clearCookie('nToken');
         return res.status(200).send({ message: "success"});
     })
