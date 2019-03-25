@@ -75,7 +75,8 @@ module.exports = (app, io) => {
             // }
         });
 
-        socket.on('solution submitted', function(data) {
+        socket.on('solutionSubmitted', function(data) {
+            console.log("UPDATING HEALTH VALUES IN SERVER") // NOTE: THIS IS NEVER PRINTING, HEALTH NEVER UPDATES
             if (data.sol == true) {
                 data[3] -= 10;
             } else {

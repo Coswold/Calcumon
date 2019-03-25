@@ -1,13 +1,41 @@
-
+body {
+    background-image: url('../images/Asset-20.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-family: fantasy
+    /* background: radial-gradient(#baffff,#63f2f2, #66d8ff)fixed; */
+}
 /* outer game div */
 .container {
     padding: 20px;
+}
+
+.full-width {
+    width: 100%;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.quit {
+    color: purple;
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    font-family: fantasy;
+    font-weight: bolder;
 }
 /* problem section */
 .prob {
     border: 1px solid black;
     padding: 20px;
     font-size: 30px;
+    /* background-color: #C57BFF; */
+    background-color: #EABBCE;
+    font-weight: bolder;
+    font-family: Georgia, 'Times New Roman', Times, serif
 }
 
 /* solution section */
@@ -30,6 +58,11 @@
     font-size: 16px;
 }
 
+button {
+    padding: 10px;
+    /* width: 100px; */
+    background-color: yellow
+}
 /*  health bars  */
 .health > div {
     height: 250px;
@@ -54,6 +87,15 @@
 canvas {
     /* for a width of 800px and height of 600px */
     position: fixed;
-    top: calc(50% - 300px); /* 600/2 = 300 */
+    top: calc(60% - 300px); /* 600/2 = 300 */
     left: calc(50% - 400px); /* 800/2 = 400 */
 }
+
+/* @media only screen and (max-height: 900px) {
+    canvas {
+        width: 50%;
+        margin: 0;
+        position: fixed;
+        bottom: 0;
+    }
+  } */

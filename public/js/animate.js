@@ -32,6 +32,7 @@ let paint;
 // values to update from game state
 let playerCalcumon = ''
 let opponentCalcumon = ''
+let attack;
 
 
 // Phaser Functions
@@ -57,13 +58,14 @@ function preload () {
     );
 
     // OR Load an image:
-    // this.load.image('paint', '../images/paintball.jpeg');
+    this.load.image('bg', '../images/bg-new-small.png');
 
     // Load paint splotches as well
 }
 
 // building the actual scene
 function create () {
+    // this.add.image(400, 300, 'bg');
     // SET UP SPRITES
     player = this.physics.add.sprite(150, 450, 'player');
     player.setBounce(0.2); // slight bounce after throw
@@ -115,19 +117,14 @@ function setup() {
 }
 
 function attackPlayer() {
-    player.anims.play('hand-throw', true)
-    paint.visible = true
-    // make ball move
-    paint.setVelocityX(200)
-    paint.setVelocityY(-50)
-
-
+    console.log("ATTACKING")
+    attack = true
 }
 
 function attackOpponent() {
     // update values
 }
-let attack = true
+
 function update () {
     // call a function that checks for a true/false for creating animation, and what animation to create
     // based on result, do stuff here
@@ -138,10 +135,14 @@ function update () {
         // paint.x = 450
         // paint.y = 460
         // paint.visible = true // or false
-    
+    attack = true
     if (player) {
         if (attack == true) {
-            attackPlayer()
+            player.anims.play('hand-throw', true)
+            paint.visible = true
+            // make ball move
+            paint.setVelocityX(200)
+            paint.setVelocityY(-50)
         }
         
         attack = false
