@@ -1,3 +1,5 @@
+const Room = require('../models/room.js')
+
 module.exports = (app, io) => {
 
     var rooms = 0;
@@ -21,19 +23,55 @@ module.exports = (app, io) => {
             roomExists = true
         })
         socket.on('createGame', function(data){
-          socket.join('room-' + ++rooms);
-          socket.emit('newGame', {name: data.name, room: 'room-'+rooms});
+            let newRoom = new Room({ name: "placeholder", players: [data.username]})
+            let newRoomName = 'room-' + newRoom._id.toString()
+            newRoom.name = newRoomName
+            newRoom.lastping = new Date(Date.now())
+            newRoom.save()
+            
+            socket.join(newRoomName);
+            socket.emit('newGame', {name: data.name, room: newRoomName});
         });
 
         socket.on('joinGame', function(data){
-            var room = io.nsps['/'].adapter.rooms[data.room];
-            if( room && room.length == 1){
-                socket.join(data.room);
-                socket.broadcast.to(data.room).emit('player1', {});
-                socket.emit('player2', {name: data.name, room: data.room })
-            } else {
-                socket.emit('err', {message: 'Sorry, The room is full!'});
-            }
+            console.log("TRYING TO FIND A GAME TO JOIN")
+            let room = undefined
+
+            Room.find({})
+            .then(activeRoomList => {
+                if (activeRoomList.length > 0) {
+                    let eligibleRoomList = activeRoomList.map(entry => {
+                        let roomAge = Date.now() - entry.lastping
+                        console.log("Room Age: ")
+                        if (entry.players.length == 1) {
+                            return entry
+                        }
+                    })
+                    let luckyRoom = eligibleRoomList[Math.round(Math.random() * eligibleRoomList.length)]
+                    console.log(luckyRoom)
+                    room = luckyRoom
+                }
+
+                if (room) {
+                socket.join(room.name)
+                socket.broadcast.to(room.name).emit(data.username, {})
+                socket.emit(data.username, { name: room.players[0], room: room.name, success: true })
+                } else {
+                    socket.emit(data.username, { success: false })
+                }
+            })
+            .catch(error => {
+                console.log(error)
+                socket.emit(data.username, { success: false, message: error })
+            })
+            // var room = io.nsps['/'].adapter.rooms[data.room];
+            // if( room && room.length == 1){
+            //     socket.join(data.room);
+            //     socket.broadcast.to(data.room).emit('player1', {});
+            //     socket.emit('player2', {name: data.name, room: data.room })
+            // } else {
+            //     socket.emit('err', {message: 'Sorry, The room is full!'});
+            // }
         });
 
         socket.on('solution submitted', function(data) {
@@ -49,6 +87,25 @@ module.exports = (app, io) => {
         socket.on('chat message', function(data) {
             socket.broadcast.to(data.room).emit('health update', msg);
             console.log(msg)
+        });
+
+        socket.on('ping', function(data) {
+            console.log(`We were pinged with: ${data}`)
+            if (data.room == '') {
+                return
+            }
+            let query = {
+                room: data.room
+            }
+            Room.findOne(query)
+            .then(room => {
+                room.lastping = new Date(Date.now())
+                room.save()
+                console.log(`Updated ${data.room} last ping to: ${room.lastping}`)
+            })
+            .catch(error => {
+                console.log(error)
+            })
         });
     });
 
