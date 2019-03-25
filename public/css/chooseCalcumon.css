@@ -2,11 +2,10 @@ body {
     background: linear-gradient(white,#e9ff60,#c3e200)fixed;
 }
 
-/* Hero Container */
+/* "Pick Your Calcmon" Hero Container */
 .pick-calcmon-hero-container {
-    /* border:1px solid black; */
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 /* Pick Calcmon png */
@@ -17,7 +16,52 @@ body {
     width:35vw;
 }
 
-/* Monster Selection Grid Container */
+/* Calcmon Options Container */
+.calcmon-options-container{
+    width: 100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* Calcmon Options*/
+.option-pic {
+    width:50vh;
+    margin: 4vw;
+}
+
+/* Calcmon One Option (Image and Button) */
+.option-one{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Calcmon One Option (Image and Button) */
+.option-two{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Monster1/ Monster2 Selction Button */
+.option-btn {
+  font-family: 'Baloo Chettan', cursive;
+  background: #F967DE;
+  border-radius:15px;
+  padding: 2vh;
+  width: 200px;
+}
+
+/* ^ Button Hover Styles */
+.option-btn:hover {
+  font-family: 'Baloo Chettan', cursive;
+  background: #60EBEF;
+  border-radius:15px;
+}
+
+
+/* Monster Selection Grid Container (Old)*/
 .gridContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -25,10 +69,10 @@ body {
     grid-template-rows: 300px 300px;
     margin-right: 40px;
     margin-left: 40px;
-
 }
 
-
+/* Old Next Button (Not in Use rn) */
+/*
 .button {
     color: #130094;
     background-color: #FCD12D;
@@ -45,18 +89,13 @@ body {
     font-weight: bold;
     border: 1px solid white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+} */
 
 /* Grid Cards */
-.gridItem {
+/* .gridItem {
     background-color: pink;
     border: 1px solid black;
-}
-
-
-img {
-    width: 70%;
-}
+} */
 
 
 /* Star Dust Styles */
