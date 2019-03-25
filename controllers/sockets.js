@@ -77,9 +77,9 @@ module.exports = (app, io) => {
         socket.on('solutionSubmitted', function(data) {
             console.log("UPDATING HEALTH VALUES IN SERVER") // NOTE: THIS IS NEVER PRINTING, HEALTH NEVER UPDATES
             if (data.sol == true) {
-                data[3] -= 10;
+                data.opponentHealth -= 10;
             } else {
-                data[2] -= 10
+                data.playerHealth -= 10
             }
             socket.broadcast.to(data.room).emit('answer submission', data);
             console.log(data);

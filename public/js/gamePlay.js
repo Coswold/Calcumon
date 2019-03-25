@@ -60,7 +60,7 @@ function findOpponent() {
 // [true/false, username, player's health, opp's health, room#]
 function sendToSocket(sol) {
   console.log("PLEASE PRINT ME") 
-  socket.emit('solutionSubmitted', [sol, username, playerHealth, opponentHealth, room])
+  socket.emit('solutionSubmitted', {sol, username, playerHealth, opponentHealth, room})
   // send that value to socket with player name [sol, playername]
 }
 
