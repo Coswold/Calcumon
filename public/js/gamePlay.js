@@ -102,10 +102,11 @@ function updateHealth(msg) {
   console.log(msg)
   if (msg && room.length == 5 && room == msg[4]) {
       if (username == msg[0]) {
+          console.log("****HAHA I GOT THIS*** ")
           playerHealth = health[2]
           opponentHealth = health[3]
           // TODO: player was attacked --> animate
-
+          attackOpponent()
 
       }
 
@@ -114,7 +115,7 @@ function updateHealth(msg) {
           playerHealth = health[3]
           // TODO: opponent was attacked --> animate
 
-
+          attackPlayer()
       }
 
       // update player health bar interface
