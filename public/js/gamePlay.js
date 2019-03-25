@@ -182,7 +182,7 @@ function checkGameState() {
 // updates
 function update() {
     console.log('should ping ' + room)
-    socket.emit('ping', { room: room });
+    socket.emit('test', { room: room });
     // check if game is over
     checkGameState()
 

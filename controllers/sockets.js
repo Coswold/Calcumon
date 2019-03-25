@@ -84,6 +84,7 @@ module.exports = (app, io) => {
                 data[2] -= 10
             }
             socket.emit('answer submission', data);
+            socket.emit('health update', data);
             console.log(data);
         });
 
@@ -92,16 +93,17 @@ module.exports = (app, io) => {
             console.log(msg)
         });
 
-        socket.on('ping', function(data) {
-            console.log(`We were pinged with: ${data}`)
+        socket.on('test', function(data) {
+            console.log(`We were pinged with: ${data.room}`)
             if (data.room == '') {
                 return
             }
             let query = {
-                room: data.room
+                name: data.room
             }
             Room.findOne(query)
             .then(room => {
+                console.log(room)
                 room.lastping = new Date(Date.now())
                 room.save()
                 console.log(`Updated ${data.room} last ping to: ${room.lastping}`)
