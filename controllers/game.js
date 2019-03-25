@@ -14,6 +14,18 @@ module.exports = function(app) {
         }
     });
 
+    // Need path to go to game play
+    app.get(`/gameOverWin`, (req, res) => {
+        if (req.user) {
+            let id = req.user._id.toString()
+            User.findById(id).then( currentUser => {
+                res.render(`gameOverWin`, { currentUser });
+            })
+        } else {
+            return res.status(401); // UNAUTHORIZED
+        }
+    });
+
     // UPDATE USER STATS
     app.get('/save', (req, res) => {
         if (req.user) {
