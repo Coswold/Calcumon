@@ -21,8 +21,12 @@ module.exports = (app, io) => {
             roomExists = true
         })
         socket.on('createGame', function(data){
-            if (roomExists) {
-                joinRoom(room)
+            // if (roomExists) {
+            //     joinRoom(room)
+            if (socket.current_room) {
+                    if (socket.current_room.length < 2) {
+                    joinRoom(room)
+                }
             } else {
                 createRoom(data)
                 console.log("joined game")
@@ -41,15 +45,18 @@ module.exports = (app, io) => {
 
         function joinRoom(room) {
             socket.join(room);
-            socket.broadcast.to(data.room).emit('newGame', { room: room, found: true });
+            socket.broadcast.to(room).emit('newGame', { room: room, found: true });
             roomExists = false
             room = ''
         }
         function createRoom(data) {
             socket.join('room-' + ++rooms);
             socket.emit('newGame', { room: 'room-'+rooms , found: false});
-            roomExists = true
-            room = 'room-'+rooms
+            // roomExists = true
+            // room = 'room-'+room
+            socket.current_room = 'room-'+rooms
+            console.log(socket.current_room)
+            
         }
 
         socket.on('solution submitted', function(data) {
