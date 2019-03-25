@@ -22,13 +22,14 @@ module.exports = (app, io) => {
             room = data.room
             roomExists = true
         })
+
         socket.on('createGame', function(data){
             let newRoom = new Room({ name: "placeholder", players: [data.username]})
             let newRoomName = 'room-' + newRoom._id.toString()
             newRoom.name = newRoomName
             newRoom.lastping = new Date(Date.now())
             newRoom.save()
-            
+
             socket.join(newRoomName);
             socket.emit('newGame', {name: data.name, room: newRoomName});
         });
@@ -42,18 +43,19 @@ module.exports = (app, io) => {
                 if (activeRoomList.length > 0) {
                     let eligibleRoomList = activeRoomList.map(entry => {
                         let roomAge = Date.now() - entry.lastping
-                        console.log("Room Age: ")
                         if (entry.players.length == 1) {
                             return entry
                         }
                     })
                     let luckyRoom = eligibleRoomList[Math.round(Math.random() * eligibleRoomList.length)]
-                    console.log(luckyRoom)
+                    //console.log(luckyRoom)
                     room = luckyRoom
                 }
 
                 if (room) {
                 socket.join(room.name)
+                room.players.push(data.username)
+                console.log(room)
                 socket.broadcast.to(room.name).emit(data.username, {})
                 socket.emit(data.username, { name: room.players[0], room: room.name, success: true })
                 } else {
@@ -76,12 +78,12 @@ module.exports = (app, io) => {
 
         socket.on('solutionSubmitted', function(data) {
             console.log("UPDATING HEALTH VALUES IN SERVER") // NOTE: THIS IS NEVER PRINTING, HEALTH NEVER UPDATES
-            if (data.sol == true) {
-                data.opponentHealth -= 10;
+            if (data[0] == true) {
+                data[3] -= 10;
             } else {
                 data.playerHealth -= 10
             }
-            socket.broadcast.to(data.room).emit('answer submission', data);
+            socket.emit('answer submission', data);
             console.log(data);
         });
 
