@@ -10,7 +10,7 @@ module.exports = function(app) {
                 res.render(`gameOverLose`, { currentUser });
             })
         } else {
-            return res.status(401); // UNAUTHORIZED
+            res.redirect(`/`)
         }
     });
 
@@ -22,8 +22,7 @@ module.exports = function(app) {
                 res.render(`gameOverWin`, { currentUser });
             })
         } else {
-            return res.status(401); // UNAUTHORIZED
-        }
+            res.redirect(`/`)        }
     });
 
     // UPDATE USER STATS
