@@ -59,13 +59,14 @@ function findOpponent() {
 // send player name as well
 // [true/false, username, player's health, opp's health, room#]
 function sendToSocket(sol) {
-  socket.emit('solution submitted', [sol, username, playerHealth, opponentHealth, room])
+  console.log("PLEASE PRINT ME") 
+  socket.emit('solutionSubmitted', [sol, username, playerHealth, opponentHealth, room])
   // send that value to socket with player name [sol, playername]
 }
 
 // returns list of int values of new healths [sol, username, username-health, other-Health, room#]
 function getFromSocket() {
-  socket.on('health update', function(msg) {
+  socket.on('answer submission', function(msg) {
       if (msg != null) {
           return msg
       }
@@ -86,9 +87,12 @@ function getFromSocket() {
 
 // handle player input
 function handleInput() {
+  console.log("HANDING INPUT")
   let inp = playerInput.value // the submitted player's answer
   let sol = verifySolution(inp) // verify this answer with currSolution
+  console.log(sol)
   sendToSocket(sol) // send that to socket
+  console.log("CALLED SEND TO SOCKET??")
   newProblem() // update problem
   console.log("HI")
 }
@@ -120,7 +124,7 @@ function verifySolution(inp) {
 
 // handle updating health for given player [username, health]
 function updateHealth(msg) {
-  // console.log(msg)
+  console.log(msg)
   if (msg && room.length == 5 && room == msg[4]) {
       if (username == msg[0]) {
           console.log("****HAHA I GOT THIS*** ")
