@@ -75,7 +75,7 @@ function getFromSocket() {
     console.log("YOOOO: ", data.room)
     if (data.found == false){
       findOpponent()
-      
+
     }
 
   })
@@ -175,6 +175,7 @@ function checkGameState() {
 
 // updates
 function update() {
+    console.log('should ping')
   socket.emit('ping', { room: room })
   // check if game is over
   checkGameState()
