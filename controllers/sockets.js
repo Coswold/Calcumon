@@ -20,6 +20,7 @@ module.exports = (app, io) => {
             room = data.room
             roomExists = true
         })
+
         socket.on('createGame', function(data){
           socket.join('room-' + ++rooms);
           socket.emit('newGame', {name: data.name, room: 'room-'+rooms});
