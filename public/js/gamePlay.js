@@ -23,7 +23,7 @@ let foundOpponent = false; // tracks if opponent joined
 ////////////// ****** SOCKETS ************ ////////
 // when joined, send username to socket
 function setUsername() {
-  socket.emit('add user', username)
+  socket.emit('createGame', room)
 }
 setUsername()
 
@@ -50,12 +50,12 @@ function getFromSocket() {
       }
   })
 
-  socket.on('createGame', function(data) {
-    room = data.rm
+  socket.on('newGame', function(data) {
+    room = data.room
+    console.log("YOOOO: ", data.room)
     if (data.found == false){
-      while (foundOpponent == false) {
-        findOpponent()
-      }
+      findOpponent()
+      
     }
 
   })

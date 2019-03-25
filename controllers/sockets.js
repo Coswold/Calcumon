@@ -16,6 +16,7 @@ module.exports = (app, io) => {
         let roomExists = false
         let room = ''
         socket.on('find opponent', function(data) {
+            console.log(data)
             room = data.room
             roomExists = true
         })
@@ -23,9 +24,10 @@ module.exports = (app, io) => {
             if (roomExists) {
                 joinRoom(room)
             } else {
-                createGame(data)
+                createRoom(data)
                 console.log("joined game")
             }
+            console.log("HERE")
             /*
             if (data.room) {
                 socket.join(data.room);
