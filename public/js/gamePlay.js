@@ -19,7 +19,7 @@ let skipButton = document.getElementById('skip-problem')
 let playerHealthDisplay = document.getElementById('player-health')
 let opponentHealthDisplay = document.getElementById('opponent-health')
 
-let socket = io()
+var socket = io()
 let foundOpponent = false; // tracks if opponent joined
 
 // create / join game button events
@@ -53,6 +53,17 @@ function findOpponent() {
     }
     console.log(room, opponentName)
   })
+}
+
+function ping() {
+  console.log("Pinging server to keep room alive")
+  console.log('should ping ' + room)
+  socket.emit('keepalive', { room: room })
+}
+
+function test() {
+  console.log("test button pressed")
+  socket.emit('test', { username: username })
 }
 
 // sol = bool value of whether or not solution was correct
@@ -181,8 +192,9 @@ function checkGameState() {
 
 // updates
 function update() {
-    console.log('should ping ' + room)
-    socket.emit('ping', { room: room });
+    if (room != '') {
+      ping()
+    }
     // check if game is over
     checkGameState()
 
