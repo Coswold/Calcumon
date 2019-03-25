@@ -89,6 +89,7 @@ function getFromSocket() {
 function handleInput() {
   console.log("HANDING INPUT")
   let inp = playerInput.value // the submitted player's answer
+  playerInput.value = ''
   let sol = verifySolution(inp) // verify this answer with currSolution
   console.log(sol)
   sendToSocket(sol) // send that to socket
@@ -131,8 +132,8 @@ function updateHealth(msg) {
           playerHealth = msg[2]
           opponentHealth = msg[3]
           console.log(playerHealth, opponentHealth)
-          // TODO: player was attacked --> animate
-          
+
+          // animate
           if (msg[0] == true) {
             attackPlayer() // player attacks opponent
           } else {
@@ -145,7 +146,8 @@ function updateHealth(msg) {
           opponentHealth = msg[2]
           playerHealth = msg[3]
           console.log(playerHealth, opponentHealth)
-          // TODO: opponent was attacked --> animate
+
+          // animate
           if (msg[0] == false) {
             attackPlayer() // player attacks opponent
           } else {
@@ -236,8 +238,6 @@ function update() {
   
 }
 
-console.log("PLEASE WORK!!!!")
-update()
 // will execute update every 10 milliseconds
 setInterval(update, 1000);
 
