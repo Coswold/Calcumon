@@ -20,7 +20,7 @@ module.exports = (app) => {
         console.log(user)
         user.save()
         .then((user) => {
-            var token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
+            var token = jwt.sign({ _id: user._id, username: user.username }, process.env.SECRET, { expiresIn: "60 days" });
             res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
             res.redirect("/choose");
         })

@@ -8,19 +8,19 @@
 
 <!-- CALCMON OPTIONS -->
 <div class="calcmon-options-container">
-
+    
     <!--Option One -->
     <div class="option-one">
         <img class="option-pic" src="../images/monster-one.png" alt="">
         <!-- Input -->
-        <input name= "name" type="submit" class="option-btn btn btn-lg" value="monster1">
+        <input name= "name" type="submit" id = "monster1" class="option-btn btn btn-lg" value="monster1">
     </div>
 
     <!-- Option Two -->
     <div class="option-two">
         <img class="option-pic" src="../images/monster-two.png" alt="">
         <!-- Input -->
-        <input name= "name" type="submit" class="option-btn btn btn-lg " value="monster2">
+        <input name= "name" type="submit" id = "monster2" class="option-btn btn btn-lg " value="monster2">
     </div>
 
 <!-- Star Dust  -->
@@ -33,32 +33,34 @@
 
     {{!-- next button to move to game page --}}
     <!-- <p class="button"><a href="/gamePlay">NEXT</a></p> -->
-
-    <script>
-        // connect to database such that this sets the player's calcumon string value
-        let calcumon = ""
-        function setCalcumon1() {
-            calcumon = "calcumon1"
-        }
-        function setCalcumon2() {
-            calcumon = "calcumon2"
-        }
-        function setCalcumon3() {
-            calcumon = "calcumon3"
-        }
-        function setCalcumon4() {
-            calcumon = "calcumon1"
-        }
-        function setCalcumon5() {
-            calcumon = "calcumon2"
-        }
-        function setCalcumon6() {
-            calcumon = "calcumon3"
-        }
-    </script>
 </div>
 
+<div id="username" style="display:none">{{username}}</div>
 
+<script>
+    document.getElementById('monster1').onclick = () => {
+        let username = document.getElementById('username').textContent
+        axios.post('/choose/calcumon', {
+            user: username,
+            calcumon: 'monster1'
+        }).then(function(response) {
+            window.location.href = response.data
+        }).catch(function(error) {
+            console.log(error)
+        })
+    }
+    document.getElementById('monster2').onclick = () => {
+        let username = document.getElementById('username').textContent
+        axios.post('/choose/calcumon', {
+            user: username,
+            calcumon: 'monster2'
+        }).then(function(response) {
+            window.location.href = response.data
+        }).catch(function(error) {
+            console.log(error)
+        })
+    }
+</script>
 
 
 <!-- Calcmon Selection Grid-->
