@@ -16,7 +16,7 @@ module.exports = (app, io) => {
         let roomExists = false
         let room = ''
         socket.on('find opponent', function(data) {
-            console.log(data)
+            // console.log(data)
             room = data.room
             roomExists = true
         })
@@ -50,6 +50,7 @@ module.exports = (app, io) => {
             room = ''
         }
         function createRoom(data) {
+            console.log("CREATED ROOM:")
             socket.join('room-' + ++rooms);
             socket.emit('newGame', { room: 'room-'+rooms , found: false});
             // roomExists = true
