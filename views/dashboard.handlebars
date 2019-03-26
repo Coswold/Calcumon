@@ -33,16 +33,19 @@
   let calcumon = `${{currentUser.monster}}`
   console.log(calcumon)
   let path = ""
+  let bubble = ""
   if (calcumon == "monster-one" | calcumon == "monster1") {
     path = "../images/Calcumons/monster-one.png"
+    bubble = "one"
   } else {
     path = "../images/Calcumons/monster-two.png"
+    bubble = "two"
   }
   
   // add image element
-  document.getElementById('calcumon').innerHTML = `<img class = "monster" src="../images/chatbubbles/one.png" alt="calcumon">`
+  document.getElementById('calcumon').innerHTML = `<img class = "monster" src="../images/chatbubbles/${bubble}.png" alt="calcumon">`
   document.getElementById('calcumon').innerHTML += `<img class = "monster" src='${path}' alt="calcumon">`
-  document.getElementById('calcumon').innerHTML += `<img class = "monster" src="../images/chatbubbles/one2.png" alt="calcumon">`
+  document.getElementById('calcumon').innerHTML += `<img class = "monster" src="../images/chatbubbles/${bubble}2.png" alt="calcumon">`
 </script>
 <!-- <div class="content">
 
