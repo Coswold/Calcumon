@@ -30,11 +30,11 @@
 
 <script>
   {{!-- console.log({{currentUser.monster}}) --}}
-  let calcumon = `${{currentUser.monster}}`
+  let calcumon = `{{currentUser.monster}}`
   console.log(calcumon)
   let path = ""
   let bubble = ""
-  if (calcumon == "monster-one" | calcumon == "monster1") {
+  if (calcumon == "monster1") {
     path = "../images/Calcumons/monster-one.png"
     bubble = "one"
   } else {
