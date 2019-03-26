@@ -68,6 +68,11 @@ function preload () {
             // The fixed width, height of each frame of the animation.
     );
 
+    this.load.spritesheet('paintSpriteOpp', '../images/paintspriteopp.png',
+            { frameWidth: 100, frameHeight: 100 } 
+            // The fixed width, height of each frame of the animation.
+    );
+
     // OR Load an image:
     this.load.image('bg', '../images/bg-new-small.png');
 
@@ -93,6 +98,10 @@ function create () {
     paintSprite = this.physics.add.sprite(170, 190, 'paintSprite'); //OR use add group to add sprite images
     paintSprite.setCollideWorldBounds(true); // prevent going out of bounds of our game box
     paintSprite.visible = false // set to true when needed
+
+    paintSpriteOpp = this.physics.add.sprite(660, 190, 'paintSprite'); //OR use add group to add sprite images
+    paintSpriteOpp.setCollideWorldBounds(true); // prevent going out of bounds of our game box
+    paintSpriteOpp.visible = false // set to true when needed
 
     // create a paint splotches asset group: add to it as needed, and display on top of attacked calcumon
 
@@ -121,6 +130,13 @@ function create () {
     this.anims.create({
         key: 'paint-player',
         frames: this.anims.generateFrameNumbers('paintSprite', { start: 0, end: 3 }),
+        frameRate: 3,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'paint-opp',
+        frames: this.anims.generateFrameNumbers('paintSpriteOpp', { start: 0, end: 3 }),
         frameRate: 3,
         repeat: 0
     });
@@ -163,10 +179,6 @@ function update () {
     if (player) {
         if (attack == true) {
             player.anims.play('hand-throw', true)
-            // paint.visible = true
-            // make ball move
-            paint.setVelocityX(200)
-            paint.setVelocityY(-50)
 
             paintSprite.visible = true
             // paintSprite.visible = true
@@ -182,31 +194,18 @@ function update () {
     if (opponent) {
         if (attackme == true) {
             opponent.anims.play('opp-hand-throw', true)
+
+            paintSpriteOpp.visible = true
+            // paintSprite.visible = true
+            paintSpriteOpp.anims.play('paint-player', true)
+            // make ball move
+            paintSpriteOpp.setVelocityX(-200)
+            paintSpriteOpp.setVelocityY(-50)
         }
 
         attackme = false
     }
-
-    // make ball stop moving and restore location
-    if (paint.x >= 750) {
-        paint.setVelocityX(0)
-        paint.setVelocityY(0)
-        paint.visible = false
-        paint.x = 170
-        paint.y = 190
-    }
-    // make ball curve down
-    if (paint.y <= 120) {
-        paint.setVelocityY(50)
-    }
-
-    if (paintSprite.x >= 750) {
-        paintSprite.setVelocityX(0)
-        paintSprite.setVelocityY(0)
-        paintSprite.visible = false
-        paintSprite.x = 170
-        paintSprite.y = 190
-    }
+    
     // make ball curve down
     if (paintSprite.y <= 120) {
         paintSprite.setVelocityY(50)
@@ -220,5 +219,20 @@ function update () {
         paintSprite.visible = false
         paintSprite.x = 170
         paintSprite.y = 190
+    }
+
+    // make ball curve down
+    if (paintSpriteOpp.y <= 120) {
+        paintSpriteOpp.setVelocityY(50)
+    }
+
+    if (paintSpriteOpp.x <= player.x) {
+        paintSpriteOpp.setVelocityX(0)
+        paintSpriteOpp.setVelocityY(0)
+
+        // makes paint sprite disappear
+        paintSpriteOpp.visible = false
+        paintSpriteOpp.x = 170
+        paintSpriteOpp.y = 190
     }
 }
