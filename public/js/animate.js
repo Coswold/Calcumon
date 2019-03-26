@@ -7,7 +7,7 @@
 let config = {
     type: Phaser.AUTO,
     width: 800, // game window width
-    height: 300, // game window height: was 600
+    height: 400, // game window height: was 600
     physics: { // allows collisions, animations, etc.
         default: 'arcade',
         arcade: {
@@ -42,8 +42,13 @@ function preload () {
    
 
     // Load a sprite
-    this.load.spritesheet('player', '../images/throw-sprite.png',
-            { frameWidth: 240, frameHeight: 246 } 
+    // this.load.spritesheet('player', '../images/throw-sprite.png',
+    //         { frameWidth: 240, frameHeight: 246 } 
+    //         // The fixed width, height of each frame of the animation.
+    // );
+
+    this.load.spritesheet('player', '../images/spritesheet_1.png',
+            { frameWidth: 256, frameHeight: 256 } 
             // The fixed width, height of each frame of the animation.
     );
     
@@ -84,8 +89,8 @@ function create () {
     // CREATE ANIMATIONS
     this.anims.create({
         key: 'hand-throw',
-        frames: this.anims.generateFrameNumbers('player', { start: 0, end: 3 }),
-        frameRate: 6,
+        frames: this.anims.generateFrameNumbers('player', { start: 0, end: 11 }),
+        frameRate: 10,
         repeat: 0
     });
 
