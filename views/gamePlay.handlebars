@@ -111,6 +111,7 @@ $(function () {
     // This creates the messages wrapped in <li> tags
     socket.on('chat message', function(msg){
         $('#messages').append($('<li>').text(msg));
+        $('#messages li:not(:last)').remove();
         window.scrollTo(0, document.body.scrollHeight);
     });
 });
