@@ -1,15 +1,18 @@
-body {
-    /* background: radial-gradient(#baffff, #66d8ff)fixed; */
-}
+/* body {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+} */
 
 /* Back to Dashboard Link */
 .back-link {
     color:#1b5691;
     /* color:#F967DE; */
-    font-size: 2vw;
+    font-size: 1.7vw;
     font-family: 'Baloo Chettan', cursive;
     text-decoration: none;
-    margin: 1.8vw;
+    margin: 1.5vw;
 }
 
 /* Back to Dashboard Link Hover */
@@ -35,11 +38,10 @@ body {
 /* Math Equation */
 .math-problem {
     border: 3px solid #1b5691;
-    border-radius: 50px;
+    border-radius: 100px;
     background: #F967DE;
-    color:#1b5691;
+    color:white;
     width: 40vw;
-    height:100px;
     font-size: 2vw;
     font-family: 'Baloo Chettan', cursive;
     text-align: center;
@@ -56,7 +58,8 @@ body {
 
  .answer-form {
      width: 25vw;
-     height:80px;
+     border-radius: 50px;
+     height:150px;
  }
 
 /* Answer Container */
@@ -72,12 +75,13 @@ body {
 /* Monster1/ Monster2 Selction Button */
 .option-btn {
   font-family: 'Baloo Chettan', cursive;
-  font-size: 1.5em;
+  font-size: 3em;
+  color: white;
   background: #F967DE;
   border-radius:20px;
-  padding: 1vh;
-  margin:1vw;
-  width: 150px;
+  padding: .5vw;
+  margin:.4vw;
+  width: 6vw;
 }
 
 /* ^ Button Hover Styles */
@@ -87,6 +91,10 @@ body {
   border-radius:15px;
 }
 
+/* Health Bar */
+.health-bar {
+    border: 1px solid red;
+}
 
 /* outer game div */
 .container {
@@ -108,6 +116,7 @@ a {
     margin-top: 10px;
     text-align: center;
 }
+
 
 .sol input {
     width: 100%;
@@ -146,15 +155,16 @@ button {
     height: 100%;
     /* border: 1px solid black; */
 }
+.canvas-container {
+
+}
 
 /* phaser elem */
 canvas {
-    display: flex;
-    align-items: center;
     /* for a width of 800px and height of 600px */
     /* position: fixed; */
-    /* top: calc(60% - 300px); /* 600/2 = 300 */ */
-    /* left: calc(50% - 400px); /* 800/2 = 400 */ */
+    top: calc(60% - 300px); /* 600/2 = 300 */
+    left: calc(50% - 400px); /* 800/2 = 400 */
 }
 
 /* @media only screen and (max-height: 900px) {

@@ -1,13 +1,18 @@
 <!--  Custom Styles -->
 <link rel="stylesheet" href="../../css/gamestyles.css">
 
+
+
 <!-- Back to Dashboard Container -->
 <div class="back-container">
-    <a class="back-link" href = "/dashboard/{{currentUser._id}}">DASHBOARD</a>
+    <a class="back-link" href = "/dashboard/{{currentUser._id}}">BACK TO DASHBOARD</a>
 </div>
+
+<div class="whole=game-cointainer">
 
 <!-- Problem and Answer Container -->
 <div class="problem-container">
+    <h1>Solve The Problem Below</h1>
     <!-- Math Equation -->
     <div class="math-problem" id = "problem">
     Loading...
@@ -19,9 +24,9 @@
     <!-- Skip/ Submit Button Container -->
     <div class="button-container">
         <!--Skip -->
-        <button class="option-btn btn btn-md" id = "skip-problem">SKIP</button>
+        <button class="option-btn btn btn-lg" id = "skip-problem">SKIP</button>
         <!-- Submit -->
-        <button class="option-btn btn btn-md" id = "submit-solution" type ="submit">SUBMIT</button>
+        <button class="option-btn btn btn-lg" id = "submit-solution" type ="submit">SUBMIT</button>
     </div>
 
 </div>
@@ -30,22 +35,32 @@
   <!-- Paint Buckets -->
   <div class="row justify-content-between">
     <div style="padding:0" class="col-1">
-      <img style="width:100px" src="../images/bucket-right.jpg">
+      <img style="width:100px" src="../images/paintbrush1.png">
     </div>
     <div style="padding:0" class="col-1">
-       <img style="width:100px" src="../images/bucket.jpg">
+       <img style="width:100px" src="../images/paintbrush1.png">
     </div>
   </div>
 
    <!-- Health bars -->
   <div class="row justify-content-between health">
-    <div class="col-1">
+    <div class="health-bar col-1">
       <div id = "player-health"></div>
     </div>
-    <div class="col-1">
-      <div id = "opponent-health"></div>
+    <div class=" col-1">
+      <div class="health-bar" id = "opponent-health"></div>
     </div>
   </div>
+</div>
+
+<!-- Chat -->
+
+   <ul id="messages"></ul>
+   <form action="">
+     <input id="m" autocomplete="on" /><button>Send</button>
+   </form>
+
+
 </div>
 
 
