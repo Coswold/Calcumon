@@ -2,17 +2,18 @@ body {
 
 }
 
-.content .nav {
-    padding-top: 10px;
-    background-color:rgba(255, 255, 255, 0.4);
-}
-
-
+/* Dashboard Hero Text */
 .dashboard-hero {
     width: 65vw;
     margin-top: 3em;
-
 }
+
+/* Join/Create Button Containers */
+.game-buttons {
+    display: flex;
+    flex-direction:row;
+}
+
 /* Logout Link*/
 .logout-link {
    color:#F967DE;

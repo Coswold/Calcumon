@@ -1,11 +1,13 @@
 body {
-    background-image: url('../images/Asset-20.png');
+    /* background-image: url('../images/Asset-20.png'); */
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    font-family: fantasy
-    /* background: radial-gradient(#baffff,#63f2f2, #66d8ff)fixed; */
+    font-family: fantasy;
+    background: radial-gradient(#baffff, #66d8ff)fixed;
 }
+
+
 /* outer game div */
 .container {
     padding: 20px;
@@ -73,7 +75,7 @@ button {
 
 .health {
     margin-top: 5%;
-    
+
 }
 
 #player-health, #opponent-health {

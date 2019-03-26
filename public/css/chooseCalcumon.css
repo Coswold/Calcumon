@@ -26,8 +26,7 @@ body {
 
 /* Calcmon Options*/
 .option-pic {
-    width:50vh;
-    margin: 4vw;
+    width:45vh;
 }
 
 /* Calcmon One Option (Image and Button) */
@@ -35,6 +34,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 3vw;
+    margin-right:5vw;
 }
 
 /* Calcmon One Option (Image and Button) */
@@ -42,14 +43,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 3vw;
+    margin-bottom: 1vw;
+    margin-left:5vw;
 }
 
 /* Monster1/ Monster2 Selction Button */
 .option-btn {
   font-family: 'Baloo Chettan', cursive;
+  font-size: 2.5em;
   background: #F967DE;
-  border-radius:15px;
-  padding: 2vh;
+  border-radius:20px;
+  padding: 1vh;
+  margin:2vw;
   width: 200px;
 }
 
@@ -70,33 +76,6 @@ body {
     margin-right: 40px;
     margin-left: 40px;
 }
-
-/* Old Next Button (Not in Use rn) */
-/*
-.button {
-    color: #130094;
-    background-color: #FCD12D;
-    padding: 10px;
-    margin: 20px;
-    margin-right: 40px;
-    float: right;
-    border-radius: 15px;
-    font-size: 23px;
-    padding-right: 35px;
-    padding-left: 35px;
-    margin-left: 30px;
-    margin-top: 30px;
-    font-weight: bold;
-    border: 1px solid white;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-} */
-
-/* Grid Cards */
-/* .gridItem {
-    background-color: pink;
-    border: 1px solid black;
-} */
-
 
 /* Star Dust Styles */
   #stars {
