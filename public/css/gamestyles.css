@@ -155,16 +155,14 @@ button {
     height: 100%;
     /* border: 1px solid black; */
 }
-.canvas-container {
-
-}
 
 /* phaser elem */
 canvas {
     /* for a width of 800px and height of 600px */
-    /* position: fixed; */
-    top: calc(60% - 300px); /* 600/2 = 300 */
+    position: fixed;
+    /*top: calc(60% - 300px); /* 600/2 = 300 */
     left: calc(50% - 400px); /* 800/2 = 400 */
+    bottom: 100px;
 }
 
 /* @media only screen and (max-height: 900px) {
