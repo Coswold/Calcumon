@@ -88,11 +88,6 @@ module.exports = (app, io) => {
             console.log(data);
         });
 
-        socket.on('chat message', function(data) {
-            socket.broadcast.to(data.room).emit('health update', msg);
-            console.log(msg)
-        });
-
         socket.on('keepalive', function(data) {
             // console.log(`We were pinged with: ${data}`)
             if (data.room == '') {
@@ -116,6 +111,9 @@ module.exports = (app, io) => {
         socket.on('test', function(data) {
             console.log(`We were pinged with: ${data}`)
         });
-    });
 
+        socket.on('chat message', function(msg){
+            io.emit('chat message', msg);
+        });
+    })
 }
