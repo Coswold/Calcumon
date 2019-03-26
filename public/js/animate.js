@@ -7,7 +7,7 @@
 let config = {
     type: Phaser.AUTO,
     width: 800, // game window width
-    height: 600, // game window height
+    height: 300, // game window height: was 600
     physics: { // allows collisions, animations, etc.
         default: 'arcade',
         arcade: {
@@ -67,7 +67,7 @@ function preload () {
 function create () {
     // this.add.image(400, 300, 'bg');
     // SET UP SPRITES
-    player = this.physics.add.sprite(150, 450, 'player');
+    player = this.physics.add.sprite(150, 150, 'player');
     player.setBounce(0.2); // slight bounce after throw
     player.setCollideWorldBounds(true); // prevent going out of bounds of our game box
 
@@ -75,7 +75,7 @@ function create () {
     // opponent.setBounce(0.2); // slight bounce after throw
     // opponent.setCollideWorldBounds(true); // prevent going out of bounds of our game box
 
-    paint = this.physics.add.sprite(160, 460, 'paint'); //OR use add group to add sprite images
+    paint = this.physics.add.sprite(170, 190, 'paint'); //OR use add group to add sprite images
     paint.setCollideWorldBounds(true); // prevent going out of bounds of our game box
     paint.visible = false // set to true when needed
 
@@ -99,7 +99,7 @@ function create () {
     this.anims.create({
         key: 'paint-throw-player',
         frames: this.anims.generateFrameNumbers('paint', { start: 0, end: 7 }),
-        frameRate: 10,
+        frameRate: 6,
         repeat: 0
     });
 
@@ -154,11 +154,11 @@ function update () {
         paint.setVelocityX(0)
         paint.setVelocityY(0)
         paint.visible = false
-        paint.x = 160
-        paint.y = 460
+        paint.x = 170
+        paint.y = 190
     }
     // make ball curve down
-    if (paint.y <= 380) {
+    if (paint.y <= 120) {
         paint.setVelocityY(50)
     }
 }
