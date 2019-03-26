@@ -1,5 +1,8 @@
 body {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: radial-gradient( #f7ef62)fixed;
 }
 
 /* Dashboard Hero Text */
@@ -141,3 +144,12 @@ a {
     margin-top: 30px;
     margin-bottom: 40px;
 }
+/* Chat Bubbles  */
+/* .chat-bubble1 {
+    width:200px;
+    margin-top:100px;
+} */
+
+/* .chat-bubble2 {
+    width:200px;
+} */
