@@ -232,7 +232,7 @@ function update () {
 
         // makes paint sprite disappear
         paintSpriteOpp.visible = false
-        paintSpriteOpp.x = 170
+        paintSpriteOpp.x = 660
         paintSpriteOpp.y = 190
     }
 }
