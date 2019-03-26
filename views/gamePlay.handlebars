@@ -1,10 +1,6 @@
 <!--  Custom Styles -->
 <link rel="stylesheet" href="../../css/gamestyles.css">
 
-<!-- Scripts -->
-<script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
-<script type="text/javascript" src="../js/animate.js" charset="utf-8"></script>
-
 <!-- Back to Dashboard Container -->
 <div class="back-container">
     <a class="back-link" href = "/dashboard/{{currentUser._id}}">DASHBOARD</a>
@@ -18,31 +14,20 @@
     </div>
 
     <!-- Answer Input-->
-    <input class="form-control" id = "answer" placeholder="Enter Your Answer Here!">
+    <input class="answer-form form-control" id = "answer" placeholder="Enter Your Answer Here!">
 
     <!-- Skip/ Submit Button Container -->
     <div class="button-container">
         <!--Skip -->
-        <button class="option-btn btn btn-lg" id = "skip-problem">SKIP</button>
+        <button class="option-btn btn btn-md" id = "skip-problem">SKIP</button>
         <!-- Submit -->
-        <button class="option-btn btn btn-lg" id = "submit-solution" type ="submit">SUBMIT</button>
+        <button class="option-btn btn btn-md" id = "submit-solution" type ="submit">SUBMIT</button>
     </div>
 
 </div>
 
-    <div class="col-8 sol">
-      <button id = "createGame">CREATE</button>
-      <button id = "joinGame">JOIN</button>
-    </div>
 
-
-
-
-
-
-  </div>
-
-  <!-- Paint buckets -->
+  <!-- Paint Buckets -->
   <div class="row justify-content-between">
     <div style="padding:0" class="col-1">
       <img style="width:100px" src="../images/bucket-right.jpg">
@@ -51,9 +36,6 @@
        <img style="width:100px" src="../images/bucket.jpg">
     </div>
   </div>
-
-
-  <!-- Health bars -->
 
    <!-- Health bars -->
   <div class="row justify-content-between health">
@@ -66,10 +48,23 @@
   </div>
 </div>
 
+
+
+<!-- TODO If I remove this, game stops... -->
+    <div class="col-8 sol">
+      <button id = "createGame">CREATE</button>
+      <button id = "joinGame">JOIN</button>
+    </div>
+
+
 <div class="hidden">
   <span style="white-space: pre-line; display: none;" id="username">{{currentUser.username}}</span>
   <span style="white-space: pre-line; display: none;" id="level">{{currentUser.level}}</span>
 </div>
+
+<!-- Scripts -->
+<script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+<script type="text/javascript" src="../js/animate.js" charset="utf-8"></script>
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>

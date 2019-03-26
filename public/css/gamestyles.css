@@ -9,7 +9,7 @@ body {
     font-size: 2vw;
     font-family: 'Baloo Chettan', cursive;
     text-decoration: none;
-    margin: 2vw;
+    margin: 1.8vw;
 }
 
 /* Back to Dashboard Link Hover */
@@ -34,21 +34,29 @@ body {
 
 /* Math Equation */
 .math-problem {
+    border: 3px solid #1b5691;
+    border-radius: 50px;
+    background: #F967DE;
     color:#1b5691;
-    /* color:#F967DE; */
+    width: 40vw;
+    height:100px;
     font-size: 2vw;
     font-family: 'Baloo Chettan', cursive;
-    text-decoration: none;
-    margin: 2vw;
-
+    text-align: center;
+    padding: .5vw;
+    margin:1vw;
 }
 
 /* Answer Input Field*/
  .form-control {
     background: #D8FF5F;
-    /* font-family: 'Baloo Chettan', cursive; */
     text-align: center;
     border-radius: 15px;
+ }
+
+ .answer-form {
+     width: 25vw;
+     height:80px;
  }
 
 /* Answer Container */
@@ -64,12 +72,12 @@ body {
 /* Monster1/ Monster2 Selction Button */
 .option-btn {
   font-family: 'Baloo Chettan', cursive;
-  font-size: 2.5em;
+  font-size: 1.5em;
   background: #F967DE;
   border-radius:20px;
   padding: 1vh;
-  margin:2vw;
-  width: 200px;
+  margin:1vw;
+  width: 150px;
 }
 
 /* ^ Button Hover Styles */
@@ -141,10 +149,12 @@ button {
 
 /* phaser elem */
 canvas {
+    display: flex;
+    align-items: center;
     /* for a width of 800px and height of 600px */
-    position: fixed;
-    top: calc(60% - 300px); /* 600/2 = 300 */
-    left: calc(50% - 400px); /* 800/2 = 400 */
+    /* position: fixed; */
+    /* top: calc(60% - 300px); /* 600/2 = 300 */ */
+    /* left: calc(50% - 400px); /* 800/2 = 400 */ */
 }
 
 /* @media only screen and (max-height: 900px) {
