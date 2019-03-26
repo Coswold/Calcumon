@@ -7,7 +7,7 @@
 let config = {
     type: Phaser.AUTO,
     width: 800, // game window width
-    height: 400, // game window height: was 600
+    height: 300, // game window height: was 600
     physics: { // allows collisions, animations, etc.
         default: 'arcade',
         arcade: {
@@ -33,6 +33,7 @@ let paint;
 let playerCalcumon = ''
 let opponentCalcumon = ''
 let attack;
+let attackme;
 
 
 // Phaser Functions
@@ -52,10 +53,10 @@ function preload () {
             // The fixed width, height of each frame of the animation.
     );
     
-    // this.load.spritesheet('opponent', 'path',
-    //         { frameWidth: 98, frameHeight: 138 } 
-    //         // The fixed width, height of each frame of the animation.
-    // );
+    this.load.spritesheet('opponent', '../images/oppspritesheet.png',
+            { frameWidth: 256, frameHeight: 256 } 
+            // The fixed width, height of each frame of the animation.
+    );
     
     this.load.spritesheet('paint', '../images/paintball.jpeg',
             { frameWidth: 98, frameHeight: 138 } 
@@ -76,9 +77,9 @@ function create () {
     player.setBounce(0.2); // slight bounce after throw
     player.setCollideWorldBounds(true); // prevent going out of bounds of our game box
 
-    // opponent = this.physics.add.sprite(300, 450, 'opponent');
-    // opponent.setBounce(0.2); // slight bounce after throw
-    // opponent.setCollideWorldBounds(true); // prevent going out of bounds of our game box
+    opponent = this.physics.add.sprite(650, 150, 'opponent');
+    opponent.setBounce(0.2); // slight bounce after throw
+    opponent.setCollideWorldBounds(true); // prevent going out of bounds of our game box
 
     paint = this.physics.add.sprite(170, 190, 'paint'); //OR use add group to add sprite images
     paint.setCollideWorldBounds(true); // prevent going out of bounds of our game box
@@ -94,12 +95,12 @@ function create () {
         repeat: 0
     });
 
-    // this.anims.create({
-    //     key: 'hand-throw',
-    //     frames: this.anims.generateFrameNumbers('opponent', { start: 0, end: 7 }),
-    //     frameRate: 10,
-    //     repeat: 0
-    // });
+    this.anims.create({
+        key: 'opp-hand-throw',
+        frames: this.anims.generateFrameNumbers('opponent', { start: 0, end: 11 }),
+        frameRate: 10,
+        repeat: 0
+    });
 
     this.anims.create({
         key: 'paint-throw-player',
@@ -129,6 +130,7 @@ function attackPlayer() {
 function attackOpponent() {
     // update values
     console.log("TESTING COMPUTER ANIMATION THING")
+    attackme = true
 }
 
 function update () {
@@ -152,6 +154,14 @@ function update () {
         }
         
         attack = false
+    }
+    
+    if (opponent) {
+        if (attackme == true) {
+            opponent.anims.play('opp-hand-throw', true)
+        }
+
+        attackme = false
     }
 
     // make ball stop moving and restore location
