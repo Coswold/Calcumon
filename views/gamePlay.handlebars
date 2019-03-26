@@ -81,6 +81,24 @@
 <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
 <script type="text/javascript" src="../js/animate.js" charset="utf-8"></script>
 
+<!-- SCRIPT FOR CHAT FUNCTION -->
+<script>
+$(function () {
+    var socket = io();
+    $('form').submit(function(){
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+        return false;
+    });
+    // This creates the messages wrapped in <li> tags
+    socket.on('chat message', function(msg){
+        $('#messages').append($('<li>').text(msg));
+        $('#messages li:not(:last)').remove();
+        window.scrollTo(0, document.body.scrollHeight);
+    });
+});
+</script>
+
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/problemGenerator.js"></script>
