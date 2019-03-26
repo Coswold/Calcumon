@@ -74,14 +74,14 @@ function preload () {
     );
 
     // OR Load an image:
-    this.load.image('bg', '../images/bg-new-small.png');
+    this.load.image('bg', '../images/white.png');
 
     // Load paint splotches as well
 }
 
 // building the actual scene
 function create () {
-    // this.add.image(400, 300, 'bg');
+    this.add.image(0, 0, 'bg');
     // SET UP SPRITES
     player = this.physics.add.sprite(150, 150, 'player');
     player.setBounce(0.2); // slight bounce after throw
