@@ -92,7 +92,7 @@ function create () {
 
     paintSprite = this.physics.add.sprite(170, 190, 'paintSprite'); //OR use add group to add sprite images
     paintSprite.setCollideWorldBounds(true); // prevent going out of bounds of our game box
-    // paintSprite.visible = false // set to true when needed
+    paintSprite.visible = false // set to true when needed
 
     // create a paint splotches asset group: add to it as needed, and display on top of attacked calcumon
 
@@ -168,6 +168,7 @@ function update () {
             paint.setVelocityX(200)
             paint.setVelocityY(-50)
 
+            paintSprite.visible = true
             // paintSprite.visible = true
             paintSprite.anims.play('paint-player', true)
             // make ball move
@@ -214,5 +215,10 @@ function update () {
     if (paintSprite.x >= opponent.x) {
         paintSprite.setVelocityX(0)
         paintSprite.setVelocityY(0)
+
+        // makes paint sprite disappear
+        paintSprite.visible = false
+        paintSprite.x = 170
+        paintSprite.y = 190
     }
 }
