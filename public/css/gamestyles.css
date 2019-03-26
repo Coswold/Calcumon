@@ -89,8 +89,9 @@ button {
 canvas {
     /* for a width of 800px and height of 600px */
     position: fixed;
-    top: calc(60% - 300px); /* 600/2 = 300 */
+    top: calc(60% - 150px); /* 600/2 = 300 */
     left: calc(50% - 400px); /* 800/2 = 400 */
+    /* position: relative */
 }
 
 /* @media only screen and (max-height: 900px) {
@@ -101,3 +102,45 @@ canvas {
         bottom: 0;
     }
   } */
+
+
+  /* chat */
+
+  form { 
+      padding: 3px; 
+      position: fixed; 
+      bottom: 10px; 
+      width: 100%; 
+    }
+
+  form input { 
+      border: 0; 
+      padding: 10px; 
+      width: 50%; 
+      margin-right: .5%; 
+    }
+
+  form button { 
+      width: 9%; 
+      background: rgb(189, 252, 134); 
+      border: none; padding: 10px; 
+    }
+
+  #messages { 
+      list-style-type: none; 
+      margin: 0; 
+      padding: 0; 
+      position: fixed;
+      bottom: 80px;
+      font-size: 24px;
+    }
+
+  #messages li { 
+      padding: 5px 10px; 
+      
+    }
+
+  #messages li:nth-child(odd) { 
+      background: #eee; 
+
+    }
