@@ -1,58 +1,45 @@
-
-<!--  custom styles  -->
+<!--  Custom Styles -->
 <link rel="stylesheet" href="../../css/gamestyles.css">
 
+<!-- Scripts -->
 <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
 <script type="text/javascript" src="../js/animate.js" charset="utf-8"></script>
 
+<!-- Back to Dashboard Container -->
+<div class="back-container">
+    <a class="back-link" href = "/dashboard/{{currentUser._id}}">DASHBOARD</a>
+</div>
 
-<div class="container">
-  <div class = "row full-width">
-    <h1 class="quit"><a href = "/dashboard/{{currentUser._id}}">eXit</a></h1>
-  </div>
-  <!-- test buttons -->
-  <div class="row">
-    <div class="col">
-      <!-- empty div for space purposes -->
+<!-- Problem and Answer Container -->
+<div class="problem-container">
+    <!-- Math Equation -->
+    <div class="math-problem" id = "problem">
+    Loading...
     </div>
+
+    <!-- Answer Input-->
+    <input class="form-control" id = "answer" placeholder="Enter Your Answer Here!">
+
+    <!-- Skip/ Submit Button Container -->
+    <div class="button-container">
+        <!--Skip -->
+        <button class="option-btn btn btn-lg" id = "skip-problem">SKIP</button>
+        <!-- Submit -->
+        <button class="option-btn btn btn-lg" id = "submit-solution" type ="submit">SUBMIT</button>
+    </div>
+
+</div>
+
     <div class="col-8 sol">
       <button id = "createGame">CREATE</button>
       <button id = "joinGame">JOIN</button>
     </div>
-    <div class="col">
-      <!-- empty div for space purposes -->
-    </div>
-  </div>
 
-  <!-- problem container -->
-  <div class="row">
-    <div class="col">
-      <!-- empty div for space purposes -->
-    </div>
-    <div class="col-8 prob" id = "problem">
-      Loading...
-    </div>
-    <div class="col">
-      <!-- empty div for space purposes -->
-    </div>
-  </div>
 
-  <!-- INPUT container -->
-  <div class="row">
-    <div class="col">
-      <!-- empty div for space purposes -->
-    </div>
 
-    
 
-    <div class="col-8 sol">
-      <input id = "answer" placeholder="Enter solution here">
-      <button id = "skip-problem">SKIP</button>
-      <button id = "submit-solution" type ="submit">SUBMIT</button>
-    </div>
-    <div class="col">
-      <!-- empty div for space purposes -->
-    </div>
+
+
   </div>
 
   <!-- Paint buckets -->
@@ -77,15 +64,6 @@
       <div id = "opponent-health"></div>
     </div>
   </div>
-
-  <!-- chat stuff -->
-  <div class = "chat">
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="on" /><button>Send</button>
-    </form>
-  </div>
-  <!-- END CHAT STUFF -->
 </div>
 
 <div class="hidden">
@@ -93,24 +71,7 @@
   <span style="white-space: pre-line; display: none;" id="level">{{currentUser.level}}</span>
 </div>
 
-
 <script src="/socket.io/socket.io.js"></script>
-<script>
-$(function () {
-    var socket = io();
-    $('form').submit(function(){
-        socket.emit('chat message', $('#m').val());
-        $('#m').val('');
-        return false;
-    });
-    // This creates the messages wrapped in <li> tags
-    socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(msg));
-        $('#messages li:not(:last)').remove();
-        window.scrollTo(0, document.body.scrollHeight);
-    });
-});
-</script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/problemGenerator.js"></script>
 <script src="../js/solutionApi.js"></script>

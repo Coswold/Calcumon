@@ -4,7 +4,6 @@
 <div class="dashboard-hero-container">
     <img class="dashboard-hero" src="../images/dashboard.png" alt="dashboard hero text">
 
-
     <div class="game-buttons">
         <!-- Create Game Button -->
         <a href="/gameplay"><img class="play" src="../images/create-game-btn.png" alt=""></a>
@@ -18,12 +17,12 @@
     </div>
 
     <!-- Logout Link-->
-    <h3>{{currentUser.username}}</h3>
-    <h3>level: {{currentUser.level}}</h3>
+    <h3 style="text-transform:uppercase">{{currentUser.username}}</h3>
+    <h3>LEVEL: {{currentUser.level}}</h3>
     <br>
     <a class="logout-link" href="/logout"> LOGOUT</a>
 
-    
+
 
 
 </div>
@@ -41,7 +40,7 @@
     path = "../images/Calcumons/monster-two.png"
     bubble = "two"
   }
-  
+
   // add image element
   document.getElementById('calcumon').innerHTML = `<img class = "monster" src="../images/chatbubbles/${bubble}.png" alt="calcumon">`
   document.getElementById('calcumon').innerHTML += `<img class = "monster" src='${path}' alt="calcumon">`
