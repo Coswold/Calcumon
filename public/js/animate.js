@@ -63,6 +63,11 @@ function preload () {
             // The fixed width, height of each frame of the animation.
     );
 
+    this.load.spritesheet('paintSprite', '../images/paintsprite_1.png',
+            { frameWidth: 100, frameHeight: 100 } 
+            // The fixed width, height of each frame of the animation.
+    );
+
     // OR Load an image:
     this.load.image('bg', '../images/bg-new-small.png');
 
@@ -85,6 +90,10 @@ function create () {
     paint.setCollideWorldBounds(true); // prevent going out of bounds of our game box
     paint.visible = false // set to true when needed
 
+    paintSprite = this.physics.add.sprite(170, 190, 'paintSprite'); //OR use add group to add sprite images
+    paintSprite.setCollideWorldBounds(true); // prevent going out of bounds of our game box
+    // paintSprite.visible = false // set to true when needed
+
     // create a paint splotches asset group: add to it as needed, and display on top of attacked calcumon
 
     // CREATE ANIMATIONS
@@ -106,6 +115,13 @@ function create () {
         key: 'paint-throw-player',
         frames: this.anims.generateFrameNumbers('paint', { start: 0, end: 7 }),
         frameRate: 6,
+        repeat: 0
+    });
+
+    this.anims.create({
+        key: 'paint-player',
+        frames: this.anims.generateFrameNumbers('paintSprite', { start: 0, end: 3 }),
+        frameRate: 3,
         repeat: 0
     });
 
@@ -147,10 +163,16 @@ function update () {
     if (player) {
         if (attack == true) {
             player.anims.play('hand-throw', true)
-            paint.visible = true
+            // paint.visible = true
             // make ball move
             paint.setVelocityX(200)
             paint.setVelocityY(-50)
+
+            // paintSprite.visible = true
+            paintSprite.anims.play('paint-player', true)
+            // make ball move
+            paintSprite.setVelocityX(200)
+            paintSprite.setVelocityY(-50)
         }
         
         attack = false
@@ -175,5 +197,22 @@ function update () {
     // make ball curve down
     if (paint.y <= 120) {
         paint.setVelocityY(50)
+    }
+
+    if (paintSprite.x >= 750) {
+        paintSprite.setVelocityX(0)
+        paintSprite.setVelocityY(0)
+        paintSprite.visible = false
+        paintSprite.x = 170
+        paintSprite.y = 190
+    }
+    // make ball curve down
+    if (paintSprite.y <= 120) {
+        paintSprite.setVelocityY(50)
+    }
+
+    if (paintSprite.x >= opponent.x) {
+        paintSprite.setVelocityX(0)
+        paintSprite.setVelocityY(0)
     }
 }
