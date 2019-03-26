@@ -4,7 +4,7 @@ body {
 
 /* Dashboard Hero Text */
 .dashboard-hero {
-    width: 65vw;
+    width: 50%;
     margin-top: 3em;
 }
 
@@ -12,6 +12,8 @@ body {
 .game-buttons {
     display: flex;
     flex-direction:row;
+    justify-content: space-around;
+    /* align-content: center; */
 }
 
 /* Logout Link*/
@@ -37,7 +39,9 @@ h3 {
 }
 
 .play {
-    width: 15vw;
+    width: 250px;
+    margin-right: 30px;
+    margin-left: 30px;
 }
 .dashboard-hero-container {
     display: flex;
@@ -130,4 +134,10 @@ a {
 
 .logout {
     padding-top: 65px;
+}
+
+.monster {
+    width: 400px;
+    margin-top: 30px;
+    margin-bottom: 40px;
 }

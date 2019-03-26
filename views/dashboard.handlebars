@@ -13,15 +13,37 @@
         <a href="/gameplay"><img class="play" src="../images/join-game-btn.png" alt=""></a>
     </div>
 
+    <div id = "calcumon">
+
+    </div>
+
     <!-- Logout Link-->
+    <h3>{{currentUser.username}}</h3>
+    <h3>level: {{currentUser.level}}</h3>
+    <br>
     <a class="logout-link" href="/logout"> LOGOUT</a>
 
-    <h3>level: {{currentUser.level}}</h3>
+    
 
 
 </div>
 
-
+<script>
+  {{!-- console.log({{currentUser.monster}}) --}}
+  let calcumon = `${{currentUser.monster}}`
+  console.log(calcumon)
+  let path = ""
+  if (calcumon == "monster-one" | calcumon == "monster1") {
+    path = "../images/Calcumons/monster-one.png"
+  } else {
+    path = "../images/Calcumons/monster-two.png"
+  }
+  
+  // add image element
+  document.getElementById('calcumon').innerHTML = `<img class = "monster" src="../images/chatbubbles/one.png" alt="calcumon">`
+  document.getElementById('calcumon').innerHTML += `<img class = "monster" src='${path}' alt="calcumon">`
+  document.getElementById('calcumon').innerHTML += `<img class = "monster" src="../images/chatbubbles/one2.png" alt="calcumon">`
+</script>
 <!-- <div class="content">
 
   <div class="grid-container">
