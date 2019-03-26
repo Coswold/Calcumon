@@ -33,12 +33,12 @@
 
 
   <!-- Paint Buckets -->
-  <div class="row justify-content-between">
+  <div class="row justify-content-between paint">
     <div style="padding:0" class="col-1">
-      <img style="width:100px" src="../images/paintbrush1.png">
+      <img style="width: 50px" src="../images/paintbrush1.png">
     </div>
     <div style="padding:0" class="col-1">
-       <img style="width:100px" src="../images/paintbrush1.png">
+       <img style="width: 50px" src="../images/paintbrush1.png">
     </div>
   </div>
 
@@ -51,14 +51,17 @@
       <div class="health-bar" id = "opponent-health"></div>
     </div>
   </div>
-</div>
+{{!-- </div> --}}
 
 <!-- Chat -->
-
-   <ul id="messages"></ul>
-   <form action="">
-     <input id="m" autocomplete="on" /><button>Send</button>
-   </form>
+  <div class = "row justify-content-between">
+    <div class = "col">
+      <ul id="messages"></ul>
+      <form action="" class = "messages">
+        <input id="m" autocomplete="on" /><button>Send</button>
+      </form>
+   </div>
+   </div>
 
 
 </div>

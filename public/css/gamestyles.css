@@ -59,13 +59,10 @@
  .answer-form {
      width: 25vw;
      border-radius: 50px;
-     height:150px;
+     height:80px;
  }
 
-/* Answer Container */
-.answer-container {
 
-}
 /* Skip/Submit Button Container */
 .button-container {
     display: flex;
@@ -75,13 +72,13 @@
 /* Monster1/ Monster2 Selction Button */
 .option-btn {
   font-family: 'Baloo Chettan', cursive;
-  font-size: 3em;
+  font-size: 2em;
   color: white;
   background: #F967DE;
   border-radius:20px;
   padding: .5vw;
   margin:.4vw;
-  width: 6vw;
+  /* width: 6vw; */
 }
 
 /* ^ Button Hover Styles */
@@ -146,7 +143,11 @@ button {
 
 .health {
     margin-top: 5%;
+}
 
+.health, .paint {
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 #player-health, #opponent-health {
@@ -162,7 +163,7 @@ canvas {
     position: fixed;
     /*top: calc(60% - 300px); /* 600/2 = 300 */
     left: calc(50% - 400px); /* 800/2 = 400 */
-    bottom: 100px;
+    bottom: 150px;
 }
 
 /* @media only screen and (max-height: 900px) {
@@ -173,3 +174,23 @@ canvas {
         bottom: 0;
     }
   } */
+
+  .messages {
+      position: fixed;
+      bottom: 10px;
+      left: calc(50% - 200px);
+      font-size: 22px;
+      padding: 10px;
+      
+  }
+
+  .messages input {
+    width: 400px;
+    border: 1px solid black;
+  }
+
+  #messages {
+      position: fixed;
+      bottom: 40px;
+      font-size: 24px;
+  }
