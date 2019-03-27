@@ -13,6 +13,11 @@ module.exports = (app) => {
         res.render('signup', { currentUser });
     });
 
+    // TEAM PAGE
+    app.get('/team', (req, res) => {
+        res.render('team');
+    });
+
     // SIGN UP POST
     app.post("/sign-up", (req, res) => {
         // Create User and JWT
