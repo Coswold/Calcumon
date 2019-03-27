@@ -354,3 +354,10 @@ p {
             transform: translateY(-700px) rotate(600deg);
   }
 }
+
+.team {
+  position: fixed;
+  top: 5%;
+  right: 10%;
+  color: red
+}
