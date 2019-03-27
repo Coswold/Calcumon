@@ -35,10 +35,10 @@
   <!-- Paint Buckets -->
   <div class="row justify-content-between paint">
     <div style="padding:0" class="col-1">
-      <img style="height: 300px" src="../images/widerbrush.png">
+      <img style="height: 200px" src="../images/widerbrush.png">
     </div>
     <div style="padding:0" class="col-1">
-       <img style="height: 300px" src="../images/widerbrush.png">
+       <img style="height: 200px" src="../images/widerbrush.png">
     </div>
   </div>
 
@@ -47,8 +47,8 @@
     <div class="health-bar col-1">
       <div id = "player-health"></div>
     </div>
-    <div class=" col-1">
-      <div class="health-bar" id = "opponent-health"></div>
+    <div class=" health-bar col-1">
+      <div id = "opponent-health"></div>
     </div>
   </div>
 {{!-- </div> --}}
@@ -56,9 +56,11 @@
 <!-- Chat -->
   <div class = "row justify-content-between">
     <div class = "col">
+      
       <ul id="messages"></ul>
       <form action="" class = "messages">
-        <input id="m" autocomplete="on" /><button>Send</button>
+        
+        <input id="m" autocomplete="on" placeholder="send a message"/><button>Send</button>
       </form>
    </div>
    </div>
