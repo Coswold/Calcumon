@@ -114,19 +114,16 @@ function create () {
     });
 }
 
-// call these in gameState
-
+// Call these in gameState to check who is attacking when attack is triggered
 function attackPlayer() {
-    console.log("ATTACKING TEST PLAYER")
     attack = true
 }
 
 function attackOpponent() {
-    // update values
-    console.log("TESTING COMPUTER ANIMATION THING")
     attackme = true
 }
 
+// Update animations
 function update () {
     // call a function that checks for a true/false for creating animation, and what animation to create
     // player attacks
