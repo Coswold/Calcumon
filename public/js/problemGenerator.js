@@ -90,13 +90,14 @@ class SimpleFractions {
         return op
     }
 
+    // EDITED: update denominators to be multiples of their numerators
     pattern1() {
         // get ints
         let max = 50
         let num1 = getRandomInt(max)
         let num2 = getRandomInt(max)
-        let den1 = getRandomInt(max) + 1
-        let den2 = getRandomInt(max) + 1
+        let den1 = num1*getRandomInt(max/5)
+        let den2 = num2*getRandomInt(max/5)
 
         // determine random operand
         let op = this.getOp()
