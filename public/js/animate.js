@@ -1,7 +1,4 @@
-// function that gets - calcumon sprite with hand motion
-//                    - a paint ball image 
-//                    - the direction for throwing (1 for right, -1 for left)
-// Use these to create a phaser animation of calcumons throwing a paintball
+// Creates a phaser animation of calcumons throwing a paintball at their opponent
 
 // Initialize game
 let config = {
