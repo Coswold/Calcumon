@@ -40,43 +40,24 @@ let attackme;
 
 // load sprites and images
 function preload () {
-   
-
-    // Load a sprite
-    // this.load.spritesheet('player', '../images/throw-sprite.png',
-    //         { frameWidth: 240, frameHeight: 246 } 
-    //         // The fixed width, height of each frame of the animation.
-    // );
-
-    this.load.spritesheet('player', '../images/spritesheet_1.png',
+    // Load spritesheets
+    this.load.spritesheet('player', '../images/spritesheets/spritesheet_1.png',
             { frameWidth: 256, frameHeight: 256 } 
             // The fixed width, height of each frame of the animation.
     );
     
-    this.load.spritesheet('opponent', '../images/oppspritesheet.png',
+    this.load.spritesheet('opponent', '../images/spritesheets/oppspritesheet.png',
             { frameWidth: 256, frameHeight: 256 } 
             // The fixed width, height of each frame of the animation.
     );
-    
-    this.load.spritesheet('paint', '../images/paintball.jpeg',
-            { frameWidth: 98, frameHeight: 138 } 
-            // The fixed width, height of each frame of the animation.
-    );
 
-    this.load.spritesheet('paintSprite', '../images/paintsprite_1.png',
+    this.load.spritesheet('paintSprite', '../images/spritesheets/paintsprite.png',
             { frameWidth: 100, frameHeight: 100 } 
             // The fixed width, height of each frame of the animation.
     );
 
-    this.load.spritesheet('paintSpriteOpp', '../images/paintspriteopp.png',
-            { frameWidth: 100, frameHeight: 100 } 
-            // The fixed width, height of each frame of the animation.
-    );
-
-    // OR Load an image:
+    // Load white image background for animation canvas:
     this.load.image('bg', '../images/white.png');
-
-    // Load paint splotches as well
 }
 
 // building the actual scene
@@ -91,10 +72,6 @@ function create () {
     opponent.setBounce(0.2); // slight bounce after throw
     opponent.setCollideWorldBounds(true); // prevent going out of bounds of our game box
 
-    paint = this.physics.add.sprite(170, 190, 'paint'); //OR use add group to add sprite images
-    paint.setCollideWorldBounds(true); // prevent going out of bounds of our game box
-    paint.visible = false // set to true when needed
-
     paintSprite = this.physics.add.sprite(170, 190, 'paintSprite'); //OR use add group to add sprite images
     paintSprite.setCollideWorldBounds(true); // prevent going out of bounds of our game box
     paintSprite.visible = false // set to true when needed
@@ -102,8 +79,6 @@ function create () {
     paintSpriteOpp = this.physics.add.sprite(660, 190, 'paintSprite'); //OR use add group to add sprite images
     paintSpriteOpp.setCollideWorldBounds(true); // prevent going out of bounds of our game box
     paintSpriteOpp.visible = false // set to true when needed
-
-    // create a paint splotches asset group: add to it as needed, and display on top of attacked calcumon
 
     // CREATE ANIMATIONS
     this.anims.create({
@@ -140,19 +115,9 @@ function create () {
         frameRate: 3,
         repeat: 0
     });
-
-    // this.anims.create({
-    //     key: 'paint-throw-opponent',
-    //     frames: this.anims.generateFrameNumbers('paint', { start: 0, end: 7 }),
-    //     frameRate: 10,
-    //     repeat: 0
-    // });
 }
 
 // call these in gameState
-function setup() {
-
-}
 
 function attackPlayer() {
     console.log("ATTACKING TEST PLAYER")
@@ -167,38 +132,28 @@ function attackOpponent() {
 
 function update () {
     // call a function that checks for a true/false for creating animation, and what animation to create
-    // based on result, do stuff here
-    // EX: player.anims.play('throw', true);
-        // paint.setVelocityX(0)
-        // paint.setVelocityY(0)
-        // paint.visible = false
-        // paint.x = 450
-        // paint.y = 460
-        // paint.visible = true // or false
-    // attack = true
+    // player attacks
     if (player) {
         if (attack == true) {
             player.anims.play('hand-throw', true)
 
             paintSprite.visible = true
-            // paintSprite.visible = true
             paintSprite.anims.play('paint-player', true)
-            // make ball move
+            // make paintball move
             paintSprite.setVelocityX(200)
             paintSprite.setVelocityY(-50)
         }
         
         attack = false
     }
-    
+    // opponenet attacks
     if (opponent) {
         if (attackme == true) {
             opponent.anims.play('opp-hand-throw', true)
 
             paintSpriteOpp.visible = true
-            // paintSprite.visible = true
             paintSpriteOpp.anims.play('paint-player', true)
-            // make ball move
+            // make paintball move
             paintSpriteOpp.setVelocityX(-200)
             paintSpriteOpp.setVelocityY(-50)
         }
@@ -206,32 +161,35 @@ function update () {
         attackme = false
     }
     
-    // make ball curve down
+    // make player's paintball curve down
     if (paintSprite.y <= 120) {
         paintSprite.setVelocityY(50)
     }
-
+    // stop moving player's paintball when it hits opponent
     if (paintSprite.x >= opponent.x) {
         paintSprite.setVelocityX(0)
         paintSprite.setVelocityY(0)
 
         // makes paint sprite disappear
         paintSprite.visible = false
+        // reset position to player's hand
         paintSprite.x = 170
         paintSprite.y = 190
     }
 
-    // make ball curve down
+    // make opponent's paintball curve down
     if (paintSpriteOpp.y <= 120) {
         paintSpriteOpp.setVelocityY(50)
     }
 
+    // stop moving opponent's paintball when it hits player
     if (paintSpriteOpp.x <= player.x) {
         paintSpriteOpp.setVelocityX(0)
         paintSpriteOpp.setVelocityY(0)
 
         // makes paint sprite disappear
         paintSpriteOpp.visible = false
+        // reset position to opponent's hand
         paintSpriteOpp.x = 660
         paintSpriteOpp.y = 190
     }
