@@ -2,33 +2,27 @@
 
 <!-- Dashboard Hero Text -->
 <div class="dashboard-hero-container">
-    <img class="dashboard-hero" src="../images/dashboard.png" alt="dashboard hero text">
+  <img class="dashboard-hero" src="../images/dashboard.png" alt="dashboard hero text">
 
-    <div class="game-buttons">
-        <!-- Create Game Button -->
-        <a href="/gameplay"><img class="play" src="../images/create-game-btn.png" alt=""></a>
+  <div class="game-buttons">
+      <!-- Create Game Button -->
+      <a href="/gameplay"><img class="play" src="../images/create-game-btn.png" alt=""></a>
 
-        <!-- Join Game Button -->
-        <a href="/gameplay"><img class="play" src="../images/join-game-btn.png" alt=""></a>
-    </div>
+      <!-- Join Game Button -->
+      <a href="/gameplay"><img class="play" src="../images/join-game-btn.png" alt=""></a>
+  </div>
 
-    <div id = "calcumon">
+  <div id = "calcumon">
+  </div>
 
-    </div>
-
-    <!-- Logout Link-->
-    <h3 style="text-transform:uppercase">{{currentUser.username}}</h3>
-    <h3>LEVEL: {{currentUser.level}}</h3>
-    <br>
-    <a class="logout-link" href="/logout"> LOGOUT</a>
-
-
-
+  <!-- Logout Link-->
+  <h3 style="text-transform:uppercase">{{currentUser.username}}</h3>
+  <h3>LEVEL: {{currentUser.level}}</h3><br>
+  <a class="logout-link" href="/logout"> LOGOUT</a>
 
 </div>
 
 <script>
-  {{!-- console.log({{currentUser.monster}}) --}}
   let calcumon = `{{currentUser.monster}}`
   console.log(calcumon)
   let path = ""
@@ -46,49 +40,3 @@
   document.getElementById('calcumon').innerHTML += `<img class = "monster" src='${path}' alt="calcumon">`
   document.getElementById('calcumon').innerHTML += `<img class = "monster chat-bubble2" src="../images/chatbubbles/${bubble}2.png" alt="calcumon">`
 </script>
-<!-- <div class="content">
-
-  <div class="grid-container">
-    <div class="item1">
-      <ul> -->
-        <!-- <li class = "heading" style="padding:18px"><h1>DASHBOARD</h1></li> -->
-        <!-- <li class = "play" style="float:right">
-            <h2><a class="button" href="/gameplay">PLAY MULTIPLAYER</a></h2>
-        </li> -->
-        <!--
-        <li class = "play" style="float:right">
-            <h2><a class="button" href="/singleplayer">PLAY SINGLEPLAYER</a></h2>
-        </li>
-    -->
-
-      <!-- </ul>
-
-    </div>
-
-    <div class="item2">
-      <div class="data">
-        <a href="{{post.url}}" class="lead">{{post.postTitle}}</a>
-        <p>{{currentUser.calcumon}}</p>
-        <img src="../images/Calcumons/{{currentUser.monster}}.png"
-              width="300" height="227">
-        <h1>{{currentUser.username}}</h1>
-        <h3>level: {{currentUser.level}}</h3>
-
-
-      </div>
-
-    </div>
-
-    <div class="item3">
-      Main -->
-      {{!-- buttons: My items, Change Calcumon(buy), Store (accessories/assets) --}}
-    <!-- </div>
-
-    <div class="item4">
-      Right -->
-      {{!-- options to display based on above selected button --}}
-    <!-- </div>
-  </div> -->
-
-
-</div>
