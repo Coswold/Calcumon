@@ -38,7 +38,7 @@ let attackme;
 // load sprites and images
 function preload () {
     // Load spritesheets
-    this.load.spritesheet('player', '../images/spritesheets/spritesheet_1.png',
+    this.load.spritesheet('player', '../images/spritesheets/playerspritesheet.png',
             { frameWidth: 256, frameHeight: 256 } 
             // The fixed width, height of each frame of the animation.
     );

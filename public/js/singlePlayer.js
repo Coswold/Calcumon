@@ -1,5 +1,5 @@
-// gamePlay.js
-// code originally in gamePlay.handlebars
+// IN PROGRESS: Currently multiplayer game code works fine for single player as well.
+// TODO: Separate multi player and single player more neatly
 
 let username = document.getElementById('username').textContent // name from database
 
